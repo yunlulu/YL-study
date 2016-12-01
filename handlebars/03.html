@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	
+	<script id="jsbox1" type="text/x-handlebars-template">
+		<h1>个人信息</h1>
+		<p>{{name}}</p>
+		<p>{{age}}</p>
+		<p>使用两个花括号会自动转义：{{htmls}}</p>
+		<!-- -->
+		<p>使用三个花括号可以防止转义：{{{htmls}}}</p>
+	</script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/handlebars.js"></script>
+	<script type="text/javascript">
+	// 初始化数据
+	var data1={name:"yunlulu","age":23,"hobby":["篮球","球球","皮球"],"htmls":"<b>hello nihaome !</b>"};
+		// body...
+	
+	//获取模板内容
+		var jsbox1=$("#jsbox1").html();
+	// 编译模板内容
+		var temp1=Handlebars.compile(jsbox1);
+	// 将json数据对应在模板内容里面
+		var html1=temp1(data1);
+	//将对应好的模板内容输出
+		$("body").append(html1);
+	</script>
+	
+	
+</body>
+</html>

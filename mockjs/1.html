@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		p{background-color: #f00;}
+	</style>
+</head>
+<body>
+<p>1</p>
+<pre class="box1"></pre>
+<p>2</p>
+<pre class="box2"></pre>
+<p>3</p>
+<pre class="box3"></pre>
+<p>4</p>
+<pre class="box4"></pre>
+<p>5</p>
+<pre class="box5"></pre>
+<p>6</p>
+<pre class="box6"></pre>
+<p>7</p>
+<pre class="box7"></pre>
+<p>8</p>
+<pre class="box8"></pre>
+<p>9</p>
+<pre class="box9"></pre>
+<p>10</p>
+<pre class="box10"></pre>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script src="http://mockjs.com/dist/mock.js"></script>
+<script>
+// 使用 Mock
+var data1 = Mock.mock({
+    'list|100': [{
+        'id|+1':1
+    }]
+});
+var data10 = Mock.mock({
+    'list|1-10': [{
+        'id|+1': 1
+    }]
+});
+$('.box1').text(JSON.stringify(data1, null, 4));
+
+
+
+$('.box10').text(JSON.stringify(data10, null, 4));
+
+
+</script>
+</body>
+</html>

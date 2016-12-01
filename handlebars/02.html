@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div class="box1"></div>
+<div class="box2"></div>
+ 
+<script type="text/javascript" src="js/handlebars.js"></script>
+<!-- 模板内容开始 -->
+<script id="box1" type="text/x-handlebars-template">
+		<ul>
+		<!-- #后面跟的是 变量名  -->
+			{{#data1}}
+				<li>{{lang}}</li>
+		<!-- 结束的时候/后面跟的也是变量名 -->
+			{{/data1}}
+		</ul>
+</script>
+	<script id="box2" type="text/x-handlebars-template">
+	<ul>
+		
+		{{#data2}}
+			<li>{{this}}</li>
+		{{/data2}}
+	</ul>
+	<div>{{data3}}</div>
+	</script>
+<!-- 模板内容结束 -->
+
+	
+	<script type="text/javascript">
+
+	// 模拟json数据
+		var json1={
+			 data1: [
+    {lang: "JavaScript"},{lang: "HTML"},{lang: "CSS"}]
+};
+		// 获取模板
+		var source1=document.getElementById("box1").innerHTML;
+		// 编译模板
+		var temp1=Handlebars.compile(source1);
+		
+		// 匹配数据
+		var html1=temp1(json1);
+		// 在网页放入内容
+		var box1=document.querySelector(".box1");
+		box1.innerHTML=html1;
+
+
+		// 获取模板
+		var source2=document.getElementById("box2").innerHTML;
+		// 编译模板
+		var temp1=Handlebars.compile(source2);
+		// 模拟json数据
+		var json2={data2: ["44433333122211JavaScript11", "HTM11L","CSS111"],
+
+		data3:function () {
+			return "hello!"
+		}
+	};
+		// 匹配数据
+		var html2=temp1(json2);
+		// 在网页放入内容
+		var box2=document.querySelector(".box2");
+		box2.innerHTML=html2;
+
+
+
+
+
+	</script>
+
+
+
+
+</body>
+</html>

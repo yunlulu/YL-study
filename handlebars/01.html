@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div>
+	
+</div>
+
+
+ 
+<script type="text/javascript" src="js/handlebars.js"></script>
+	
+	<script id="box1" type="text/x-handlebars-template">
+		<h1 class="box1">
+			{{title1}}
+		</h1>
+		<p>{{content1}}</p>
+	</script>
+	<script type="text/javascript">
+		// 获取模板
+		var source1=document.getElementById("box1").innerHTML;
+		// 编译模板
+		var temp1=Handlebars.compile(source1);
+		// 模拟json数据
+		var json1={title1:"我是标题",content1:"我是内容"};
+		// 匹配数据
+		var html1=temp1(json1);
+		// 在网页放入内容
+		var body=document.getElementsByTagName("div")[0];
+		body.innerHTML=html1;
+
+	</script>
+
+
+
+
+</body>
+</html>
