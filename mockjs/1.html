@@ -1,7 +1,11 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
 	<title>Document</title>
 	<style type="text/css" media="screen">
 		p{background-color: #f00;}
@@ -12,43 +16,102 @@
 <pre class="box1"></pre>
 <p>2</p>
 <pre class="box2"></pre>
+<div class="imgbox">
+    
+</div>
 <p>3</p>
 <pre class="box3"></pre>
 <p>4</p>
 <pre class="box4"></pre>
-<p>5</p>
-<pre class="box5"></pre>
-<p>6</p>
-<pre class="box6"></pre>
-<p>7</p>
-<pre class="box7"></pre>
-<p>8</p>
-<pre class="box8"></pre>
-<p>9</p>
-<pre class="box9"></pre>
-<p>10</p>
-<pre class="box10"></pre>
+<p>随机颜色</p>
+<div class="colorbox"></div>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script src="http://mockjs.com/dist/mock.js"></script>
 <script>
-// 使用 Mock
+// 简单产生数据（obj） Mock.mock({key:value});
 var data1 = Mock.mock({
-    'list|100': [{
-        'id|+1':1
+    /* key:value的形式，
+    父级的key|后面指定的数值，决定孩子循环的次数,
+    可随机m-n,可固定n
+    */
+    'list|10': [{
+        'id|+3':1
     }]
 });
-var data10 = Mock.mock({
-    'list|1-10': [{
-        'id|+1': 1
-    }]
-});
+
 $('.box1').text(JSON.stringify(data1, null, 4));
+console.log(data1);
+// jquery ajax使用mock
+// Mock.mock(url,{key:value});
+// 详情可以随机制造value
+/*关键字如下
+Mock.Random 提供的完整方法（占位符）如下：
+
+Type    Method
+Basic   boolean, natural, integer, float, character, string, range, date, time, datetime, now
+
+Image   image, dataImage
+
+Color   color
+
+Text    paragraph, sentence, word, title, cparagraph, csentence, cword, ctitle
+
+
+Name    first, last, name, cfirst, clast, cname
+Web      url, domain, email, ip, tld
+Address    area, region
+
+Helper  capitalize, upper, lower, pick, shuffle
+Miscellaneous   guid, id
+
+*/
+var data2=Mock.mock("http://www.baidu.com",{
+    'datas|5':[{
+        'name':"@name",
+        'images':"@image",
+        'colors':"@color"
+    }]
+})
+// ajax请求时候和mock里面的url一致 
+$.ajax({
+      url: 'http://www.baidu.com',
+    dataType:'json',
+    success:function (data) {
+          if(data){
+            // $(".box2").html(JSON.stringify(data, null, 4));
+            console.log(data);
+
+            $.each(data.datas,function (key,value) {
+                $(".imgbox").append("<img src="+this.images+">");
+                $(".colorbox").after('<div style="background:'+this.colors+';">'+key+'</div>');
+            })
+          }
+    }
+
+});
+
+// 如果想自定义数据去随机
+var Random = Mock.Random;
+Random.extend({
+    constellation: function(date) {
+        var constellations = ['angular', 'less', 'css3', 'html5', 'js', 'es6', 'threejs', 'canvas', 'bootstrap', 'react', 'vuejs', '小程序']
+        return this.pick(constellations)
+    }
+})
+//  "react"
+console.log(Random.constellation());
+//  "less"
+console.log(Mock.mock('@CONSTELLATION'));
+var data4=Mock.mock({
+    'constellation|5': ['@CONSTELLATION']
+})
+$(".box4").html(JSON.stringify(data4,null,4));
 
 
 
-$('.box10').text(JSON.stringify(data10, null, 4));
 
 
 </script>
+
 </body>
 </html>
