@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="content">
+	
+</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/handlebars.js"></script>
+	<script id="template" type="text/x-handlebars-template">
+		<h1>个人信息</h1>
+		<p>{{name}}</p>
+		<p>{{age}}</p>
+		<p>使用两个花括号会自动转义：{{htmls}}</p>
+		<!-- -->
+		<p>使用三个花括号可以防止转义：{{{htmls}}}</p>
+	</script>
+	<script type="text/javascript">
+
+	
+	(function($) {
+    var compiled = {};
+    $.fn.handlebars = function(template, data) {
+        if (template instanceof jQuery) {
+            template = $(template).html();
+        }
+    compiled[template] = Handlebars.compile(template);
+    this.html(compiled[template](data));
+    console.log(data);
+    };
+})(jQuery);
+
+$('#content').handlebars($('#template'), { name: "Alan" });
+	</script>
+</body>
+</html>
