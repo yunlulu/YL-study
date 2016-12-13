@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>标题</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+    
+内容hahahahah
+<div>
+    hdhdhdhdhdhd
+</div>
+    <script type="text/javascript"> 
+        function RootSize(){
+            var docWidth=document.documentElement.clientWidth;
+            var objHtml=document.getElementsByTagName("html")[0];
+            if(docWidth>640){
+                docWidth=640;
+            }
+            objHtml.style.fontSize=docWidth/6.4+"px";
+        };
+        window.onload=function(){
+        RootSize();
+        };
+    </script>
+    <script src="http://172.16.9.82:8081/target/target-script-min.js#demo1"></script>
+
+</body>
+</html>
+
+
