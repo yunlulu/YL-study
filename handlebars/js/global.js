@@ -1,3 +1,17 @@
+ // 自适应方法
+ function RootSize(){
+            var docWidth=document.documentElement.clientWidth;
+            var objHtml=document.getElementsByTagName("html")[0];
+            if(docWidth>640){
+                docWidth=640;
+            }
+            objHtml.style.fontSize=docWidth/6.4+"px";
+        };
+// 加载调用自适应
+window.onload=function(){
+        RootSize();
+};
+
 // jquery扩展插件----handlebars
   (function($) {
     var compiled = {};
@@ -35,4 +49,4 @@ var datas = {
        ]
 
    };
-$(".box1").handlebars($("#temp1"),datas);
+// $(".box1").handlebars($("#temp1"),datas);

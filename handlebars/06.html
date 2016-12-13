@@ -6,28 +6,68 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <title>标题</title>
-    <link rel="stylesheet" href="css/global.css">
+    <!-- <link rel="stylesheet" href="css/global.css"> -->
+    <style type="text/css" media="screen">
+        *{font-size: 16px;}
+    </style>
+
 </head>
 <body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+<div class="box4"></div>
+<div class="box5"></div>
+<div class="box6"></div>
+
+<script type="text/x-handlebars/template" id="temp1">
+    <h1>#if:可以做判断  以/if结尾</h1>
+    {{#each student}}
+    {{! 这里判断值是否为空，条件真才显示}}
+    {{#if name}}
+        <p>
+            <a>姓名：{{name}}</a>
+            <a>年龄：{{age}}</a>
+            <a>性别：{{sex}}</a>
+        </p>
+        {{else}}
+         <p style="background-color: #f00;">
+            <a>姓名：{{name}}</a>
+            <a>年龄：{{age}}</a>
+            <a>性别：{{sex}}</a>
+        </p>
+    {{/if}}
+    {{/each}}
+</script>
+
     
-内容hahahahah
-<div>
-    hdhdhdhdhdhd
-</div>
-    <script type="text/javascript"> 
-        function RootSize(){
-            var docWidth=document.documentElement.clientWidth;
-            var objHtml=document.getElementsByTagName("html")[0];
-            if(docWidth>640){
-                docWidth=640;
-            }
-            objHtml.style.fontSize=docWidth/6.4+"px";
-        };
-        window.onload=function(){
-        RootSize();
-        };
-    </script>
-    <script src="http://172.16.9.82:8081/target/target-script-min.js#demo1"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/handlebars.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript">
+      //模拟的json对象
+         var data1 = {
+                     "student": [
+                         {
+                             "name": "张三",
+                             "sex": "0",
+                             "age": 18
+                         },
+                         {
+                             "sex": "0",
+                             "age": 22
+                         },
+                         {
+                             "name": "妞妞",
+                             "sex": "1",
+                             "age": 18
+                         }
+                     ]
+                 };
+    $(".box1").handlebars($("#temp1"),data1);
+
+</script>
+
 
 </body>
 </html>
