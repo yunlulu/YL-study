@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+    *{font-size: 16px; font-family: "微软雅黑"; line-height: 30px;}
+        div{background-color: #0ff; margin-bottom: 5px;}
+        h3{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<h3>基础知识</h3>
+<div id="app1">{{a}}</div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+        var data1={a:"hello1",b:"hello2"};
+        var app1=new Vue({
+            el:"#app1",
+            data:data1
+        });
+        data1.c="hello3";
+        // console.log(app1.c==data1.c);
+        console.log(app1.a==data1.a);
+        console.log(app1.c);
+    </script>
+   
+</body>
+</html>

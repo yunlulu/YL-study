@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Document</title>
+    <style type="text/css" media="screen">
+    *{font-size: 16px; font-family: "微软雅黑"; line-height: 30px;}
+        div{background-color: #0ff; margin-bottom: 5px;}
+        h3{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<h3>基础知识</h3>
+    <!-- 最好用id -->
+    <div id="app1">{{message1}}哈哈哈哈，{{message2}}</div>
+    <div id="app2" >
+    <b v-bind:title="title">加粗，看我的标题哟，</b>
+    哈哈哈哈2222222222</div>
+    <div id="app3" v-if="showorhidden">我是显示还是隐藏呢！</div>
+    <ol id="app4">
+       <li v-for="item in array1">{{"哈哈哈"+item}}</li> 
+    </ol>
+    <div id="app5">
+        <p>数据绑定,还支持简单的表达式：{{b.split("").reverse().join("")+"我是末尾的"}}</p>
+        <input type="text" name="" value="" placeholder="" v-model="b">
+    </div>
+    <div id="app6">
+        <p>{{c}}</p>
+        <button type="" v-on:click="clickbtn1">按钮</button>
+    </div>
+    <h3>定义模板</h3>
+   <div id="app7">
+   <h4>模板1</h4>
+    <ul>
+    <todo-item v-for="item in array2" v-bind:todo="item"></todo-item>
+  </ul>
+   <h4>模板2</h4>
+
+  <ul>
+    <todo-item v-for="item in array3" v-bind:todo="item"></todo-item>
+  </ul>
+</div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+        var app1=new Vue({
+            el:"#app1",
+            data:{
+                message1:"hello1",
+                message2:"hihihi"
+            }
+        });
+        var app2=new Vue({
+            el:"#app2",
+            data:{
+                title:"我是vue定义的title"}
+        });
+        var app3=new Vue({
+            el:"#app3",
+            data:{
+                showorhidden:true
+            }
+        });
+        var app4=new Vue({
+            el:"#app4",
+            data:{
+                array1:["苹果","香蕉","栗子"] 
+            }
+        });
+        // 通过arr
+        app4.array1.push("通过app4.array1.push可以在后面增加一条内容");
+        app4.array1.unshift("通过app4.array1.unshift可以在前面增加一条内容");
+        var app5=new Vue({
+            el:"#app5",
+            data:{
+                b:""
+            }
+        });
+        var app6=new Vue({
+            el:"#app6",
+            data:{
+                c:"我是内容"
+            },
+            methods:{
+             clickbtn1:function () {
+                 this.c="我被点击了";
+             }
+            }
+        });
+       // 定义一个模板
+       Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{ todo.text }}</li>'
+        })
+var app7 = new Vue({
+  el: '#app7',
+  data: {
+    array2: [
+      { text: '001' },
+      { text: '002' },
+      { text: '003 else humans are supposed to eat' }
+    ],
+    array3: [
+      { text: '000000000001' },
+      { text: '000000000002' },
+      { text: '000000000003 else humans are supposed to eat' }
+    ]
+  }
+})
+
+    </script>
+</body>
+</html>
