@@ -1,0 +1,59 @@
+doctype html
+html
+    head
+        title hello world!
+        meta(name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no")
+        meta(name="format-detection" content="telephone=no")
+    body
+        h2 开始学习jade!
+        b 我是加粗的。
+        ul
+            li.active hello
+            li hello2
+        nav 我是导航
+        header 
+            b 我是头部
+            a(href='http:www.baidu.com',title='hello') 你好啊
+        p
+            b foo bar baz
+            | rawr rawr
+            | super cool
+            | go jade go
+        - var foo="hellllll"
+        #user= foo
+        //{"book":{"name":"hello"}}
+        //- var b = book.name+"hihihi"
+        //h1= b
+        //- console.log('hello'); 
+        - var s= 'hello world！！！！' 
+        p #{s}  //调用
+        p=s
+        - var book={"name":"<i>booknamelalalal</i>","age":3};
+        p 
+            我写了一本书
+            b!= book.name 
+            
+            h2= "它"+book.age+"岁了"
+            h3 他#{book.age}岁了
+        h1 判断
+        - var animation={des:"我喜欢dog"};
+        - if (animation.des)
+            h2 描述
+            p.det=animation.des
+        -else
+            h1 描述
+            p.det 暂无描述
+        - var user={name:"yunlulu",isVip:true}
+
+        section.userbox
+            if user.isVip
+                h4 亲爱的#{user.name},您是vip!
+            else
+                h5 亲爱的#{user.name},您不是vip.
+        h1 循环
+        - var arr1=["苹果","香蕉","栗子111"];
+        ul.ul1
+            - for(i=0;i<arr1.length;i++){
+                li 我喜欢#{arr1[i]}
+            - }
+    include include/footer.html
