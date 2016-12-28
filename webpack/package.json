@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "webpack",
+    "server": "webpack-dev-server --progress --colors --host 172.16.9.82 --port 8020 --inline --content-base app/"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^2.24.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
