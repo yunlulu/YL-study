@@ -9,10 +9,10 @@ module.exports={
      //插件项
     // plugins: [commonsPlugin],
     devtool:"eval-source-map",
-    entry:__dirname+"/public/js/main.js",
+    entry:{global:__dirname+'/public/js/main.js'},
     output:{
         path:__dirname+"/app",
-        filename:"js/[name].js",
+        filename:"/js/[name]-01.js",
         publicPath:"../"
     },
     devServer: {
@@ -34,7 +34,5 @@ module.exports={
     },
    
      externals: {jquery: 'window.$'},
-     plugins: [
-        new ExtractTextPlugin("css/[name].css")
-        ]
+     plugins: [new ExtractTextPlugin("css/[name].css")]
 }
