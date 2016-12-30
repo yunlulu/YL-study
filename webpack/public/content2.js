@@ -1,0 +1,1 @@
+module.exports="现在是来自content.js的文件2222！";
