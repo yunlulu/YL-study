@@ -17,4 +17,4 @@ function(e,t){function a(e){var t=/^#?([a-f\d])([a-f\d])([a-f\d])$/i;e=e.replace
   !*** external "window.$" ***!
   \***************************/
 function(e,t){e.exports=window.$}]);
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=global.js.map
