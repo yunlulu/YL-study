@@ -1,0 +1,75 @@
+body {
+  background-color: #f00; }
+
+.box1 a {
+  color: #f00; }
+.box1 .b {
+  background-color: #0f0; }
+.box1 .c {
+  color: #f00;
+  background-color: #0f0;
+  background-image: url(images/1.jpg);
+  font-style: italic;
+  font-family: "yahei"; }
+
+.error1 {
+  border: 2px solid #f00;
+  color: #E44B4B; }
+
+.error2 {
+  border: 10px solid #f00;
+  color: #E44B4B; }
+
+.block1, .box2 {
+  background-color: #f00;
+  border: 1px solid #333; }
+
+.box2 {
+  margin: 10px auto; }
+
+p {
+  margin: 100px auto;
+  border: 10px solid #333; }
+
+p {
+  text-align: center; }
+  p:hover {
+    background-color: #3F90E0; }
+  p .box {
+    background-color: #f00; }
+
+.box3 {
+  border: 20px solid #333; }
+
+.item-0 {
+  width: 0rem; }
+
+.item-1 {
+  width: 1.445rem; }
+
+.item-2 {
+  width: 2.89rem; }
+
+.item-3 {
+  width: 4.335rem; }
+
+.puma-icon {
+  background-image: url("images/puma.png"); }
+
+.sea-icon {
+  background-image: url("images/sea.png"); }
+
+.ocean-icon {
+  background-image: url("images/ocean.png"); }
+
+.sala-icon {
+  background-image: url("images/sala.png"); }
+
+.box6 {
+  -webkit-border-radius: 100px 200px 300px 100px;
+  -moz-border-radius: 100px 200px 300px 100px;
+  -ms-border-radius: 100px 200px 300px 100px;
+  -o-border-radius: 100px 200px 300px 100px;
+  border-radius: 100px 200px 300px 100px; }
+
+/*# sourceMappingURL=01.css.map */

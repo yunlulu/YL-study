@@ -7,7 +7,7 @@ fs.readdir(src,function (err,files) {
         var newPath=src+"/"+files[i].replace(/-/g,"haha-");
         fs.rename(oldPath,newPath,function (err) {
             if(!err){
-                console.log(files[i]+"haha-替换成功！");
+                console.log(newPath+"haha-替换成功！");
             }
         })
     }

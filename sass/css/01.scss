@@ -1,0 +1,76 @@
+body{background-color: #f00;
+    
+}
+.box1{
+    a{color:#f00;}
+    .b{background-color: #0f0;}
+    .c{
+        color:#f00;
+        background:{
+            color:#0f0;
+            image:url(images/1.jpg);
+        }
+        font:{
+        style:italic;
+        family:"yahei";
+    }        
+    }
+}
+@mixin error($borderWidth:2px){
+    border:$borderWidth solid #f00;
+    color:#E44B4B;
+}
+.error1{
+    @include error();
+}
+.error2{
+    @include error(10px);
+}
+
+.block1{
+    background-color: #f00;
+    border:1px solid #333;
+}
+.box2{
+    @extend .block1;
+    margin:10px auto;
+}
+%block2{
+    margin:100px auto;
+    border:10px solid #333;
+}
+p{
+    @extend %block2;
+    text-align:center;
+    &:hover{background-color: #3F90E0}
+    .box{
+        background-color: #f00
+    }
+}
+
+$num:10px;
+.box3{
+    border:$num*2 solid #333;
+}
+@for $i from 0 through 3{
+    .item-#{$i}{
+        width:1.445rem*$i;
+    }
+}
+@each $animal in puma,sea,ocean,sala{
+    .#{$animal}-icon{
+        background-image: url('images/#{$animal}.png');
+    }
+}
+
+@mixin border-radius($num:200px 10px){
+-webkit-border-radius: $num;
+-moz-border-radius: $num;
+-ms-border-radius: $num;
+-o-border-radius: $num;
+border-radius: $num;
+}
+.box6{
+    @include border-radius(100px 200px 300px 100px);
+}
+
