@@ -1,3 +1,6 @@
+.hahah {
+  background-color: #FFF; }
+
 body {
   background-color: #f00; }
 
@@ -71,5 +74,65 @@ p {
   -ms-border-radius: 100px 200px 300px 100px;
   -o-border-radius: 100px 200px 300px 100px;
   border-radius: 100px 200px 300px 100px; }
+
+.box7 {
+  color: rgba(85, 102, 85, 0.67); }
+
+.box8 {
+  background-color: #C93838; }
+  .box8 p {
+    color: #2F148C; }
+    .box8 p d {
+      color: #2F148C; }
+  .box8 a {
+    color: #C93838; }
+
+div {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  font-size: 15px; }
+
+div.nnn {
+  background-color: #0f0; }
+
+div {
+  width: 200px;
+  height: 200px;
+  font-size: 20px; }
+
+a {
+  color: #EA3E3E; }
+  a:hover {
+    color: #2A4CB8; }
+
+.h1 {
+  font-size: 1em; }
+
+.h2 {
+  font-size: 2em; }
+
+.h3 {
+  font-size: 3em; }
+
+.bor {
+  border-style: solid;
+  border-left-width: 2px;
+  border-left-color: #333;
+  border-right-width: 4px;
+  border-right-color: #2CCE5D; }
+
+@media only screen and (max-width: 480px) {
+  body {
+    color: red; }
+
+  ul li {
+    max-height: 400px; } }
+@media only screen and (max-width: 360px) {
+  body {
+    color: blue; }
+
+  ul li {
+    max-height: 300px; } }
 
 /*# sourceMappingURL=01.css.map */

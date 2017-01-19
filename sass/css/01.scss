@@ -1,6 +1,7 @@
-body{background-color: #f00;
-    
-}
+@import "02";
+
+
+body{background-color: #f00;}
 .box1{
     a{color:#f00;}
     .b{background-color: #0f0;}
@@ -73,4 +74,87 @@ border-radius: $num;
 .box6{
     @include border-radius(100px 200px 300px 100px);
 }
+.box7{
+    color:rgba(#565,0.67);
+}
+$color1:#C93838;
+.box8{
+   
+    background-color: $color1;
+    p{
+        $color1:#2F148C;
+        color: $color1;
+        d{
+            color:$color1
+        }
+    }
+    a{
+        color:$color1;
+    }
+}
+$fontSize:20px !default;
+$fontSize:15px;
+div{
+    width:200px;
+    height:200px;
+    background-color: red;
+    font-size: $fontSize;
+}
+
+$name:nnn;
+$var1:color;
+div.#{$name}{background-#{$var1}: #0f0;}
+$px:5px 10px 15px 20px;
+div{
+    width:200px;height:200px;
+    font-size:nth($px,4);
+}
+
+$linkcolor:#EA3E3E,#2A4CB8;
+a{
+    color:nth($linkcolor,1);
+    &:hover{
+        color:nth($linkcolor,2);
+    }
+}
+$headers:(h1:1em,h2:2em,h3:3em);
+@each $header,$size in $headers{
+    .#{$header}{
+        font-size:$size;
+    }
+}
+.bor{
+    border:{
+        style:solid;
+        left:{
+            width:2px;
+            color:#333;
+        }
+        right:{
+            width:4px;
+            color:#2CCE5D;
+        }
+    }
+}
+
+@mixin max-screen($res){
+  @media only screen and ( max-width: $res )
+  {
+    @content;
+  }
+}
+
+@include max-screen(480px) {
+  body { color: red };
+ ul li{
+     max-height: 400px;
+ }
+}
+@include max-screen(360px) {
+  body { color: blue };
+ ul li{
+     max-height: 300px;
+ }
+}
+
 
