@@ -1,3 +1,4 @@
+/*替换文件名字*/
 var fs=require("fs");
 var src="images";
 fs.readdir(src,function (err,files) {
