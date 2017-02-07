@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <p>我是第<b id="times">0</b>次来此</p>
+  <div id="box">
+    我显示呢还是隐藏呢？
+  </div>
+
+  <button id="btn" type="">我是按钮</button>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript">
+    // localStorage.setItem("method",false);
+
+    function loadAll() {
+      if(localStorage.getItem("method")==true){
+        $("#box").show(300);
+        console.log(1);
+      }
+      else{
+        $("#box").hide(300);
+        console.log(0);
+      }
+    };
+    loadAll();
+    var times=document.getElementById("times");
+    if(localStorage.getItem("method")){
+      $("#box").show();
+    }
+    else{
+      $("#box").hide();
+    }
+    $("#btn").on("click",function () {
+      localStorage.setItem("method",!$("#box").is(":visible"));
+      loadAll();
+
+      $("#box").toggle(300);  
+    });
+  </script>
+
+</body>
+</html>
