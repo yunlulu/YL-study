@@ -1,0 +1,104 @@
+
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+<meta charset="utf-8"/> 
+<title>HTML5本地存储之Web Storage篇</title> 
+</head> 
+<body> 
+<div style="border: 2px dashed #ccc;width:320px;text-align:center;"> 
+<label for="user_name">姓名：</label> 
+<input type="text" id="user_name" name="user_name" class="text"/> 
+<br/> 
+<label for="mobilephone">手机：</label> 
+<input type="text" id="mobilephone" name="mobilephone"/> 
+<br/> 
+<input type="button" onclick="save()" value="新增记录"/> 
+<hr/> 
+<label>输入手机号：</label> 
+<input type="text" id="searchPhone"/> 
+<input type="button" id="findBtn" value="查找机主"/> 
+<p id="find_result"><br/></p> 
+</div> 
+<br/> 
+<div id="list"> 
+</div> 
+<script type="text/javascript">
+
+/*
+length:唯一的属性，只读，用来获取storage内的键值对数量。
+key：根据index获取storage的键名
+getItem：根据键名获取storage内的对应value
+setItem：为storage内添加键值对
+removeItem：根据键名，删除键值对
+clear：清空storage对象
+*/
+//保存数据 
+var localvalArr=[].concat(JSON.parse(localStorage.getItem("info")));
+function save(){ 
+var mobilephone = document.getElementById("mobilephone").value; 
+var user_name = document.getElementById("user_name").value; 
+var localvals={name:user_name,phone:mobilephone};
+localvalArr.push(localvals);
+// 
+if(localvalArr[0]==null)
+{
+    localvalArr.splice(0,1);
+}
+localStorage.setItem("info",JSON.stringify(localvalArr)); 
+console.log(localStorage.getItem("info"));
+document.getElementById("mobilephone").value="";
+document.getElementById("user_name").value="";
+} 
+loadAll();
+//将存储在localStorage中的info key提取出来，并展现到界面上 
+function loadAll(){ 
+  // 获取到本地存储的个数
+  console.log(localStorage.length);
+var list = document.getElementById("list"); 
+if(localStorage.length>0){ 
+var result = "<table border='1'>"; 
+result += "<tr><td>姓名</td><td>手机号码</td></tr>"; 
+var infoDet = localStorage.getItem("info"); 
+console.log(infoDet);
+var infoDetObj=JSON.parse(infoDet);
+// console.log(infoDetObj);
+if(infoDetObj[0]==null)
+{
+    infoDetObj.splice(0,1);
+}
+for(j=infoDetObj.length-1;j>=0;j--){
+  result += "<tr><td>"+infoDetObj[j].name+"</td><td>"+infoDetObj[j].phone+"</td></tr>"; 
+  list.innerHTML = result; 
+}
+result += "</table>"; 
+}else{ 
+list.innerHTML = "数据为空"; 
+} 
+} 
+
+// 通过手机号查找机主
+var searchPhone=document.getElementById("searchPhone");
+var findBtn=document.getElementById("findBtn");
+var find_result=document.getElementById("find_result");
+findBtn.onclick=function () {
+    phones=searchPhone.value;
+    var manArr=JSON.parse(localStorage.getItem("info"));
+    for(n=0;n<manArr.length;n++){
+      if(manArr[n].phone==phones){
+        console.log(manArr[n].name);
+        find_result.innerHTML="机主是："+manArr[n].name;
+      }
+      else{
+        find_result.innerHTML="对不起，其机主不在本地。";
+      }
+
+    }
+};
+
+
+
+</script>
+
+</body> 
+</html> 

@@ -1,0 +1,16 @@
+CACHE MANIFEST
+/theme.css
+/logo.gif
+/main.js
+
+#下面的 NETWORK 小节规定文件 "login.php" 永远不会被缓存，且离线时是不可用的：
+NETWORK:
+login.php
+#可以使用星号来指示所有其他其他资源/文件都需要因特网连接：
+NETWORK:
+*
+#
+FALLBACK
+下面的 FALLBACK 小节规定如果无法建立因特网连接，则用 "offline.html" 替代 /html5/ 目录中的所有文件：
+FALLBACK:
+/html/ /offline.html

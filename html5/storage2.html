@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <p>这是您第<b id="count">0</b>次访问页面</p>
+  <!-- 统计页面访问次数 -->
+  <script type="text/javascript">
+   if(localStorage.pagecount){
+    localStorage.pagecount=parseInt(localStorage.pagecount)+1;
+   }
+   else{
+    localStorage.pagecount=1;
+   }
+   document.getElementById("count").innerHTML=localStorage.getItem("pagecount");
+  </script>
+</body>
+</html>
