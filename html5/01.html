@@ -4,9 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
-    <title>Document</title>
+    <title>音频视频播放</title>
 </head>
 <body>
-    
+ <!-- loop: 循环播放 -->
+	<!-- controls	 是否显示播放控件 -->
+	<!-- mute  是否静音 -->
+	<!-- preload 预加载 -->
+	<!-- autoplay 是否自动播放 -->
+   <audio src="images/music1.mp3" preload id="audio"></audio>
+   <button type="button" id="playBtn">播放</button>
+   <button type="button" id="clientBtn">静音</button>
+   <button type="button" id="addBtn">+</button>
+   <button type="button" id="reductBtn">-</button>
+   <input type="range" id="progressInput" name="" value="" placeholder="">
+   <!-- 时间 -->
+   <span id="playTime">00 : 00</span>
+
+   <script type="text/javascript">
+
+   		// audio 拥有的属性或方法
+		// paused：Boolean值判断音频是否处于暂停或停止状态
+		// ended：Boolean值判断是否播放完毕
+		// muted：Boolean值判断是否静音 true 代表静音
+		// controls：Boolean值判断是否显示播放控件
+		// duration：音频的总时长  单位:秒
+		// currentTime: 当前播放的时长 单位:秒
+		// src: 当前播放的文件  
+		// volume: 当前的音量 0~1   
+
+		// 常用方法
+		// pause()  暂停
+		// play()  播放
+
+   var music=document.getElementById("audio");
+   var playBtn=document.getElementById("playBtn");	
+   var clientBtn=document.getElementById("clientBtn");	
+   var addBtn=document.getElementById("addBtn");	
+   var reductBtn=document.getElementById("reductBtn");	
+   var progressInput=document.getElementById("progressInput");	
+   var playTime=document.getElementById("playTime");	
+   progressInput.value=0;
+   console.log(progressInput.value);
+
+   // 点播放按钮的时候，进度条和时间要动起来
+   playBtn.onclick=function () {
+   		if(music.paused){
+   			music.play();
+   			//获取音乐时长
+   			var musicTime=parseInt(music.duration);
+   			var musicMinute=parseInt(musicTime/60);
+   			var musicSecond=musicTime%60;
+   			//音乐的分
+   			if(musicMinute<10){
+   				musicMinute="0"+musicMinute;
+   			}
+   			//音乐的秒
+   			if(musicSecond<10){
+   				musicSecond="0"+musicMinute;
+   			}
+   			playTime.innerHTML=musicMinute+":"+musicSecond;
+   			console.log(audio.currentTime);
+   			setInterval(function () {
+   				progressInput.value=audio.currentTime/musicTime*100;
+   				console.log(progressInput.value);
+   			},1000);
+   		}
+   		else{
+   			music.pause();
+   		}
+   };
+
+function progressPlay() {
+		
+};
+
+
+
+
+   </script>
+
+
 </body>
 </html>
