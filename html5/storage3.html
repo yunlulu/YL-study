@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 通过key(index) 可以访问本地存储的key,
+    console.log(localStorage.key(0));
+    var obj={};
+    for(i=0;i<localStorage.length;i++){
+      var keyindex=localStorage.key(i);
+      obj[keyindex]=localStorage.getItem(keyindex);
+    }
+    console.log(obj);
+    localStorage.removeItem("pagecount");
+    localStorage.clear();
+  </script>
+</body>
+</html>
