@@ -1,7 +1,6 @@
 $(function(){
 	vipspa.start({
         view: '#view',
-        errorTemplateId: '#error', // 可选
         router: {
             'home': {
                 templateUrl: 'views/home.html',
