@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *
+        img{display: block; width:40%;margin:10px auto;}
+    </style>
+</head>
+<body>
+
+
+<img src="images/header.png" data-src="http://img.my.csdn.net/uploads/201702/10/1486715980_4865.jpg" alt="">
+<img src="images/header.png" data-src="http://img.my.csdn.net/uploads/201702/10/1486715966_5254.jpg" alt="">
+<img src="images/header.png" data-src="http://img.my.csdn.net/uploads/201702/10/1486715980_4865.jpg" alt="">
+<img src="images/header.png" data-src="http://img.my.csdn.net/uploads/201702/10/1486715966_5254.jpg" alt="">
+<img src="images/header.png" data-src="http://img.my.csdn.net/uploads/201702/10/1486715980_4865.jpg" alt="">
+<img src="images/header.png" data-src="http://img.my.csdn.net/uploads/201702/10/1486715980_4865.jpg" alt="">
+<img src="images/header.png" data-src="http://img.my.csdn.net/uploads/201702/10/1486715980_4865.jpg" alt="">
+<img src="images/header.png" data-src="http://img.my.csdn.net/uploads/201702/10/1486715980_4865.jpg" alt="">
+<img src="images/header.png" data-src="http://img.my.csdn.net/uploads/201702/10/1486715966_5254.jpg" alt="">
+<img src="images/header.png" data-src="http://img.my.csdn.net/uploads/201702/10/1486715980_4865.jpg" alt="">
+<img src="images/header.png" data-src="http://img.my.csdn.net/uploads/201702/10/1486715980_4865.jpg" alt="">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+    function lazyload(event) {
+        var n = 0,imgNum = $("img").length,img = $('img');
+        for (var i = n; i < imgNum; i++) {
+            if (img.eq(i).offset().top < parseInt($(window).height()) + parseInt($(window).scrollTop())) {
+                if (img.eq(i).attr("src") == "images/header.png") {
+                    var src = img.eq(i).attr("data-src");
+                    img.eq(i).attr("src", src);
+                    n = i + 1;
+                }
+            }
+        }
+    }
+    // 节流函数
+    function throttle(fun, delay, time) {
+    var timeout,
+        startTime = new Date();
+    return function() {
+        var context = this,
+            args = arguments,
+            curTime = new Date();
+        clearTimeout(timeout);
+        if (curTime - startTime >= time) {
+            fun.apply(context, args);
+            startTime = curTime;
+        } else {
+            timeout = setTimeout(fun, delay);
+        }
+    };
+    };
+    window.addEventListener("load",function () {
+        lazyload();
+    });
+    window.addEventListener('scroll',throttle(lazyload,200,1000));
+    </script>
+</body>
+</html>
