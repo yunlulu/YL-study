@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.fn.plugin=function (options) {
+                var defaults={
+                    // 各种参数，各种属性
+                };
+                // 合并defaults,options
+                var options=$.extend(defaults,options);
+                this.each(function () {
+                    var _this=$(this);
+                    // 实现功能的代码
+                    
+                });
+                // 加上这个，还可以继续链式操作
+                return this;
+
+            }
+        })($);
+    </script>
+</body>
+</html>

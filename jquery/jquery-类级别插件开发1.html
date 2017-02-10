@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" name="" id="btn1" value="按钮1">
+<input type="button" name="" id="btn2" value="按钮2">
+<input type="button" name="" id="btn3" value="按钮3">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        var a="哈哈哈哈哈哈哈";
+        // 1.直接给$添加全局函数
+        $.myAlert=function (str) {
+            alert("我是通过插件的形式，弹出来的"+str);
+        }
+        $("#btn1").on("click",function () {
+        $.myAlert(a); 
+        });
+        // 2.用extend()方法
+        $.extend({
+            myAlert2:function (str) {
+                alert(str);
+            }
+        });
+         // $.myAlert();
+        $("#btn2").on("click",function () {
+        $.myAlert2(a); 
+        });
+        // 使用命名空间
+        $.zxit={
+            myAlert:function (str) {
+                alert(str);
+            }
+        }
+         $("#btn3").on("click",function () {
+        $.zxit.myAlert(a); 
+        });
+    </script>
+</body>
+</html>

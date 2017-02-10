@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        .even{background-color:#83EAE5; }
+        .odd{background-color:#EBB7E6; }
+        .current{background-color:#877EF2; }
+    </style>
+</head>
+<body>
+<!-- 需求：
+开发个插件：要求奇数行 #f00;要求偶数行 #ff0;
+当鼠标移到当前行的时候，当前行的颜色变成#F85026,移开变为原来的颜色
+
+ -->
+    <table border="1">
+       
+        <thead>
+            <th>姓名1</th>
+            <th>姓名2</th>
+            <th>姓名3</th>
+            <th>姓名4</th>
+        </thead>
+        <tbody  id="tables">  
+        <tr>
+            <td>11111111</td>
+            <td>2222222222222222</td>
+            <td>333333333333</td>
+            <td>4444444444444</td>
+        </tr>
+        <tr>
+            <td>5555555555</td>
+            <td>6666666666666</td>
+            <td>77777777777777</td>
+            <td>88888888888888</td>
+        </tr>
+        <tr>
+            <td>99999999999999</td>
+            <td>101010101001</td>
+            <td>11 11&mbsp;11</td>
+            <td>121212</td>
+        </tr>
+         <tr>
+            <td>11111111</td>
+            <td>2222222222222222</td>
+            <td>333333333333</td>
+            <td>4444444444444</td>
+        </tr>
+        <tr>
+            <td>5555555555</td>
+            <td>6666666666666</td>
+            <td>77777777777777</td>
+            <td>88888888888888</td>
+        </tr>
+        <tr>
+            <td>99999999999999</td>
+            <td>101010101001</td>
+            <td>11 11&mbsp;11</td>
+            <td>121212</td>
+        </tr>
+         <tr>
+            <td>11111111</td>
+            <td>2222222222222222</td>
+            <td>333333333333</td>
+            <td>4444444444444</td>
+        </tr>
+        <tr>
+            <td>5555555555</td>
+            <td>6666666666666</td>
+            <td>77777777777777</td>
+            <td>88888888888888</td>
+        </tr>
+        <tr>
+            <td>99999999999999</td>
+            <td>101010101001</td>
+            <td>11 11&nbsp;11</td>
+            <td>121212</td>
+        </tr>
+         <tr>
+            <td>11111111</td>
+            <td>2222222222222222</td>
+            <td>333333333333</td>
+            <td>4444444444444</td>
+        </tr>
+        <tr>
+            <td>5555555555</td>
+            <td>6666666666666</td>
+            <td>77777777777777</td>
+            <td>88888888888888</td>
+        </tr>
+        <tr>
+            <td>99999999999999</td>
+            <td>101010101001</td>
+            <td>11 11&mbsp;11</td>
+            <td>121212</td>
+        </tr>
+        </tbody>
+        
+    </table>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        ;(function ($) {
+            $.fn.table=function (options) {
+                var defaults={
+                    evenRow:"even",  //偶数行
+                    oddRow:"odd",    //奇数行
+                    current:"current",  //当前hover
+                    eventType:"mouseover", //事件：鼠标移入
+                    eventTypeleave:"mouseout"  //鼠标移出
+                }
+                var options=$.extend(true,{},defaults,options);
+                this.each(function () {
+                    var _this=$(this);
+                    _this.find("tr:even").addClass(options.evenRow); 
+                    _this.find("tr:odd").addClass(options.oddRow); 
+                    _this.find("tr").on(options.eventType,function () {
+                       $(this).addClass(options.current);
+                    });
+                     _this.find("tr").on(options.eventTypeleave,function () {
+                       $(this).removeClass(options.current); 
+                    });
+                });
+                // 加上这个，还可以继续链式操作
+                return this;
+            }
+        })($);
+
+        // 调用
+        $("#tables").table({eventType:"click"}).css({"color":"#f00"});
+      
+    </script>
+</body>
+</html>
