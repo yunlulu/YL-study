@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        .view2-box1{border:1px solid #333; margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+
+    <script id="view1" type="text/x-handlebars-template">
+        <p>我的名字是：{{name}}</p>
+        <p>我的年龄是：{{age}}</p>
+    </script>
+    <script id="view2" type="text/x-handlebars-template">
+        <b>返回信息：{{returnMessage}}</b>
+        <b>返回代码：{{returnCode}}</b>
+        {{#beans}}
+        <div class="view2-box1" data-first="{{@first}}">
+            <b>我是第一个么：{{@first}}</b>
+            <b>我是最后一个么：{{@last}}</b>
+            <b>我的索引是：{{@index}}</b>
+            <p class="time">"创建时间":{{createTime}}</p>
+            <p class="local-url">"本地url":{{localUrl}}</p>
+            <p class="local-url">"mediaId":{{mediaId}}</p>
+            <p>访问上一级：{{../returnCode}}</p>
+        </div>
+        {{/beans}}
+    </script>
+    <script id="view3" type="text/x-handlebars-template">
+        {{#if name}}
+            <p>我的用户名是：{{name}}</p>
+            {{else}}
+            <p>暂时没有用户名。</p>
+        {{/if}}
+    </script>
+
+    <script id="view4" type="text/x-handlebars-template">
+        <b>{{title}}</b>
+        <p>可以以对象的形式方式：{{author.id}}</p>
+        <p>倆花括号不解析html：{{richTest}}</p>
+        <p>3花括号解析html:{{{richTest}}}</p>
+    </script>
+    
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/handlebars.js"></script>
+    <script type="text/javascript">
+        var mockData1={name:"yunlulu","age":23};
+
+        var getHtmlTemplate1=$("#view1").html();
+        var compileHtml1=Handlebars.compile(getHtmlTemplate1);
+        var matchHtml1=compileHtml1(mockData1);
+        $("body").append(matchHtml1);
+
+
+        var mockData2={"busiCode":null,"opId":null,"option":null,"returnCode":"-9999","returnMessage":"service异常","bean":{},"beans":[{"mediaId":"vX2Vns96shnvgg6WU6dUb5KhNRuG7sTyL1KOG-9pt5M","groupId":"default","createTime":"2017-02-13 15:11:38","createUser":"admin","localUrl":"/wxadminweb/viewImage/viewImage?imgPath=material/616f01933cd54cc59979f18437cb4ca4.jpg","category":"image","ORACLESTART":1,"materialId":"b8cb24dc37c84c31a79c05a0581509f8","name":"叹号"},{"mediaId":"vX2Vns96shnvgg6WU6dUb4gP1wGxLqwyNi0biYb4B9U","groupId":"default","createTime":"2017-02-13 15:09:43","createUser":"admin","localUrl":"/wxadminweb/viewImage/viewImage?imgPath=material/b7862c02ef654b70b314185997e64b63.jpg","category":"image","ORACLESTART":2,"materialId":"48f3d8d806e845aaa9c282c863ddcd32","name":"b7862c02ef654b70b314185997e64b63"},{"mediaId":"vX2Vns96shnvgg6WU6dUb6A_OzTYyy9Sh-ZcXh0EjqA","groupId":"default","createTime":"2017-02-13 15:08:06","createUser":"admin","localUrl":"/wxadminweb/viewImage/viewImage?imgPath=material/742e292776be449fb00a9274aa2aface.jpg","category":"image","ORACLESTART":3,"materialId":"3dd17ec722784f06b9803c9b45c192a5","name":"742e292776be449fb00a9274aa2aface"},{"mediaId":"vX2Vns96shnvgg6WU6dUb2UUM0Hx5icnzH0KGoZGSDY","groupId":"default","createTime":"2017-02-13 10:19:25","createUser":"admin","localUrl":"/wxadminweb/viewImage/viewImage?imgPath=material/57f10c7d0ce04f2eb8809d14c71c7369.gif","category":"image","ORACLESTART":4,"materialId":"9ca1f3155be148e88234cae4bdc36d92","name":"信用卡封面"},{"mediaId":"vX2Vns96shnvgg6WU6dUb8WA7MYChkzNbS75NPDy1SU","groupId":"default","createTime":"2017-02-13 09:39:23","createUser":"admin","localUrl":"/wxadminweb/viewImage/viewImage?imgPath=material/358fe685946e4d3c95120d832891b1f9.jpg","category":"image","ORACLESTART":5,"materialId":"557427173a0848f9af3a2ddaa2530efc","name":"358fe685946e4d3c95120d832891b1f9"},{"mediaId":"vX2Vns96shnvgg6WU6dUb0RY9T0TnuLdWLP-fR2GUV4","groupId":"default","createTime":"2017-02-13 09:39:05","createUser":"admin","localUrl":"/wxadminweb/viewImage/viewImage?imgPath=material/7e557707544e465f99758af3f95c8ae1.jpg","category":"image","ORACLESTART":6,"materialId":"0a2bfd5c09e34119a8c8907d91d51696","name":"7e557707544e465f99758af3f95c8ae1"},{"mediaId":"vX2Vns96shnvgg6WU6dUb2LCdP8zEWDyswsqkThKHcs","groupId":"default","createTime":"2017-02-13 09:37:27","createUser":"admin","localUrl":"/wxadminweb/viewImage/viewImage?imgPath=material/ca93213c3b0e4db5bfa867db296bb342.jpg","category":"image","ORACLESTART":7,"materialId":"e639068e949143ad97246d40b5b16a28","name":"ca93213c3b0e4db5bfa867db296bb342"},{"mediaId":"vX2Vns96shnvgg6WU6dUb07kph9-9_GwFXZOGUvLOM4","groupId":"default","createTime":"2017-02-13 09:36:29","createUser":"admin","localUrl":"/wxadminweb/viewImage/viewImage?imgPath=material/31fa121974f143cfb882eac337455d13.jpg","category":"image","ORACLESTART":8,"materialId":"0e4e1f7dba4d41f090f59b20c047c22f","name":"储"},{"mediaId":"vX2Vns96shnvgg6WU6dUbwwrupwdWg6w7NveBSC_ftU","groupId":"default","createTime":"2017-02-13 09:36:05","createUser":"admin","localUrl":"/wxadminweb/viewImage/viewImage?imgPath=material/0f4c8d0a9547465ab3736b97af7b21de.jpg","category":"image","ORACLESTART":9,"materialId":"ad4041c45dd444e9a4b5eead740b9ee3","name":"邮"},{"mediaId":"vX2Vns96shnvgg6WU6dUbynKCAYq8l7EM28rs384Td0","groupId":"default","createTime":"2017-02-13 09:35:11","createUser":"admin","localUrl":"/wxadminweb/viewImage/viewImage?imgPath=material/4d8786176a4040ebb38e57bdafc87867.gif","category":"image","ORACLESTART":10,"materialId":"437e6a4f3dea45bfbc1c4d060eb2942f","name":"4d8786176a4040ebb38e57bdafc87867"}],"object":null};
+        console.log(mockData2);
+         var getHtmlTemplate2=$("#view2").html();
+         var compileHtml2=Handlebars.compile(getHtmlTemplate2);
+         var matchHtml2=compileHtml2(mockData2);
+         $("body").append(matchHtml2);
+
+
+         // if else
+         var mockData3={name:"yunlulu"};
+         var getHtmlTemplate3=$("#view3").html();
+         var compileHtml3=Handlebars.compile(getHtmlTemplate3);
+         var matchHtml3=compileHtml3(mockData3);
+         $("body").append(matchHtml3);
+
+         var mockData4={title: "this is title", richTest: '<b>this is content</b>',
+         author: {id: 47,name: "XXX"},body: "this is body"};
+        var getHtmlTemplate4=$("#view4").html();
+        var compileHtml4=Handlebars.compile(getHtmlTemplate4);
+        var matchHtml4=compileHtml4(mockData4);
+        $("body").append(matchHtml4);
+
+
+
+
+
+
+    </script>
+</body>
+</html>

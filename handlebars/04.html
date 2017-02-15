@@ -24,7 +24,11 @@
     <script id="template2" type="text/x-handlebars-template">
         <h1>个人信息</h1>
         {{#this}}
-        <p>{{hobby}}</p>
+        <p>
+            {{#each hobby}}
+        <a href="#">{{this}}</a>
+            {{/each}}
+        </p>
         {{/this}}
 
     </script>
@@ -42,7 +46,7 @@
     };
 })(jQuery);
 var data=[{"name":"yunlulu","hobby":["篮球","皮球","排球"]},
-{"name":"yunlulu222222","hobby":["篮球","皮球","排球"]}];
+{"name":"yunlulu222222","hobby":["篮球","皮球","排球222"]}];
 $('#content').handlebars($('#template'), data);
 $('#content2').handlebars($('#template2'), data);
 	</script>

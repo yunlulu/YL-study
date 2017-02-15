@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script id="helperview1" type="text/x-handlebars-template">
+     <p><b>时间戳：</b>{{time}} <b>转换为:</b>
+     {{format time}}</p>
+    </script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/handlebars.js"></script>
+    <script type="text/javascript">
+        // 对年月日进行格式化
+        Handlebars.registerHelper("format",function (date,options) {
+            var ymd=new Date(date).getFullYear()+"年"+(new Date(date).getMonth()+1)+"月"+new Date(date).getDate()+"日";
+            return ymd;
+        });
+        // 
+        var data={time:1450576000281}; 
+        var getHtmlTemplate1=$("#helperview1").html();
+        var compileHtml1=Handlebars.compile(getHtmlTemplate1);
+        var matchHtml1=compileHtml1(data);
+        $("body").append(matchHtml1);
+       
+    </script>
+
+</body>
+</html>
