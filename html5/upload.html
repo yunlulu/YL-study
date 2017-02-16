@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!-- accept属性值其实是MIME类型, 例如下面几个可能常用的：
+
+accept="application/pdf"
+accept="audio/x-mpeg"
+accept="text/html"
+.accept="video/x-mpeg2"
+然后，多个属性值使用逗号分隔，例如：
+
+<input accept="audio/*,video/*,image/*"> -->
+  <input type="file" name="" value="" accept="image/*" placeholder="" id="input1" multiple>
+  <script type="text/javascript">
+    var uploadInput=document.getElementById("input1");
+    input1.addEventListener("change", function () {
+      console.log(input1.files);
+      for(i=0,len=input1.files.length;i<len;i++){
+      console.log(input1.files[i]);
+    }
+    })
+
+  </script>
+</body>
+</html>

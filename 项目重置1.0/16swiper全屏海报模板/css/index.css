@@ -1,0 +1,39 @@
+*{margin:0;padding:0;}
+img{display:block;}
+html,body{height:100%;}
+.swiper-container {width: 100%;height: 100%;background:#fff; background-size: cover;}  
+.swiper-slide{width:100%;height:100%;}
+/* 必备*/
+.ani{position:absolute;}
+.static{position: static;}
+/* 分页中的小点 */
+.swiper-pagination-bullet {
+width: 6px;height: 6px;background: #f00;opacity: .4;}
+.swiper-pagination-bullet-active {opacity: 1;}
+
+
+
+
+/* 主体内容区域 */
+.page1{background-color: red;}
+.page2{background-color: blue;}
+.page3{background-color: green;}
+/* 自定义动画 */
+.diy{width:100px;height:100px; border-radius:50px;background-color: #00f; left:40%;top:30%;}
+.diyname{animation-name:color1;-webkit-animation-name:color1; }
+@keyframes color1{
+	from{transform:translate(-120%,-100%); opacity: 0;}
+	  to{opacity: 1;}
+}
+@-webkit-keyframes color1{
+	from{-webkit-transform:translate(-120%,-100%); opacity: 0;}
+	to{opacity:1;}
+}
+
+
+
+
+
+
+
+

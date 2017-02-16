@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-orientation" content="portrait">
+	
+	<title>海报</title>
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<script type="text/javascript" src="js/swiper.min.js"></script>
+	<script type="text/javascript" src="js/swiper.animate.min.js"></script>
+	<link rel="stylesheet" href="css/index.css">
+	
+</head>
+<body>
+	
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide page1">
+			</div>
+			<div class="swiper-slide page2">
+			</div>
+			<div class="swiper-slide page3">
+			</div>
+		</div>
+		
+	</div>
+	
+<script type="text/javascript">
+	var myswiper=new Swiper('.swiper-container',{
+		direction:"vertical",
+		onInit: function(swiper){
+    		swiperAnimateCache(swiper); 
+    		swiperAnimate(swiper); 
+  		}, 
+  		onSlideChangeEnd: function(swiper){ 
+    		swiperAnimate(swiper);
+  		} 
+
+
+	});
+</script>
+</body>
+</html>
+
+
