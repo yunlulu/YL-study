@@ -29,7 +29,7 @@
     <!--id可以用来唯一确定一个模版,type是模版固定的写法-->
     <script id="table-template" type="text/x-handlebars-template">
       {{#each student}}
-           {{#compare age 20}}
+           {{#if_even @index}}
             <tr style="background-color: #0f0;">
               <td>{{name}}</td>
               <td>{{sex sex}}</td>
@@ -41,7 +41,7 @@
              <td>{{sex sex}}</td>
              <td>{{age}}</td>
            </tr>
-          {{/compare}}
+          {{/if_even}}
       {{/each}}
     </script>
     
@@ -71,29 +71,29 @@
                 };
         
         //注册一个Handlebars模版，通过id找到某一个模版，获取模版的html框架
-        //$("#table-template").html()是jquery的语法，不懂的童鞋请恶补。。。
+       
         var myTemplate = Handlebars.compile($("#table-template").html());
-        
-        //注册一个比较大小的Helper,判断v1是否大于v2
-        Handlebars.registerHelper("compare",function(v1,v2,options){
-          console.log(v1+"v2:"+v2);
-          if(v1>v2){
-            //满足添加继续执行
-            return options.fn(this);
-          }else{
-            //不满足条件执行{{else}}部分
-            return options.inverse(this);
-          }
-        });
-        Handlebars.registerHelper("sex",function (val) {
-          if(val===0){
-            return "男";
-          }
-          else{
-            return "女";
-          }
-          
-        })
+        // 写多个helper
+        Handlebars.registerHelper({
+                "sex": function(val) {
+                   if(val===0){
+                      return "男";
+                    }
+                    else{
+                      return "女";
+                  }
+                },
+                "if_even":function(value, options) {
+                    console.log('value:', value); // value: 2
+                    console.log('this:', this); // this指的是当前数据: Object {num: 2}
+                    console.log('fn(this):', options.fn(this)); // fn(this): 2是偶数
+                if((value % 2) == 0) {
+                  return options.fn(this);
+                } else {
+                  return options.inverse(this);
+                }
+                }
+});
         
         //将json对象用刚刚注册的Handlebars模版封装，得到最终的html，插入到基础table中。
         $('#tableList').html(myTemplate(data));
