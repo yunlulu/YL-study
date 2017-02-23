@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        *{margin: 0;padding: 0; word-break: break-all;}
+        li{list-style: none;}
+        .clear:after{content:"";clear: both;overflow: hidden; display: block;}
+        .clear{*zoom:1;}
+        .box{width: 150px;height: 150px; border:1px solid #444; padding: 20px; margin:200px;}
+        .inner2{position: absolute;z-index: 100;}
+        </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="inner2">哈哈哈哈哈</div>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    // 包括 padding border
+    console.log($(".box").outerHeight());
+    console.log($(".box").outerWidth());
+    /*
+    @param absEle  string  定位的哪个元素
+    @param dir     string  方向：left,top,right,bottom
+    */
+    ;(function ($) {
+        $.fn.elementPostion=function (options) {
+          var defaults={
+            absEle:".inner",
+            dir:"top"
+        };
+          var options=$.extend({},true,defaults,options);
+            this.each(function () {
+                var _this=$(this);
+                var pageEleTop=_this.offset().top;
+                var pageEleLeft=_this.offset().left;
+                var pageEleWidth=_this.outerWidth();
+                var pageEleHeight=_this.outerHeight();
+                var absEleWidth=$(options.absEle).outerWidth();
+                var absEleHeight=$(options.absEle).outerHeight();
+                switch (options.dir) {
+                    case "bottom": $(options.absEle).css({"left":pageEleLeft+"px","top":pageEleTop+pageEleHeight+"px"}); break;
+                    case "left": $(options.absEle).css({"left":(pageEleLeft-absEleWidth)+"px","top":pageEleTop+"px"}); break;
+                    case "top": $(options.absEle).css({"left":pageEleLeft+"px","top":(pageEleTop-absEleHeight)+"px"}); break;
+                    case "right": $(options.absEle).css({"left":(pageEleLeft+pageEleWidth)+"px","top":pageEleTop+"px"}); break;
+                    default: $(options.absEle).css({"left":pageEleLeft+"px","top":pageEleTop+pageEleHeight+"px"}); 
+                }
+            })
+            return this;
+        }
+        
+    })($);   
+    $(".box").elementPostion({absEle:".inner2"});
+    </script>
+</body>
+</html>
