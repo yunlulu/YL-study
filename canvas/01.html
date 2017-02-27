@@ -6,15 +6,42 @@
     <meta name="format-detection" content="telephone=no" />
     <title>Document</title>
     <link rel="stylesheet" href="css/global.css">
+    <style type="text/css" media="screen">
+        body{background-color: #000;}
+        #canvas{background-color: #f00; border: 1px solid #ddd;}
+    </style>
 </head>
 <body>
-    <canvas id="demo1"></canvas>
+    <!-- canvas的宽高取值只能是非负整数,且一定要通过属性来设置：可以既改变本身大小和绘图表面的大小，否则会整体缩放canvas。 -->
+    <canvas id="canvas" width="600" height="300">Can't support canvas!</canvas>
     <script type="text/javascript">
-        var canvasId=document.getElementById("demo1");
-        var canvasSpace=canvasId.getContext("2d");
-        canvasId.style.backgroundColor="#f00";
-        canvasId.width=400;
-        canvasId.height=400;
+        var canvas=document.getElementById("canvas");
+        // 2d绘图环境
+        context=canvas.getContext("2d");
+        // 设置全局透明度
+        context.globalAlpha=0.8;
+        // 这是字体
+        context.font="20pt Arial";
+        // 这是背景色
+        context.fillStyle="#ff0";
+        // 设置描边颜色
+        context.strokeStyle="blue";
+        // strokeText(描边的文字，横，纵坐标)
+        // context.strokeText("hello Yunlu",canvas.width/2-75,canvas.height/2+12);
+        context.strokeText("hello Yunlu",canvas.width/2-75,canvas.height/2+12);
+
+        // fillText(填充的文字，横，纵坐标)
+        context.fillText("hello Yunlu",canvas.width/2-80,canvas.height/2+10);
+
+
+
+        // context.canvas方法 获取canvas宽高，直接获取也可以
+        console.log(context.canvas.width);
+        console.log(context.canvas.height);
+        console.log(canvas.width);
+        console.log(canvas.height);
+
     </script>
+   
 </body>
 </html>
