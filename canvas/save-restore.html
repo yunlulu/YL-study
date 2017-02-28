@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+      <meta name="format-detection" content="telephone=no" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400">不支持canvas.</canvas>
+    <img id="image" src="" alt="这是canvas图片">
+    <script type="text/javascript">
+
+        console.profile("canvas绘制开始");
+        var image=document.getElementById("image");
+        var canvas=document.getElementById("canvas");
+        // 2d,3d 区分大小写
+        var ctx=canvas.getContext("2d");
+        ctx.fillStyle = "#000";
+        ctx.strokeStyle="blue";
+        ctx.fillRect(0, 0, 100, 100);
+        ctx.strokeRect(0, 0, 100, 100);
+        // 保存上一个，也就是save之前的绘制状态,如果上一个没有结构，则save 它之后的绘制状态...奇葩。。。
+        ctx.save();
+        // canvas.setAttribute("width", 300);   //当在绘制过程中 设置canvas 宽高属性的时候，会清空设置前面的canvas绘制
+        canvas.style.background="#ff0";
+
+        ctx.fillStyle="#f00";
+        ctx.strokeStyle="green";
+        ctx.fillRect(120, 0, 100, 100);
+        ctx.strokeRect(120,0, 100, 100);
+        // 恢复上一个,也就是save之前的绘制状态
+        ctx.restore();
+        ctx.fillRect(0, 120, 50, 50);
+        ctx.strokeRect(0, 120, 80, 80);
+        console.profileEnd("canvas绘制结束");
+        // 将画布转换为图片，生成data
+        console.log(canvas.toDataURL());
+        // mime类型为：image/png(默认),image/jpeg,image/svg+xml
+        image.setAttribute("src", canvas.toDataURL("image/png",1));
+
+
+
+
+    </script>
+</body>
+</html>
