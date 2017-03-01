@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
+
     <canvas id="canvas" width="400" height="400">不支持canvas.</canvas>
     <img id="image" src="" alt="这是canvas图片">
     <script type="text/javascript">
@@ -23,7 +24,7 @@
         ctx.strokeRect(0, 0, 100, 100);
         // 保存上一个，也就是save之前的绘制状态,如果上一个没有结构，则save 它之后的绘制状态...奇葩。。。
         ctx.save();
-        // canvas.setAttribute("width", 300);   //当在绘制过程中 设置canvas 宽高属性的时候，会清空设置前面的canvas绘制
+        // canvas.setAttribute("width", 300);   //当在绘制过程中 设置canvas 宽高属性的时候，会清空之前的canvas绘制
         canvas.style.background="#ff0";
 
         ctx.fillStyle="#f00";
@@ -39,8 +40,6 @@
         console.log(canvas.toDataURL());
         // mime类型为：image/png(默认),image/jpeg,image/svg+xml
         image.setAttribute("src", canvas.toDataURL("image/png",1));
-
-
 
 
     </script>
