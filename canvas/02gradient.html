@@ -10,9 +10,8 @@
     <script type="text/javascript">
         var canvas=document.getElementById("canvas");
        /* 径向渐变 createRadialGradient(x0,y0,r0,x1,y1,r1) 返回CanvasGradient
-六个参数分别是 起点圆心坐标（x0,y0）
-
-        起点圆心半径（r0）,终点圆心坐标（x1,y1）  终点圆心​半径（r1）*/
+六个参数分别是 起点圆心坐标（x0,y0）起点圆心半径（r0）,
+               终点圆心坐标（x1,y1）终点圆心​半径（r1）*/
        if(canvas.getContext){
     //获取对应的CanvasRenderingContext2D对象(画笔)
     var ctx = canvas.getContext("2d");
@@ -21,11 +20,12 @@
     
     //创建一个表示放射性颜色渐变的CanvasGradient对象
     //该对象的作用域是以(100,100)为圆心、半径为10px的内圆和以(100,100)为圆心、半径为40px的外圆之间的环状区域
-    var canvasGradient = ctx.createRadialGradient(100, 100, 10, 100, 100, 40);
-    //在offset为0的位置(即内圆的圆圈处)添加一个蓝色的渐变
+    var canvasGradient = ctx.createRadialGradient(100, 100, 10, 100, 100, 20);
+    //从内到外的顺序：在offset为0的位置(即内圆的圆圈处)添加一个蓝色的渐变
     canvasGradient.addColorStop(0, "blue");
     //在offset为0.5的位置(环状区域从内到外放射50%的中间位置)添加一个绿色的渐变
     canvasGradient.addColorStop(0.2, "green");
+    canvasGradient.addColorStop(0.5, "yellow");
     //在offset为0的位置(即外圆的圆圈处)添加一个红色的渐变
     canvasGradient.addColorStop(1, "#E74F4F");
     //将fillStyle的属性值设为该CanvasGradient对象
