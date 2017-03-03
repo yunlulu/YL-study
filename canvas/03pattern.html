@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/global.css">
+    <style type="text/css" media="screen">
+        .box *{ float: left;}
+        .box label{margin-right: 15px;  }
+        .box input{margin-top: 5px;margin-right: 5px;  }
+    </style>
+</head>
+<body>
+<div class="box clear">  
+<label>重复<input id="rep" type="radio" name="pradio" value=""></label>
+<label>重复x<input id="repX" type="radio" name="pradio" value=""></label>
+<label>重复y<input id="repY" type="radio" name="pradio" value=""></label>
+<label>不重复<input id="noRep" type="radio" name="pradio" value=""></label>
+</div>
+    <canvas id="canvas" width="400" height="400">不支持canvas.</canvas>
+    <script type="text/javascript">
+        var rep=document.getElementById("rep");
+        var repX=document.getElementById("repX");
+        var repY=document.getElementById("repY");
+        var noRep=document.getElementById("noRep");
+        var canvas=document.getElementById("canvas");
+        // 创建图像
+        var image=new Image();
+        // 指定图像路径
+        image.src="images/1.png";
+        var ctx=canvas.getContext("2d");
+        function fillPattern(repeatString) {
+            // 清空画布
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // 1.创建图案（指定图案，重复的种类）
+            var pattern=ctx.createPattern(image,repeatString);
+            // 2.用图案填充
+            ctx.fillStyle = pattern;
+            // 3.指定绘图的区域，绘图区域默认从0,0开始，如果不是0,0,会被裁切掉
+            ctx.fillRect(10,0,canvas.width,canvas.height);
+
+        }
+        // 保证图片加载完后开始重复
+        image.onload=function (e) {
+        fillPattern("repeat");
+        };
+        rep.onclick=function () {
+            fillPattern("repeat");
+        }
+        repX.onclick=function () {
+            fillPattern("repeat-x");
+        }
+        repY.onclick=function () {
+            fillPattern("repeat-y");
+        }
+        noRep.onclick=function () {
+            fillPattern("no-repeat");
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>

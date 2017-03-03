@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400">不支持canvas.</canvas>
+    <script type="text/javascript">
+    // 和ps里面的剪贴蒙版功能一样
+        var canvas=document.getElementById("canvas");
+        var ctx=canvas.getContext("2d");
+        // lineWidth是平分两侧的，100则是，左右上下都是50
+        // ctx.lineWidth=100;
+        ctx.rect(50,50,200,200);
+        // ctx.stroke();
+        ctx.fillStyle = "#f00";
+        ctx.fill();
+        ctx.clip();
+        ctx.fillStyle="#333";
+        ctx.fillRect(0, 0, 100, 100);
+    </script>
+</body>
+</html>
