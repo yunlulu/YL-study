@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+
+		<svg width="100%" height="600">
+            <defs>
+                <!--定义图案1，从圆的左上角0,0开始重复-->
+                <pattern id="bg1" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="10" cy="10" r="10" stroke="none" fill="#73BF00"/>
+                </pattern>
+                <!--定义图案2 改变了 x y的值也就是从圆的5,5位置开始重复-->
+                <pattern id="bg2" x="5" y="5" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="10" cy="10" r="10" stroke="none" fill="#73BF00"/>
+                </pattern>
+                <!--定义图案3，改变width height值会增加间隙 width增加到左侧 height增加到下侧-->
+                <pattern id="bg3" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse">
+                    <circle cx="10" cy="10" r="10" stroke="none" fill="#73BF00"/>
+                </pattern>
+
+                <!--定义图案4，userSpaceOnUse:x、y、width和height表示的值都是当前用户坐标系统的值。
+                也就是说，这些值没有缩放，都是绝对值。
+                objectBoundingBox（默认值）:x、y、width和height表示的值都是外框的坐标系统（包裹pattern的元素）。
+                也就是说，图案的单位进行了一个缩放，比如：pattern中为1的值，会变成和包裹元素的外框的width和height一样的大小。-->
+
+
+                <!--objectBoundingBox 实际意义，可以做空间里的元素运动，不错！-->
+                <pattern id="bg4" x="0" y="0" width="25" height="25" patternUnits="objectBoundingBox">
+                    <circle cx="50" cy="25" r="30" stroke="none" fill="#73BF00"/>
+                </pattern>
+                <!--objectBoundingBox 如果小于1 可以重复
+                算法是：
+                 20 (circle height) ÷ 100 (rectangle height) = 0.2
+                 20 (circle width) ÷ 150 (rectangle width) = 0.1333-->
+
+
+                <pattern id="bg5" x="0" y="0" width="0.1333" height="0.2" patternUnits="objectBoundingBox">
+                    <circle cx="10" cy="10" r="10" stroke="none" fill="#73BF00"/>
+                </pattern>
+                  <!--如果cx cy r 小于 circle width,circle height 则创建波点-->
+                <pattern id="bg6" x="0" y="0" width="0.1333" height="0.2" patternUnits="objectBoundingBox">
+                    <circle cx="3" cy="3" r="3" stroke="none" fill="#73BF00"/>
+                </pattern>
+
+
+                <pattern id="bg7" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="10" cy="10" r="10" stroke="none" fill="#393" />
+                </pattern>
+
+                <pattern id="bg8" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+                    <image xlink:href="images/pattern-50.png" x="0" y="0" width="50" height="50"></image>
+                </pattern>
+
+                <pattern id="bg9" x="0" y="0" width="0.5" height="0.5" patternContentUnits="objectBoundingBox">
+                    <circle cx=".25" cy=".25" r="0.25" stroke="none" fill="#393" />
+                </pattern>
+
+
+
+
+            </defs>
+            <rect x="0" y="0" width="150" height="100" stroke="#8600FF" stroke-width="5" fill="url(#bg1)" />
+            <rect x="160" y="0" width="150" height="100" stroke="#8600FF" stroke-width="5" fill="url(#bg2)" />
+            <rect x="320" y="0" width="150" height="100" stroke="#8600FF" stroke-width="5" fill="url(#bg3)"/>
+            <rect x="480" y="0" width="150" height="100" stroke="#8600FF" stroke-width="5" fill="url(#bg4)"/>
+            <rect x="640" y="0" width="150" height="100" stroke="#8600FF" stroke-width="5" fill="url(#bg5)"/>
+            <rect x="800" y="0" width="150" height="100" stroke="#8600FF" stroke-width="5" fill="url(#bg6)"/>
+            <!--使用图案描边?不对-->
+            <rect x="0" y="120" width="150" height="100"  stroke-width="20px" fill="#630" stroke="url(#bg7)"/>
+            <rect x="160" y="120" width="150" height="100" stroke="#8600FF" stroke-width="3px" fill="url(#bg8)"/>
+            <rect x="320" y="120" width="150" height="100" stroke="#8600FF" stroke-width="3px" fill="url(#bg9)"/>
+
+
+
+
+
+
+
+
+
+        </svg>
+		
+		
+		
+		<script type="text/javascript">
+			
+		</script>
+	
+	</body>
+</html>

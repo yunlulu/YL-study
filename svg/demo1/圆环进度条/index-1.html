@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <style>
+        /* --------------------------------
+
+Primary style
+
+-------------------------------- */
+        *{margin: 0; padding: 0;}
+        *, *::after, *::before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        header {
+            position: relative;
+            padding: 3em;
+        }
+        header h1 {
+            font-size: 20px;
+            color: #2f889a;
+            text-align: center;
+            line-height: 1.2;
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        @media only screen and (min-width: 768px) {
+            header {
+                padding: 5em;
+            }
+            header h1 {
+                font-size: 28px;
+                font-weight: 300;
+            }
+        }
+        @media only screen and (min-width: 1170px) {
+            header {
+                padding: 8em 0 6em;
+            }
+            header h1 {
+                font-size: 32px;
+                font-weight: 300;
+            }
+        }
+
+        .cd-svg-container {
+            width: 90%;
+            max-width: 200px;
+            margin: 0 auto 100px;
+        }
+        .cd-svg-container svg {
+            display: block;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        .no-js .cd-svg-container {
+            height: 200px;
+            background: url("../img/cd-icon.svg") no-repeat center center;
+        }
+        .no-js .cd-svg-container svg {
+            display: none;
+        }
+
+        /* --------------------------------
+
+        Manage colors
+
+        -------------------------------- */
+        .cd-stroke {
+            fill: none;
+            stroke-width: 4;
+            stroke-miterlimit: 10;
+        }
+
+        .cd-stroke-color-1 {
+            stroke: #223443;
+            fill: #f8f8f8;
+        }
+        .cd-stroke-color-1#floor {
+            fill: none;
+        }
+
+        .cd-stroke-color-2 {
+            stroke: #D7DCE0;
+        }
+
+        .cd-stroke-color-3 {
+            stroke: #f00;
+        }
+
+        .cd-fill-color-1 {
+            fill: #223443;
+        }
+
+        .cd-pointer {
+            fill: #FFFFFF;
+            opacity: 0;
+        }
+
+        /* --------------------------------
+
+        Main elements - Loading
+
+        -------------------------------- */
+        #cd-loading {
+            opacity: 1;
+            visibility: visible;
+            -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+            -moz-transition: opacity .3s 0s, visibility 0s 0s;
+            transition: opacity .3s 0s, visibility 0s 0s;
+        }
+        #cd-loading.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+            -moz-transition: opacity .3s 0s, visibility 0s .3s;
+            transition: opacity .3s 0s, visibility 0s .3s;
+        }
+
+        #cd-play-btn, #cd-pause-btn {
+            cursor: pointer;
+        }
+
+        #cd-pause-btn {
+            pointer-events: none;
+        }
+
+        .play-is-clicked #cd-pause-btn {
+            pointer-events: auto;
+        }
+
+        /* --------------------------------
+
+        Main elements - Buildings
+
+        -------------------------------- */
+        #cd-home-1-chimney, #cd-home-3-roof {
+            visibility: hidden;
+        }
+
+    </style>
+
+</head>
+<body>
+
+	<svg id="cd-animated-svg" version="1.1" x="0px" y="0px" width="200" height="200" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+
+		<g id="cd-loading">
+			<g id="cd-circle">
+				<circle id="cd-loading-circle" class="cd-stroke cd-stroke-color-2" cx="100" cy="100" r="77.5"/>
+				<circle id="cd-loading-circle-filled" class="cd-stroke cd-stroke-color-3" cx="100" cy="100" r="77.5" transform="rotate(-90 100 100)"/>
+			</g>
+			<g id="cd-play-btn">
+				<rect class="cd-pointer" x="84" y="78" width="33" height="44"/>
+				<polygon class="cd-fill-color-1" points="84,78 116,100 84,122 	"/>
+			</g>
+			<g id="cd-pause-btn" transform="translate(100 100) scale(0)">
+				<rect class="cd-pointer" x="81" y="80" width="38" height="40"/>
+				<rect class="cd-fill-color-1" x="81" y="80" width="11" height="40"/>
+				<rect class="cd-fill-color-1" x="108" y="80" width="11" height="40"/>
+			</g>
+		</g>
+
+	</svg>
+<script src="js/snap.svg-min.js"></script>
+<script src="js/main1.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+    <style type="text/css">
+        input[type=button]{background-color: #0066CC; width: 140px; border: 0 none; display: inline-block; line-height: 30px; text-align: center; color: #fff; font-size: 14px;  }
+    </style>
+	<body>
+    <input type="button" id="btn1" value="平移缩放" />
+    <input type="button" id="btn2" value="旋转" />
+    <input type="button" id="btn3" value="按钮3" />
+    <input type="button" id="btn4" value="按钮4" />
+		<svg id="svg" width="100%" height="600"></svg>
+
+
+		
+		
+		<script type="text/javascript">
+			var svg=Snap("#svg");
+            //三个球
+            var c1=svg.paper.circle(120,120,30);
+            var c2=svg.paper.circle(380,320,30).attr({
+                fill:"#8600FF"
+            });
+            var c3=svg.paper.circle(520,540,30).attr({
+                fill:"#f00"
+            });
+            //初始化矩阵
+            var m1=new Snap.matrix(1,0,0,1,0,0);
+            c1.transform(m1.toTransformString());
+            //点击改变
+            document.querySelector("#btn1").addEventListener("click",function(){
+                //放大1.02倍且平移
+                m1.add(1,0,0,1.1,-20,-20);
+                //克隆矩阵
+                var m2=m1.clone();
+                //反转矩阵
+                var m3=m1.invert();
+                c1.transform(m1.toTransformString());
+                c2.transform(m2.toTransformString());
+                c3.transform(m3.toTransformString());
+                //返回给定点经矩阵转换后的x,y坐标,此坐标最好是需要表换的矩形获圆的的中心坐标，用于判定超出未超出屏幕。
+                console.log(m1.x(120,120));
+                console.log(m1.y(120,120));
+            });
+
+           //旋转
+            var r1=svg.paper.rect(400,60,100,60,10).attr({
+                fill:"#C4C400"
+            });
+            var n=0;
+           document.querySelector("#btn2").addEventListener("click",function(){
+               Snap.animate(n,n+45,function(val){
+                   n=val;
+                   r1.transform(new Snap.Matrix().rotate(val,450,90));
+               },500,mina.elastic);
+            });
+
+
+        </script>
+	
+	</body>
+</html>

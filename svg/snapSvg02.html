@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		
+		<svg id="svgBox"></svg>
+        <svg id="effectBox"></svg>
+
+
+
+        <script type="text/javascript">
+			var svgbox=Snap("#svgBox").attr({width:1000,height:600});
+
+            //画线 line
+            var dash1=[5,2,3];   //断线式画线用数组的方式给strokeDasharry
+            var line1=svgbox.paper.line(0,0,50,50).attr({
+                  stroke:"#333",strokeWidth:5,strokeDasharray:dash1
+            });
+            var path1=svgbox.paper.path("M60 0l50 50l100 0l-50 -50l-100 0").attr({
+                stroke:"#f00",strokeWidth:6
+            });
+             //路径的长度(貌似只对path有效)
+            console.log(path1.getTotalLength());
+            //画线 polyline
+            var line2=svgbox.paper.polyline(200,0,250,50).attr({
+                stroke:"#6495ED",strokeWidth:3
+            });
+            console.log(line2.getTotalLength()); //undefined
+           //polyline也可以是数组
+           
+            //polygon:和polyline类似
+            var polygon3=svgbox.paper.polygon([350,0,400,50,450,0]).attr({
+                strokeWidth:3,fill:"#7CFC00"
+            });
+             console.log(polygon3.getTotalLength()); //undefined getTotalLength无效
+            //线性()
+            var effectBox=Snap("#effectBox");
+            var fe3=effectBox.paper.gradient("l(0,0,0.8,0.6)#000-#f00-#333:60-#7CFC00");
+            //text:文字颜色不是color，是fill
+            var txt1=svgbox.paper.text(0,200,"hello snapsvg").attr({
+                fontFamily:"STXihei",fontSize:38,fill:fe3
+            });
+            //tspan也可以是个数组（以便操作）
+            var txt2=svgbox.paper.text(300,200,["h","e","l","l","o","!"]).attr({
+                fontFamily:"Microsoft YaHei",fill:"#FF6A6A"
+            });
+
+            //输出svg内的所有html
+
+            //console.log(svgbox.paper.toString());
+            
+            
+           
+
+
+
+
+
+
+
+        </script>
+	
+	</body>
+</html>

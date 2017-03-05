@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<svg id="svg" width="1000"  height="300"></svg>
+
+		<script type="text/javascript">
+			var svg=Snap("#svg");
+            var circle1=svg.paper.circle(40,40,30);
+            var circle2=svg.paper.circle(110,40,30);
+            var circle3=svg.paper.circle(260,120,40);
+            var rect1=svg.paper.rect(0,100,100,50);
+            var rect2=svg.paper.rect(110,100,100,40,20);
+
+           //set
+            var set1=svg.selectAll("*");
+            //pop是最后一个.rect2被设置为青色
+            set1.pop().attr({fill:"#0ff"});
+            //pop一个后 再次pop(),rect1被设置为青色
+            set1.pop().attr({fill:"#0ff"});
+
+
+            set1.attr({fill:"#00f"});
+
+
+
+
+
+		</script>
+	
+	</body>
+</html>

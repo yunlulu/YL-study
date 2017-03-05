@@ -1,0 +1,136 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		input[type=button]{background-color: #0066CC; width: 140px; border: 0 none; display: inline-block; line-height: 30px; text-align: center; color: #fff; font-size: 14px;  }
+	</style>
+	<body>
+		<input type="button" id="btn1" value="按钮1" />
+		<input type="button" id="btn2" value="按钮2" />
+		<input type="button" id="btn3" value="按钮3" />
+		<input type="button" id="btn4" value="按钮4" />
+		<svg width="100%" height="400" id="svg1"></svg>
+		<script type="text/javascript">
+			var svg=Snap("#svg1");
+			var circle1=svg.paper.circle(40,40,30).attr({
+				fill:"#00E5EE",fillOpacity: 0.5
+			});
+			var rect1=svg.paper.rect(40,40,40,40).attr({
+				stroke:"#f00","stroke-width":4
+			});
+			//点击按钮1，矩形位于圆形之前
+			document.querySelector("#btn1").addEventListener("click",function(){
+				rect1.after(circle1);
+			});
+			//点击按钮2，圆2缓缓变色,宽度变宽
+			var circle2=svg.paper.ellipse(120,50,30,40);
+			document.querySelector("#btn2").addEventListener("click",function(){
+				var btn2=this;
+				circle2.animate({
+					fill:"#8470FF",rx:60,cx:150
+				},1500,mina.bounce,function(){
+					btn2.value='变紫色了';
+				});
+			})
+			//返回属性值
+			console.log(circle2.asPX("rx"));  //30
+			console.log(circle1.attr("fill"));  //30
+			
+			var rect2=svg.paper.rect(250,20,100,70,10).attr({
+				"fill":"#FF6A6A"
+			}).click(function(){
+				this.animate({
+					rx:50,ry:35,"fill":"#EE9572"
+				},1000,mina.bounce,function(){
+					//回调
+				});
+			});
+			
+			//克隆,拖拽,设置data
+			circle1.clone().attr({cx:40,cy:120}).drag();
+			//data,text的设置
+			var rect3=svg.paper.rect(130,110,100,30).attr({
+				fill:"#8B0000"
+			}).data("author","yunlu").data("age",23).click(function(){
+                //添加一个text（不推荐使用）
+				svg.paper.text(160,130,this.data("age")).attr({
+					fill:"#fff",width:230,height:50,"text-anchor":"middle"
+				});
+			});
+            //hover
+            circle3=svg.paper.circle(300,200,50).attr({
+                fill:"#FF69B4"
+            }).hover(function(){
+                this.animate({
+                    fill:"#8B2252"
+                },1000);
+            },function(){
+                this.animate({
+                    fill:"#FF69B4"
+                },400,mina.backin);
+            })
+
+
+
+//          标志： marker toDefs()可以将标签转换为定义:<defs></defs> 里面
+            var mark1=svg.paper.circle(5,5,5).attr({
+                "fill":"#f00"
+            }).toDefs();
+            var mark3=svg.paper.circle(5,5,5).attr({
+                "fill":"#666"
+            }).toDefs();
+            var mark2=svg.paper.path("M0 0L10 3L0 6Z").toDefs();
+//            marker参数 通常（a,b,c,d,e,f） ab是起始位置，cd是标志宽高，ef通常是宽高的一半
+            var m1 =mark1.marker(0,0,10,10,5,5);
+            var m2=mark2.marker(0,0,10,6,2.5,3);
+            var m3=mark3.marker(0,0,10,10,5,5);
+
+            //            var m1 = c1.marker(0, 0, 8, 8, 5, 5), m2 = p1.marker(0, 0, 13, 13, 2, 6);
+
+            var line1=svg.paper.path("M100 200l100 0l0 100").attr({
+                stroke: "#00f",
+                strokeWidth: 1,
+                fill: "none",
+                markerStart:m1,
+                "marker-mid":m3,
+                "marker-end":m2
+            })
+            //parent 可以获取标签的父级并做操作
+//                    .parent().attr({"id":"svg1"});
+            //remove是移除标签
+//                    .remove();
+
+
+
+            //pattern 底纹
+            var bg1=svg.paper.path("M10 0L0 20").attr({
+                fill:"none",stroke:"#0ee",strokeWidth:2
+            }).pattern(0,0,10,20);
+            var circle4=svg.paper.circle(420,60,50).attr({
+                fill:bg1
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+			
+			
+			
+			
+		</script>
+	
+	</body>
+</html>

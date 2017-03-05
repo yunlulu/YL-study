@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+	
+	
+	
+	</style>
+	<body>
+    <img src="images/15.jpg" alt="" id="img1" style="opacity:0;"/>
+<svg width="100%" height="600">
+
+<defs>
+	<!--矩形定义-->
+	<g id="rect1" width="100%" height="400" fill="#322" >
+		<rect x="0" y="0" width="100%" height="400"  stroke="#fff" stroke-width="2"  fill-opacity="0.85" stroke-dasharray='10,5,3,2' />
+	</g>
+	<!--渐变定义：
+		若x1 y1都为0 ，则不渐变;
+	-->
+	<!--定义渐变1-->
+	<linearGradient id='lg1' x1="0%" y1="100%" x2="100%" y2="100%">
+		<stop offset="0%" style="stop-color: #f00;" />
+		<stop offset="50%" style="stop-color: #ff0;" />
+		<stop offset="100%" style="stop-color: #0000FF;" />
+	</linearGradient>
+	<!--定义渐变2-->
+	<linearGradient id='lg2' x1='50%' y1="100%" x2="100%" y2="100%">
+		<stop offset="10%" style="stop-color: #ff0;" />
+		<stop offset="100%" style="stop-color: #0000FF;" />
+	</linearGradient>
+	<!--定义图形模板对象-->
+	<symbol id="sym1" viewBox="0 0 30 30"  >
+		<desc>四个矩形</desc>
+		<rect x="1" y="1" width="8" height="8" />
+		<rect x="11" y="1" width="8" height="8" />
+		<rect x="1" y="11" width="8" height="8" />
+		<rect x="11" y="11" width="8" height="8" />
+	</symbol>
+	<!--定义模糊 -->
+	<filter id="f1" x="0" y="0">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+       <feOffset dx="2" dy="4" />
+    <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+    </feMerge>
+    </filter>
+
+	
+</defs>
+
+<use xlink:href="#rect1" x="0" y="100" />
+<ellipse cx="165" cy="52" rx="70" ry="50"  style="fill:url(#lg1)" />
+<ellipse cx="310" cy="52" rx="70" ry="50"  style="fill:url(#lg2)" filter="url(#f1)" />
+<use xlink:href="#sym1" x="390" y="20" width="90" height="90" />
+
+
+</svg>	
+
+
+		<script type="text/javascript">
+		</script>
+	
+	</body>
+</html>

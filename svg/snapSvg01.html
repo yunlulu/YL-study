@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body style="">
+
+<div id="append"></div>
+<!--要在页面嵌入滤镜的话推荐嵌在空SVG元素中。-->
+<svg id="effectBox"></svg>
+		
+		
+		
+		<script type="text/javascript">
+            //插入一个svg标签
+            var svg=Snap(1000,600);
+            //让svg被append标签包裹
+            document.getElementById("append").appendChild(svg.node);
+
+            //snap matrix:矩阵
+            var m=new Snap.matrix(1,0,0,1,0,0);
+            //alert(m);        //matrix(1,0,0,1,0,0);
+
+            //画圆1
+            var circle1= svg.paper.circle(35,40,30);
+            //画圆2并设置属性
+            var circle2=svg.paper.el("circle",{
+                cx:100,cy:40,r:30,fill:"#f00"
+            });  // 等同于svg.circle(50, 50, 40),省略了attr;
+
+            //将元素添加到组里
+            var g1=svg.paper.g().attr({id:"g1"});
+            g1.add(circle1,circle2);
+
+
+
+            //画椭圆(cx,cy,rx,ry:前两个确定椭圆的放置位置，后两个确定椭圆的大小)
+            var circle3=svg.paper.ellipse(170,40,30,10);
+            circle3.attr({fill:"#00f"});
+
+
+           //加滤镜：高斯模糊
+            var effectBox=Snap("#effectBox");
+            var fe1 = effectBox.paper.filter('<feGaussianBlur stdDeviation="5"/>');
+            //加投影
+            var fe2=effectBox.paper.filter('<feOffset result="offOut" in="SourceGraphic" dx="1" dy="10" /><feColorMatrix result="matrixOut" in="offOut" type="matrix"values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/><feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" /><feBlend in="SourceGraphic" in2="blurOut" mode="normal" />');
+
+
+            var rect1=svg.paper.rect(210,10,60,60,5,5).attr({
+                filter:fe1,fill:"#f4696b"
+            });
+            var rect2=svg.paper.rect(280,10,60,70,5,5).attr({
+                filter:fe2,fill:"#00FF7F"
+            });
+
+            //加渐变
+            //线性
+            var fe3=effectBox.paper.gradient("l(0,0,0.8,0.6)#000-#f00-#333:60-#ff0");
+            //径向
+            var fe4=effectBox.paper.gradient("r(0.5,0.3,0.5)#ff0-#333");
+            var circle4=svg.paper.ellipse(420,50,70,40).attr(
+                    {fill:fe3}
+            );
+
+            var rect3=svg.paper.rect(510,10,180,45).attr(
+                    {fill:fe4}
+            );
+
+            //将元素添加到组里的第2种方法group
+            var g2=svg.paper.group().attr({id:"g2"});
+            g2.add(rect1,rect2,rect3);
+
+
+            //添加图片
+            var img1=svg.paper.image("images/6.jpg",0,100,476,325);
+
+
+
+
+
+
+
+
+
+
+
+		</script>
+	
+	</body>
+</html>

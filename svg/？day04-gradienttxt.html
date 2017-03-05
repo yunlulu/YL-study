@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+    <svg width="800" height="300">
+      <defs>
+          <!--定义渐变-->
+        <linearGradient id="grad1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="300">
+            <stop offset="0" stop-color="#f00"/>
+            <stop offset="100%" stop-color="#ff0"/>
+        </linearGradient>
+          <!--定义遮罩-->
+        <mask id="mask1" maskUnits="userSpaceOnUse" x="0" y="0" width="800" height="300">
+            <rect x="0" y="0" height="300" width="800" fill="#url(grad1)"/>
+        </mask>
+          <!--定义文字-->
+        <text id="txt1" x="400" y="200" font-family="Console" font-size="200" text-anchor="middle" >hello world!</text>
+      </defs>
+        <!--引用遮罩的文字（渐变文字）-->
+        <use xlink:href="#txt1" fill="red" mask="url(#mask1)"/>
+        <use xlink:href="#txt1" fill="none" stroke="black" stroke-width="1"/>
+    </svg>
+		
+
+		
+		<script type="text/javascript">
+			
+		</script>
+	
+	</body>
+</html>

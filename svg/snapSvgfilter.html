@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<svg id="svg" width="1000" height="500"></svg>
+		<script type="text/javascript">
+            var svg=Snap("#svg");
+            //返回棕褐色滤镜 (0-1)
+            var fe1=svg.paper.filter(Snap.filter.sepia(0.9));
+            //模糊滤镜,默认值是2
+            var fe2=svg.paper.filter(Snap.filter.blur(5));
+            //亮度滤镜(0-1)
+            var fe3=svg.paper.filter(Snap.filter.brightness(0.5));
+            //投影(x偏移量，y偏移量，模糊程度，颜色，投影透明度)
+            var fe4=svg.paper.filter(Snap.filter.shadow(10,10,15,"#666",.7));
+            //具体滤镜详情看文档：http://www.zhangxinxu.com/GitHub/demo-Snap.svg/demo/basic/Snap.filter.blur.php
+            var fe5=svg.paper.filter('<feOffset result="offOut" in="SourceGraphic" dx="1" dy="10" /><feColorMatrix result="matrixOut" in="offOut" type="matrix"values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/><feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" /><feBlend in="SourceGraphic" in2="blurOut" mode="normal" />');
+
+
+            //如果想用多个滤镜，用数组的方式?不可行
+            var fes1=[fe1,fe2,fe3];
+            var img1=svg.paper.image("images/6.jpg",0,0,400,300).attr({
+                filter:fe5
+            });
+
+        </script>
+	
+	</body>
+</html>

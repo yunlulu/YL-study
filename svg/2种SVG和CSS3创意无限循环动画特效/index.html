@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+    <style>
+        *, *:before, *:after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            font-size: 62.5%;
+            height: 100%;
+            /*overflow: hidden;*/
+        }
+
+        body {
+            background: #7981B2;
+        }
+
+        svg {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40rem;
+            height: 40rem;
+            margin-left: -20rem;
+            margin-top: -20rem;
+            overflow: visible;
+        }
+
+        .jumper {
+            fill: none;
+            stroke: #383845;
+            stroke-width: 10px;
+            stroke-dashoffset: 0;  stroke-dasharray: 0, 136.71884px;
+            /*-webkit-animation: animJumper 1.3s linear infinite;*/
+            animation: animJumper 1.3s linear infinite;
+        }
+
+        .jumper.clone {
+            opacity: 0.05;
+            -webkit-transform: translateY(200px) scaleY(-1);
+            -ms-transform: translateY(200px) scaleY(-1);
+            transform: translateY(200px) scaleY(-1);
+        }
+        @-webkit-keyframes animJumper {
+            8% {  stroke-dasharray: 20.50783px, 136.71884px;  }
+            32% {
+                stroke-dasharray: 41.01565px, 136.71884px;  stroke-dashoffset: -47.85159px;
+            }
+            56% {
+                stroke-dasharray: 20.50783px, 136.71884px;  stroke-dashoffset: -116.21102px;
+            }
+            64% {
+                stroke-dasharray: 0, 136.71884px;  stroke-dashoffset: -136.71884px;
+            }
+        }
+        @keyframes animJumper {
+            8% {
+                stroke-dasharray: 20.50783px, 136.71884px;  stroke: #f00;
+            }
+            32% {  stroke-dasharray: 41.01565px, 136.71884px;  stroke-dashoffset: -47.85159px;  stroke: #0f0; }
+            56% {  stroke-dasharray: 20.50783px, 136.71884px;  stroke-dashoffset: -116.21102px;  stroke: #00f; }
+            64% {  stroke-dasharray: 0, 136.71884px;           stroke-dashoffset: -136.71884px;  stroke: pink; }
+        }
+        .circleL {
+            opacity: 0;
+            -webkit-transform-origin: center;  -ms-transform-origin: center;  transform-origin:center;
+            -webkit-animation: animCircle 1.3s infinite;  animation: animCircle 1.3s infinite;
+        }
+
+        .circleR {
+            opacity: 0;
+            -webkit-transform-origin: 136.2px 95.6px;
+            -ms-transform-origin: 136.2px 95.6px;
+            transform-origin: 136.2px 95.6px;
+            -webkit-animation: animCircle 1.3s 0.728s infinite;
+            animation: animCircle 1.3s 0.728s infinite;
+        }
+        @-webkit-keyframes animCircle {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                -webkit-transform: scale(3);
+                transform: scale(3);
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes animCircle {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                -webkit-transform: scale(3);
+                transform: scale(3);
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .check-out {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+	<div class="htmleaf-container">
+
+		<div class="htmleaf-content">
+			
+		<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+		version="1.1" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+			  <path class="jumper" stroke-linecap="round" stroke-linejoin="round" d="M47.5,94.3c0-23.5,19.9-42.5,44.5-42.5s44.5,19,44.5,42.5"/>
+			  <g stroke="#2d2d2d" stroke-width="1">
+			    <ellipse class="circleL" fill="none" stroke-miterlimit="10" cx="47.2" cy="95.6" rx="10.7" ry="2.7" />
+			    <ellipse class="circleR" fill="none" stroke-miterlimit="10" cx="136.2" cy="95.6" rx="10.7" ry="2.7" />
+			  </g>
+			  <path class="jumper clone" stroke-linecap="round" stroke-linejoin="round" d="M47.5,94.3c0-23.5,19.9-42.5,44.5-42.5s44.5,19,44.5,42.5"/>
+			</svg>
+		</div>
+
+	
+</body>
+</html>

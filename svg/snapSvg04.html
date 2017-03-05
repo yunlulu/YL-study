@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<svg id="svg"></svg>
+		
+		
+		
+		
+		<script type="text/javascript">
+            //转换弧度为角度
+			console.log(Snap.deg(Math.PI));  //180
+            console.log(Snap.deg(Math.PI*1.5));  //270
+            //转换角度为弧度
+            console.log(Snap.rad(90));
+            //转换RGB颜色为16进制颜色
+            console.log(Snap.rgb(255,0,0)); //#ff0000
+            //转换RGB为HSB对象
+            console.log(Snap.rgb2hsb(0,255,0)); //0,1,1
+            //转换RGB为HSL对象
+            console.log(Snap.rgb2hsl(255,0,0));  //0,1,0.5
+
+            var svg=Snap("#svg");
+            var line1=svg.paper.line(0,0,30,30).attr({
+                "stroke":"#f00"
+            });
+
+
+            //输入两点或者三点之间的角度
+            console.log(Snap.angle(0,0,30,30));  //225
+
+
+
+
+        </script>
+	
+	</body>
+</html>

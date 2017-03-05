@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		
+		<svg id="svg"></svg>
+		<script type="text/javascript">
+			var svg=Snap("#svg");
+            var circle1=svg.paper.circle(30,40,30);
+            var circle2=svg.paper.circle(100,40,30);
+            circle2.use();
+            //定义了rect1
+            var rect1=svg.paper.rect(170,10,100,40).toDefs();
+            //引用rect1
+            svg.add(rect1);
+           //select是选择器中的第一个
+            svg.select("circle").attr({
+                "id":"c1"
+            });
+
+           //selectAll是选择器所有的circle标签
+            svg.selectAll("circle").attr({
+               "class":"circles",fill:"#90EE90"
+            });
+            //selectAll是选择当前svg内所有的标签
+//            svg.selectAll("*").attr({
+//                fill:"#90EE90"
+//            });
+
+
+
+
+
+
+
+        </script>
+	
+	</body>
+</html>

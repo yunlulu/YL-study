@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+	</head>
+	<style type="text/css">
+        /*第二个1069 是圆的周长(直径乘以3.14): r*2*3.14=1067.6 +保留数（+2）=1069  stroke-dasharray的第一个值 控制百分比 算法是1068*50%  就是半分比 */
+        #cc{animation: cc1 10s infinite;}
+		@keyframes cc1  {
+            0%{}
+          100%{stroke-dasharray: 534.5,1069;}
+
+        }
+	</style>
+	<body>
+
+
+    <svg width="440" height="440">
+        <circle cx="220" cy="220" r="170" stroke-width="50" stroke="#D1D3D7" fill="none"></circle>
+        <circle cx="220" cy="220" r="170" stroke-width="50" stroke="#00A5E0" fill="none" id="cc" transform="matrix(0,-1,1,0,0,440)"  stroke-dasharray="0 1069"></circle>
+    </svg>
+		
+		
+		
+		<script src="js/jquery.js"></script>
+		<!--<script type="text/javascript">
+			 $("#cc").attr("stroke-dasharray",1069);
+		</script>-->
+	
+	</body>
+</html>

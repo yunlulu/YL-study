@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		#line2{stroke:#00AEAE; stroke-dasharray: 400; stroke-width: 10; stroke-dashoffset: 400; animation: line2 1s infinite; }
+        @keyframes line2 {
+            0%{ }
+            100%{stroke-dashoffset: 0;}
+        }
+        #circle1{fill:none;
+            /*让元素从中上开始向下走*/
+            transform:rotate(-90deg);
+            /*可让元素绕着中心旋转*/
+            transform-origin:center;
+
+            stroke-dasharray: 252; stroke-width: 5; stroke: #0ff;
+            /*是元素周长 直径乘以3.14+1  */
+            stroke-dashoffset: 252;
+            /*是元素周长 直径乘以3.14+1  */
+            animation: line2 1s infinite;  }
+
+
+        #rect1{ fill: #FF79BC;  stroke: #6F00D2; stroke-width: 3; stroke-dasharray: 5; animation: rectAni 1s infinite linear;  }
+        /*矩形动画 20最佳*/
+        @keyframes rectAni {
+             100%{  stroke-dashoffset:20;  }
+        }
+	</style>
+	<body>
+		
+		
+		<script type="text/javascript">
+		   var svg=Snap(1000,400).attr({
+               "viewBox":"0 0 1000 400"
+           });
+            var circle1=svg.paper.circle(100,100,40).attr({
+                "id":"circle1"
+            });
+            var line1=svg.paper.line(5,10,400,10).attr({
+                stroke:"#f00",strokeWidth:5,"stroke-dasharray":5
+            });
+            var line2=svg.paper.line(0,200,400,200).attr({
+                id:"line2"
+            });
+            var rect1=svg.paper.rect(410,10,100,150,10).attr({
+                "id":"rect1"
+            });
+          /* for(var i=0;i<=100;i++){
+               console.log(i);
+               sum=i+"%";
+           }*/
+           var sum="";
+      function num(){
+          for(var i=0;i<=100;i++){
+              console.log(i);
+          }
+      }
+           setTimeout("num()",1000);
+           var txt1=svg.paper.text(88,105,i+"%");
+
+
+
+
+		</script>
+	
+	</body>
+</html>

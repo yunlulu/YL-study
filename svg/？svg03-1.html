@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+        html, body { margin: 0; height: 100%; background-color: #012E72; font-family: 'microsoft yahei'; overflow: hidden; }
+        .shape-svg { position: absolute; width: 100%; height: 100%; }
+
+	</style>
+	<body>
+		
+		<svg id="shapeSVG" class="shape-svg"></svg>
+		
+		
+		<script type="text/javascript">
+// SVG主体
+var svg = Snap("#shapeSVG");
+
+// 确定页面中心点位置
+var point_center = [window.innerWidth / 2, window.innerHeight / 2];
+
+// 这里是一个5边形
+var p1 = [410.2563,148.7179],
+    p2 = [173.0769,298.718],
+    p3 = [255.1282,576.923],
+        p4 = [519.2307,582.0513],
+        p6 = [341.0256,398.718],
+
+    p5 = [741.0255,300.0001];
+
+// 根据这5个点绘制
+var polygon = svg.paper.polyline([p1.join(), p2.join(), p3.join(), p4.join(), p5.join()].join()).attr({fill: "#f00"});
+// 事件与动画
+// 我们对p3这一点做处理
+var animate_p3 = function(val) {polygon.attr({points: [p1.join(), p2.join(), p3.join(), p4.join(),p6.join()].join()});};
+// 鼠标移入与移出
+polygon.mouseover(function() {
+	Snap.animate( 0,animate_p3, 300, mina.backout);
+}).mouseout(function() {
+	Snap.animate(0, animate_p3, 300, mina.backin);
+});
+
+</script>
+
+	
+	</body>
+</html>

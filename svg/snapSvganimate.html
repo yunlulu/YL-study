@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mobile.css"/>
+		<script src="js/snap.svg-min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<svg id="svg" width="1000"  height="500"></svg>
+		
+		
+		
+		
+		<script type="text/javascript">
+         var svg=Snap("#svg");
+            var circle1=svg.paper.circle(70,80,60);
+            circle1.click(function() {
+                Snap.animate(70, 600, function (val) {
+                    circle1.attr({
+                        cx: val
+                    })
+                }, 1000, mina.bounce);
+                Snap.animate(80, 300, function (val) {
+                    circle1.attr({
+                        cy: val
+                    })
+                }, 1000, mina.bounce);
+//animation方式过度不平滑，不适合用，舍掉
+                Snap.animation(circle1.attr({
+                    fill:"#0ff"
+                }),5000,mina.bounce);
+         });
+
+//animate动画的参数必须为数字，否则无效:isNaN
+             /*   Snap.animate("#333","#f00",function(v){
+                    circle1.attr({
+                        fill:v
+                    })
+                },1000,mina.bounce);*/
+                //animation
+
+
+
+
+
+
+           // var a="qq";
+            //alert(isNaN(a));  true
+
+         // var a="12";
+         //alert(isNaN(a));  false
+
+         // var a=12;
+         //alert(isNaN(a));  false
+
+
+		</script>
+	
+	</body>
+</html>
