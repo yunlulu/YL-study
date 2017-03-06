@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400">不支持canvas.</canvas>
+    <script type="text/javascript">
+        var canvas=document.getElementById("canvas");
+        var ctx=canvas.getContext("2d");
+        
+        ctx.beginPath();
+       
+        ctx.rect(20,20,100,100);
+        ctx.fill();
+        ctx.stroke();
+
+        // 可以把此行去掉可以看出 加不加beginPath的区别,r如果没有加 第一个会被重绘
+        ctx.beginPath();
+        ctx.strokeStyle = "#f00";
+        ctx.lineWidth=50;
+        ctx.rect(200,20,100,100);
+        ctx.fill();
+        ctx.stroke();
+
+    </script>
+</body>
+</html>

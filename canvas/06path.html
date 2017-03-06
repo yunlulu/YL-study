@@ -20,7 +20,7 @@
 
         // 矩形
         ctx.beginPath();
-        ctx.lineWidth=5;
+        ctx.lineWidth=4;
         ctx.rect(10,100,100,100);
         ctx.stroke();
 
@@ -48,11 +48,13 @@
         ctx.beginPath();
         ctx.arc(350, 260, 50, 0, Math.PI/2*3, false);
         ctx.fillStyle="#f00";
-        ctx.lineWidth=6;
+        // ctx.lineWidth=6;
         ctx.stroke();
         ctx.fill();
 
-        // 圆形闭合的 Math.PI/180就为1°
+        // 圆形闭合的 Math.PI*(1/180)就为1°； Math.PI*(360/180)就为360°
+
+        ctx.lineWidth=10;
         ctx.beginPath();
         ctx.arc(60, 380, 50, 0, Math.PI/2*3, false);
         ctx.closePath();
@@ -66,13 +68,16 @@
 
 
         ctx.beginPath();
-        ctx.arc(350, 380, 50, 0, Math.PI/2*3, false);
+        ctx.arc(350, 380, 50, -0.5, Math.PI*(270/180), false);
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
 
 
 
+
+
+        
 
 
 
