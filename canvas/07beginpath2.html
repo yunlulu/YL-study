@@ -11,28 +11,16 @@
         var canvas=document.getElementById("canvas");
         var ctx=canvas.getContext("2d");
         // 非零环绕原则
-var a=0;
-        // function drawTwoarc() {
-        var t=function() {
-            a++;
-             if(a==200){
-                clearInterval(t);
-            }
-            else{
-              ctx.clearRect(0, 0, canvas.width, canvas.height);
+        function drawTwoarc() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.beginPath();
-            ctx.arc(a,200,100, 0, Math.PI*2, true);
-
+            ctx.arc(100,200,100, 0, Math.PI*2, true);
             ctx.arc(100,200, 80, 0, Math.PI*2,false);
             ctx.fill();
             ctx.shadowColor = undefined;
             ctx.shadowOffsetX = 0;
             ctx.shadowOffsetY = 0;
             ctx.stroke();
-            }
-            console.log(a);  
-            
-           
         }
         function draw() {
             ctx.save();
@@ -40,8 +28,7 @@ var a=0;
             ctx.shadowOffsetX = 12;
             ctx.shadowOffsetY = 12;
             ctx.shadowBlur = 15;
-            // drawTwoarc();
-            setInterval(t,60);
+            drawTwoarc();
             ctx.restore();
         }
         ctx.fillStyle = "#ff0";
