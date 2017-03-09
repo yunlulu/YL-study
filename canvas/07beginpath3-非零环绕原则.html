@@ -11,7 +11,7 @@
     // 如果计数值是0，不填充；非0 则他们的七点所在的区域会被浏览器填充。
         var canvas=document.getElementById("canvas");
         var ctx=canvas.getContext("2d");
-        // 一个带方向的矩形（direction 为true 逆时针，为false顺时针）
+        // 一个带方向的矩形（direction 为true 逆时针，false顺时针）
         function rect(x,y,w,h,direction) {
             if(direction){
             ctx.moveTo(x, y);
@@ -27,10 +27,26 @@
             }
             ctx.closePath();
         }
+
+
         ctx.beginPath();
         ctx.fillStyle = "#f00";
-        rect(0,0,400,400,true);
+        ctx.strokeStyle = "#0f0";
+        // ctx.lineWidth = 1;
+        ctx.lineWidth = 1;
+        rect(0.5,0.5,399,399,true);
+        // 10  10 100 100
+        // rect(0,0,398,398,true);
+        // ctx.beginPath();
+        ctx.arc(200, 200, 50, 0, Math.PI*2, false);
+        rect(10,10,50,50,false);
+        ctx.moveTo(300, 10);
+        ctx.lineTo(400, 90);
+        ctx.lineTo(300, 90);
+        ctx.closePath();
+
         ctx.fill();
+        ctx.stroke();
 
     </script>
 </body>

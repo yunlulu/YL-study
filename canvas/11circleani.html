@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400">不支持canvas.</canvas>
+    <script type="text/javascript">
+        var canvas=document.getElementById("canvas");
+        var ctx=canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.fillStyle = "#f00";
+        ctx.moveTo(200, 200);
+        function draw(current) {
+                    ctx.arc(200, 200, 100, -0.5*Math.PI, current*(2*Math.PI)-Math.PI*(1/2), false);
+                    // ctx.arc(200,200,80,-0.5*Math.PI,current*(2*Math.PI)-Math.PI/2 ,true);
+                    ctx.closePath();
+                    ctx.fill();
+                    
+                }   
+        var t=0;     
+        var timer=null;
+        function loadCanvas(now) {
+            timer=setInterval(function () {
+               if(t>now){
+                clearInterval(timer);
+          } 
+          else{
+            draw(t);
+            t+=0.005;
+          }
+            },100);
+          
+        }
+        loadCanvas(0.75);
+        timer=null;
+    </script>
+</body>
+</html>
