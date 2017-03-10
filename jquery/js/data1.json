@@ -1,45 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/global.css">
-</head>
-<body>
-    <canvas id="canvas" width="400" height="400">不支持canvas.</canvas>
-    <script type="text/javascript">
-        var canvas=document.getElementById("canvas");
-        var ctx=canvas.getContext("2d");
-        ctx.beginPath();
-        ctx.fillStyle = "#f00";
-        ctx.moveTo(200, 200);
-        function draw(current) {
-                    ctx.arc(200, 200, 100, -0.5*Math.PI, current*(2*Math.PI)-Math.PI*(1/2), false);
-                    ctx.closePath();
-                    ctx.fill();
-                    
-                }   
-        var t=0;     
-        var timer=null;
-        function loadCanvas(now) {
-            timer=setInterval(function () {
-               if(t>now){
-                clearInterval(timer);
-          } 
-          else{
-            draw(t);
-            t+=0.005;
-          }
-            },100);
-          
-        }
-        loadCanvas(0.75);
-        timer=null;
-
-
-var json={
-  "bigimgSrc":"img/header.jpg",
-  "gold":[
+{
+ "bigimgSrc":"img/header.jpg",
+  "gold":{
     "title":"十年纪念系列",
     "productList":[
     {"id":1,
@@ -62,18 +23,18 @@ var json={
     "count":"",
     "size":"10克金"}
     ]
-    ],
-    "gift": [
+    },
+    "gift": {
     "title":"礼品系列",
-    "productList":[
-    {"id":4,
+    "productList":
+    [{"id":4,
     "name":"宝泉-永恒的爱",
     "imgsrc":"img/4.jpg",
     "price":"￥999",
     "details":"宝泉-永恒的爱",
     "count":"1万套",
     "size":"1盎司"},
-     {"id":5,
+    {"id":5,
     "name":"国富-天使之眼",
     "imgsrc":"img/6.png",
     "price":"￥1880",
@@ -88,8 +49,8 @@ var json={
     "count":"",
     "size":"18克银"}
     ]
-    ],
-     "memorial": [
+    },
+     "memorial": {
     "title":"金银纪念币系列",
     "productList":[
     {"id":7,
@@ -133,12 +94,8 @@ var json={
     "price":"￥9680",
     "details":"国鼎黄金-普陀山金银纪念币套装",
     "count":"7500套",
-    "size":"¼盎司+2盎司"},
+    "size":"¼盎司+2盎司"}
     ]
-    ]
+    }
+
 }
-
-
-    </script>
-</body>
-</html>

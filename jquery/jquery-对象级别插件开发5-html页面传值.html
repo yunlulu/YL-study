@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+      <meta name="format-detection" content="telephone=no" />
+    <title>Document</title>
+    
+</head>
+<body>
+     <h1>box1</h1>
+    <ul class="box1">
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+        <li>li6</li>
+    </ul>
+    <h1>box2</h1>
+
+    <ul class="box2">
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+        <li>li6</li>
+    </ul>
+    <h1>box3</h1>
+
+    <ul class="box3">
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+        <li>li6</li>
+    </ul>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+
+$(function () {
+    $(".box1>li").on("click",function () {
+        var index=$(this).index();
+        window.location.href="toval.html?type=gold&listnum="+index;
+        console.log(json.gold.productList[index]); 
+    });
+});
+    </script>
+</body>
+</html>
