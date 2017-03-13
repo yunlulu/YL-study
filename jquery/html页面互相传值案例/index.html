@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>title</title>
+	<link rel="stylesheet" href="css/global.css">
+
+</head>
+<body>
+<div class="">
+<img src="images/header.jpg" alt="">
+</div>
+ <script type="text/x-handlebars-template" id="mainContent">
+    {{#each this}}
+    <h4 class="title">{{this.title}}</h4>
+    <div class="noblemetallist-box clear" type="{{this.type}}">
+        {{#each productList}}
+        <section>
+            <a href="#">
+                <img src="{{imgsrc}}" alt="">
+                <p class="txtbox">
+                <span class="title">{{name}}</span>
+                <span class="det-box clear">
+                    <b class="b1">{{price}}</b>
+                    <b class="b2">预约</b>
+                </span>
+                </p>
+                
+            </a>
+        </section>
+        {{/each}}
+    </div>
+    {{/each}}
+   
+    </script>
+
+<div class="noblemetallist-content">
+</div>
+
+
+  <script type="text/javascript" src="js/global.js"></script>
+  <script type="text/javascript" src="js/zepto.js"></script>
+  <script type="text/javascript" src="js/handlebars.min.js"></script>
+  <script type="text/javascript">
+  var sourceHtml =$("#mainContent").html();
+  var template = Handlebars.compile(sourceHtml);
+      $.ajax({
+        url:"js/prolist.json",
+        dataType:"json",
+        success:function (data) {
+            if(data){
+                var htmlData=template(data);
+                $(".noblemetallist-content").html(htmlData);
+
+            }
+            
+        }
+      });
+      // 为了解决iphone的冒泡兼容，不要去掉
+      $("body").children().click(function () {
+        
+      });
+
+      $(document).on("click",".noblemetallist-box section",function () {
+        var type=$(this).parents(".noblemetallist-box").attr("type");
+        var id=$(this).index();
+        $(".noblemetallist-box section a").attr("href","prodet.html?type="+type+"&id="+id);
+      });
+
+
+  </script>
+
+</body>
+</html>

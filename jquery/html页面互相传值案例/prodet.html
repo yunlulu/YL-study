@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>产品详情</title>
+    <link rel="stylesheet" href="css/global.css">
+
+</head>
+<body>
+ 
+ <script type="text/x-handlebars-template" id="mainContent">
+    <div class="noblemetaldet-of1">
+      <img src="{{imgsrc}}" alt="">
+      <div class="txtbox">
+        <div class="title">{{name}}</div>
+        <div class="price">{{price}}</div>
+      <a href="#" class="orderbtn">预约购买</a>
+      </div>
+    </div>
+    <div class="noblemetaldet-of2">
+      <h4 class="title">商品详情</h4>
+      <div class="det-paraph">{{details}}</div>
+    </div>
+   <div class="noblemetaldet-of2">
+      <h4 class="title">商品参数</h4>
+      <div class="noblemetaldet-list">
+        <section class="clear">
+          <span>零售价:</span>
+          <p>{{price}}</p>
+        </section>
+        <section class="clear">
+          <span>发行量:</span>
+          <p>{{count}}</p>
+        </section>
+        <section class="clear">
+          <span>规格:</span>
+          <p>{{size}}</p>
+        </section>
+      </div>
+    </div>
+  </script>
+
+
+
+  <script type="text/javascript" src="js/global.js"></script>
+  <script type="text/javascript" src="js/zepto.js"></script>
+  <script type="text/javascript" src="js/handlebars.min.js"></script>
+  <script type="text/javascript">
+   var sourceHtml =$("#mainContent").html();
+   var template = Handlebars.compile(sourceHtml);
+
+        // 对页面url传过来的值进行处理
+    ;(function ($) {
+        $.fn.urlByval=function () {
+            hrefString=window.location.toString();
+            hrefReg=/\?/g;
+            var hrefvalObj={};
+            if(hrefReg.test(hrefString)){
+               hrefvalObj.haveVal=true;
+            }
+            else{
+               hrefvalObj.haveVal=false;
+            }
+            var hrefUrl=document.location.toString().split("?");
+            var hrefUrlArr=hrefUrl[hrefUrl.length-1].split("&");
+             for(i=0;i<hrefUrlArr.length;i++){
+                var key= hrefUrlArr[i].split("=")[0];
+                var val= hrefUrlArr[i].split("=")[1];
+                hrefvalObj[key]=val;
+
+                };
+            return hrefvalObj;
+        }
+        
+    })($);   
+    // 可以获取到传值过来的对象
+    console.log($(window).urlByval());
+    var getData=$(window).urlByval();
+    console.log(getData);
+    $(function () {
+       $.ajax({
+        url:"js/prolist.json",
+        dataType:"json",
+        success:function (data) {
+            if(data){
+            var oneData={};
+            if(getData.haveVal){
+              switch (getData.type) {
+                case "gold":oneData=data[0].productList[getData.id];break;
+                case "gift":oneData=data[1].productList[getData.id];break;
+                case "memorial":oneData=data[2].productList[getData.id];break;
+                default:oneData=data[0].productList[0];
+              }
+            }
+            else{
+            // 如果没有值就用数据第一个的
+            oneData=data[0].productList[0];
+            }
+            var htmlData=template(oneData);
+            $("body").append(htmlData);
+            }
+        }
+       }) 
+    });
+
+
+
+
+ 
+
+  </script>
+
+</body>
+</html>

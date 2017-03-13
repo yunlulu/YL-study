@@ -1,7 +1,11 @@
+* **canvas**
 * **模板语言：handlebars**
+* **html5**
 * **模板语言：jade**
+* **jquery**
 * **模拟假数据：mockjs**
+* **nodejs**
+* **css预编译：sass**
 * **单页面：vipspa**
 * **框架：vue**
 * **自动化工具：webpack**
-* **css预编译：sass**
