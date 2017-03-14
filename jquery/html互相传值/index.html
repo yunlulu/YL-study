@@ -19,7 +19,7 @@
     <div class="noblemetallist-box clear" type="{{this.type}}">
         {{#each productList}}
         <section>
-            <a href="#">
+            <a href="prodet.html?type={{../type}}&id={{@index}}">
                 <img src="{{imgsrc}}" alt="">
                 <p class="txtbox">
                 <span class="title">{{name}}</span>
@@ -62,12 +62,6 @@
       // 为了解决iphone的冒泡兼容，不要去掉
       $("body").children().click(function () {
         
-      });
-
-      $(document).on("click",".noblemetallist-box section",function () {
-        var type=$(this).parents(".noblemetallist-box").attr("type");
-        var id=$(this).index();
-        $(".noblemetallist-box section a").attr("href","prodet.html?type="+type+"&id="+id);
       });
 
 
