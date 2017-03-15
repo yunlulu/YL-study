@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/global.css">
+    <style type="text/css" media="screen">
+    .mb10{margin-bottom: 10px;}
+        .container{width: 800px;margin:10px auto;}
+        .search-input{width:90%;float: left; box-sizing: border-box; border:1px solid #eee;}
+        .search-btn{width:9%;float: right;background-color:#4ed4a1; cursor: pointer; text-align: center; color:#fff; line-height: 26px;}
+        .search-content li{width:22%;float: left;margin-right: 4%; margin-bottom: 15px; border:1px solid #eee; box-sizing: border-box;}
+        .search-content li:nth-child(4n){margin-right: 0px;}
+        .search-content p{line-height: 30px; padding: 0 5px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+        .yl-mr0{margin-right: 0px !important;}
+        .yl-mrper4{margin-right: 4% !important;}
+        .yl-tip1{display: none;color:red; font-size: 14px; font-weight: bold; line-height: 30px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+    <div class="clear mb10">
+    <input class="search-input" id="searchInput" type="text" name="" value="" placeholder="">
+    <a class="search-btn" id="searchBtn">确定</a>
+    </div>
+    <ul class="search-content clear">
+        <li>
+            <img src="images/pro/1.png" alt="">
+            <p>宝泉-邮储银行成立十周年纪念</p>
+        </li>
+         <li>
+            <img src="images/pro/2.png" alt="">
+            <p>零兑金-驿使送福纪念套装</p>
+        </li>
+         <li>
+            <img src="images/pro/3.png" alt="">
+            <p>邮储金-十周年纪念金章10克</p>
+        </li>
+         <li>
+            <img src="images/pro/4.png" alt="">
+            <p>宝泉-永恒的爱</p>
+        </li>
+         <li>
+            <img src="images/pro/5.png" alt="">
+            <p>国富-天使之眼</p>
+        </li>
+         <li>
+            <img src="images/pro/6.png" alt="">
+            <p>国富-花开富贵</p>
+        </li>
+         <li>
+            <img src="images/pro/7.png" alt="">
+            <p>2017年世界六大投资银币</p>
+        </li>
+         <li>
+            <img src="images/pro/8.png" alt="">
+            <p>零兑金-好运常来手签封装银币</p>
+        </li>
+         <li>
+            <img src="images/pro/9.png" alt="">
+            <p>零兑金-好运常来手签钞币双绝</p>
+        </li>
+        <li>
+            <img src="images/pro/10.png" alt="">
+            <p>国鼎黄金-2017鸡年生肖纪念币</p>
+        </li>
+         <li>
+            <img src="images/pro/11.png" alt="">
+            <p>国鼎黄金-水浒传彩色银币套装</p>
+        </li>
+         <li>
+            <img src="images/pro/12.png" alt="">
+            <p>国鼎黄金-普陀山金银纪念币套装</p>
+        </li>
+    </ul>
+    <center class='yl-tip1'>没有找到合适的字符!<center>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        ;(function ($) {
+           $.fn.searchContent=function (options) {
+              var defaults={
+                searchInput:"#searchInput",
+                searchGoal:".search-content li",
+                searchGoalInner:"p"
+              };
+              var options=$.extend(true,{},defaults,options); 
+              var that=this;
+              this.each(function () {
+                 var _this=$(this);  
+                 _this.on("click",function () {
+                    $(options.searchGoal).show();
+                    $(options.searchGoal).removeClass("yl-mr0 yl-mrper4");
+                     var searchVal=$(options.searchInput).val().toLowerCase().trim();
+                     if(searchVal){
+                        // $(".yl-tip1").hide();
+                        var txtReg=eval("/"+searchVal+"/g");
+                        var accordNum=0;
+                        var accordArr=[];
+                        $.each($(options.searchGoal),function (index,value) {
+                        var searchTxt=$(value).find(options.searchGoalInner).html().toLowerCase();
+                        if (txtReg.test(searchTxt)) {
+                            accordNum++;
+                            var index=$(value).index();
+                            $(value).eq(index).show();
+                            accordArr.push(index);
+                        }
+                        else{
+                            $(value).hide();
+                        }
+                        })
+                        // 如果没有符合条件的
+                        if(!accordNum){
+                            $(".yl-tip1").show();
+                        }
+                        else{
+                            $(".yl-tip1").hide();
+                        }
+                        // 从新排版
+                        for(i=1;i<=accordArr.length;i++){
+                            if(i%4==0){
+                            $(options.searchGoal).eq(accordArr[i-1]).addClass("yl-mr0");
+                            }
+                            else{
+                            $(options.searchGoal).eq(accordArr[i-1]).addClass("yl-mrper4");
+                            }
+                        }
+                     }
+                     else{
+                            // $(".yl-tip1").show().html("请输入搜索内容！");
+                            console.log('请输入搜索内容！');
+                     }
+
+                 });     
+
+
+
+              });
+              // 在输入框按下回车等于点击了确定
+              $(options.searchInput).on("keyup",function (e) {
+                  if(e.which==13){
+                    that.trigger("click");
+                  }
+              });
+              return this;
+           } ;
+        })($);
+
+
+        $("#searchBtn").searchContent();
+    </script>
+</body>
+</html>
