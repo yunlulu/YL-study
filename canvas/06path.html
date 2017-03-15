@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600">不支持canvas.</canvas>
+    <script type="text/javascript">
+        var canvas=document.getElementById("canvas");
+        var ctx=canvas.getContext("2d");
+        ctx.font="24px Aria";
+        ctx.strokeStyle = "blue";
+        ctx.lineWidth=1;
+        ctx.strokeText("stroke", 10, 50);
+        ctx.fillText("fill",150,50);
+        ctx.fillText("stroke&fill",300,50);
+        ctx.strokeText("stroke&fill",300,50);
+
+        // 矩形
+        ctx.beginPath();
+        ctx.lineWidth=4;
+        ctx.rect(10,100,100,100);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.rect(150,100,100,100);
+        ctx.fillStyle="#00f";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.rect(300,100,100,100);
+        ctx.stroke();
+        ctx.fill();
+
+
+        // 圆形 不闭合的
+        ctx.beginPath();
+        ctx.arc(60, 260,50,0, Math.PI/2*3,false);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(200, 260, 50, 0, Math.PI/2*3, false);
+        ctx.fill();
+
+
+        ctx.beginPath();
+        ctx.arc(350, 260, 50, 0, Math.PI/2*3, false);
+        ctx.fillStyle="#f00";
+        // ctx.lineWidth=6;
+        ctx.stroke();
+        ctx.fill();
+
+        // 圆形闭合的 Math.PI*(1/180)就为1°； Math.PI*(360/180)就为360°
+
+        ctx.lineWidth=10;
+        ctx.beginPath();
+        ctx.arc(60, 380, 50, 0, Math.PI/2*3, false);
+        ctx.closePath();
+        ctx.stroke();
+
+
+        ctx.beginPath();
+        ctx.arc(200, 380, 50, 0, Math.PI/2*3, false);
+        ctx.closePath();
+        ctx.fill();
+
+
+        ctx.beginPath();
+        ctx.arc(350, 380, 50, -0.5, Math.PI*(270/180), false);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+
+
+
+
+        
+
+
+
+
+    </script>
+</body>
+</html>

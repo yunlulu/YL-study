@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400">不支持canvas.</canvas>
+    <script type="text/javascript">
+        var canvas=document.getElementById("canvas");
+        var ctx=canvas.getContext("2d");
+        ctx.lineWidth = 12;
+        ctx.strokeStyle = "#f00";
+        ctx.fillStyle = "#00f";
+        ctx.beginPath();
+        ctx.moveTo(20, 20);
+        ctx.lineTo(100, 20);
+        ctx.lineTo(100, 200);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+
+    </script>
+</body>
+</html>

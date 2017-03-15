@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400">不支持canvas.</canvas>
+    <script type="text/javascript">
+        var canvas=document.getElementById("canvas");
+        var ctx=canvas.getContext("2d");
+        // 非零环绕原则
+        function drawTwoarc() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.arc(100,200,100, 0, Math.PI*2, true);
+            ctx.arc(100,200, 80, 0, Math.PI*2,false);
+            ctx.fill();
+            ctx.shadowColor = undefined;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            ctx.stroke();
+        }
+        function draw() {
+            ctx.save();
+            ctx.shadowColor = "#F389FB";
+            ctx.shadowOffsetX = 12;
+            ctx.shadowOffsetY = 12;
+            ctx.shadowBlur = 15;
+            drawTwoarc();
+            ctx.restore();
+        }
+        ctx.fillStyle = "#ff0";
+        ctx.strokeStyle = "#0ff";
+        draw();
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/global.css">
+</head>
+<body>
+<div id="controls">
+    线条颜色：
+    <select name="" id="selectColor">
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+        <option value="orange">orange</option>
+    </select>
+    guidewires:<input type="checkbox" name="" value="" checked="" id="guideWireCheck">
+    <input type="button" name="" value="erase all" id="eraserAllBtn">
+</div>
+    <canvas id="canvas" width="600" height="600">不支持canvas.</canvas>
+    <script type="text/javascript">
+        var selectColor=document.getElementById("selectColor");
+        var guideWireCheck=document.getElementById("guideWireCheck");
+        var eraserAllBtn=document.getElementById("eraserAllBtn");
+
+
+        var canvas=document.getElementById("canvas");
+        var ctx=canvas.getContext("2d");
+        
+
+    </script>
+</body>
+</html>
