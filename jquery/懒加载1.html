@@ -57,6 +57,12 @@
         lazyload();
     });
     window.addEventListener('scroll',throttle(lazyload,200,1000));
+
+
+var obj = {};
+obj.log = console.log;
+obj.log.call(console,this);
+
     </script>
 </body>
 </html>
