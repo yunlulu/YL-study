@@ -6,7 +6,69 @@
 </head>
 <body>
 	<script type="text/javascript">
-		
+	var arr1=["a","b","c","d","111","333","666","555"];
+	// 返回截取的
+	console.log(arr1.slice(0,2));
+	function shuffleArr(arr) {
+		for(var i=arr.length-1;i>0;i--){
+			var j=Math.floor(Math.random()*(i+1));
+			    var temp=arr[i];
+				arr[i]=arr[j];
+				arr[j]=temp;
+		}
+		return arr;
+	};
+	console.log(shuffleArr(arr1));
+	// 生成数组
+	console.log(Array(10).fill().map((_,i) => i));
+
+	// splice 方式,不优雅，来回splice
+	function shuffle2(arr) {
+		var arr2=[];
+		// var j=0;
+		for(i=arr.length-1;i>=0;i--){
+			var rad=Math.floor(Math.random()*(i+1));
+			arr2.push(arr[rad]);
+			arr.splice(rad, 1);
+		}
+		return arr2;
+	}
+	console.log(shuffle2(arr1));
+
+
+	// 多人抽奖，抽奖多次,
+	function shuffle3(amount){
+    this.cards = Array(amount).fill().map((_,i)=>i+1); 
+}
+shuffle3.prototype.draw = function(n = 1){
+    let amount = this.cards.length, cards = this.cards;
+
+    for(let i = amount - 1, stop = amount - n - 1; i > stop; i--){
+        let rand = Math.floor((i + 1) * Math.random());
+        [cards[rand], cards[i]] =  [cards[i], cards[rand]];
+    }
+
+    let ret = cards.slice(-n);    
+    cards.length = amount - n;
+
+    return ret;
+}
+
+var shuffle3 = new shuffle3(62);
+console.log(shuffle3.draw(10), shuffle3.draw(5)); //一次取 5 个，取 2 次
+
+
+
+
+
+
+		// eval解析变量
+		var a1=1;
+		var a2=22;
+		var a3=333;
+		for(i=1;i<=3;i++){
+			console.log(eval("a"+i));
+		}
 	</script>
 </body>
 </html>
