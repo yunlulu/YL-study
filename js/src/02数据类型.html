@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var a1=10;
+		var a2=10.5;
+		var a3=NaN;
+		var a4=1/0;
+		console.log(a4);  //正无穷
+		// 8进制 16进制
+		var a5=071;
+		// 0*8的平方+7*8的一次方+1*8的0次方
+		console.log(a5);
+// 注意：不要做小数相加的判断，会出现精度错误
+		var a6=0.1;
+		var a7=0.2;
+		if(a6+a7==0.3){
+			console.log(true);
+
+		}
+		else{
+			console.log(a6+a7);
+		}
+		var a8="111.111qq11qqeeee";
+		var a9="071qq11qqeeee";
+// 以数值开头的才能转换为数值型 
+		console.log(parseFloat(a8));
+		console.log(parseInt(a8));
+// 如果是0则忽略掉,不存在进制之说
+		console.log(parseInt(a9));
+
+
+		// undefined,表示变量被声明没有被赋值
+		var d;
+		console.log(d);
+		//null
+		var obj=null;
+
+		console.log(obj);
+// 注意：js根据赋值决定数据类型
+// 引用类型：数组，对象，日期，正则
+		// typeof 判断数据类型
+		console.log(typeof obj);  //object
+		var arr=[];
+		console.log(typeof arr);  //object
+		var date=new Date();
+		console.log(typeof date);  //object
+		console.log(typeof undefined);  //undefined
+		console.log(typeof null);  //object,表示空对象的引用，引用类型的空值表示
+		var reg=new RegExp();
+		console.log(typeof reg);  //object
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- defer 可以让 该文件 推迟执行 -->
+	<!-- <script  type="text/javascript" src="js/01.js" defer="defer"></script> -->
+	<script  type="text/javascript">
+	// 如果该 代码里面有 window.load  则上面的defer失效 
+	// window.onload=function () {
+			// console.log(222);
+		
+	// }
+
+	// 变量
+	var a=10;
+	// 全局：在方法外部生成的变量和在方法内部没有加var的都是全局变量
+	function test1() {
+		var a=100;
+		    a=100000;
+		console.log(a);
+	}
+	test1();
+	console.log(a);
+
+
+	</script>
+</body>
+</html>
