@@ -6,7 +6,33 @@
 </head>
 <body>
 	<script type="text/javascript">
-		
+		// 判断是否相等
+		var a1=10;
+		var a2=10;
+		if(a1==a2){
+			console.log(true);
+		}
+		// 类型自动转换
+		// 对于布尔类型和数值类型：1:true 0:false
+		/*
+		== 可以经过自动转换，比较的是值
+		=== 可以经过自动转换，还会比较数据类型
+		*/
+		var b1=1;
+		var b2=true;
+		if(b1==b2){
+			console.log(true);
+		}
+
+		// 循环
+		for(var i=0;i<5;i++){
+			console.log(i);
+		}
+/*
+		for(;;){
+			console.log(111);
+		}*/
+
 	</script>
 </body>
 </html>
