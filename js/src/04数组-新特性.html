@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr1=[-1,1,21,3,4,5,4,6,7];
+		// indexof(value) 返回value的索引位置
+		console.log(arr1.indexOf(4));
+		// 2个参数：第一个表示查找的起始位置，第二个表示要找的项
+		// 如果找到返回查找该值的索引 如果找不到返回-1，
+		console.log(arr1.indexOf(4,4));
+		console.log(arr1.indexOf(4,8));
+
+		// 5个迭代方法
+		// every,filter,forEach,map,some
+		// every:如果有一个是false ,则返回false,如果全为true 则为true
+		var result1=arr1.every(function (index,val) {
+			return val>-1;
+		});
+		console.log(result1);
+
+		// filter
+		var result2=arr1.filter(function (index,val) {
+			return val>3;
+		});
+		console.log(result2);
+		// forEach
+		arr1.forEach(function (val,index) {
+			console.log(val);
+		});
+
+		// map
+		var result4=arr1.map(function (item,index) {
+			return item*10;
+		});
+		console.log(result4);
+		var result5=arr1.some(function (item,index) {
+			return item>100;
+		})
+		console.log(result5);
+
+		// reduce reduceRight
+		var result6=arr1.reduce(function (prev,cur,index,array) {
+			return prev+cur;
+		});
+		console.log(result6);
+	</script>
+</body>
+</html>
