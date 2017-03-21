@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// fun  参数
+		// 形参列表
+		function test1(a,b) {
+			return a+b;
+		}
+		console.log(test1(12,101));
+		// 形参的个数
+		function test2(a,b,c,d,e) {
+			// 获取形参个数
+			console.log(test2.length);
+			// 获取实参个数：实际传入的参数 
+			console.log(arguments.length);
+			console.log(arguments);
+			var n=0;
+			if(arguments.callee.length==arguments.length){
+			// if(test2.length==arguments.length){
+				for (var i = 0; i < arguments.length; i++) {
+					n+=arguments[i];
+				}
+			console.log(n);
+			}
+			else{
+				console.log("传参个数有误");	
+			}
+			
+		}
+		test2(1,2,3,4,5);
+
+	</script>
+</body>
+</html>

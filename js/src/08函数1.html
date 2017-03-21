@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/* 参数列表相当于函数的入口，return相当于函数的出口
+
+		*/
+		function test1(a,b) {
+			console.log(111);
+
+			return (a+b);
+
+		}
+		console.log(test1(10,20));
+		// 函数也是一种数据类型，类型是function,
+		console.log(typeof test1);
+
+		function test2(aa) {
+			aa();
+		}
+		// 也可以作为一个参数传递
+		function test2in() {
+			console.log("test2in");
+		}
+
+		test2(test2in);
+		// 也可传递匿名函数
+		test2(function () {
+			console.log("ajajajajaja");
+		});
+
+		// 函数可以嵌套函数,少写，没有实际意义
+		function test3() {
+			function test3in() {
+				console.log("test3");
+			}
+			test3in();
+		}
+		test3();
+
+	</script>
+</body>
+</html>

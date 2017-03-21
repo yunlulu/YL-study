@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	// 3种定义函数
+		// 优先解析：语句式
+		test1();  //写在前后无所谓，因为优先解析
+		// 相当于window下的全局变量，优先设定好了的
+		function test1() {
+			console.log("test1");
+		};
+		// 顺序解析：函数直接量形式
+		// 这个也是全局变量，声明了但是没有赋值 只有走到这里才赋值
+		console.log(test2); //undefined
+		var test2=function () {
+			console.log("test2");
+		};
+		test2();
+
+		var k=1;
+		function t1() {
+			var k=2;
+			// 是局部变量
+			// function test9() {return k;}  
+		/*	var test9=function () {
+				return k;
+			}*/
+			
+			// 具有顶级作用域，只找全局里面的 变量
+			var test9=new Function('return k;');
+			console.log(test9());
+		}
+		t1();
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
