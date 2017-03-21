@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr=[10,100,70,10,11,1,70,2,3,4,5,3,70];
+		var obj=new Object();
+		// js对象中，属性是永远不重复的
+		/*
+			1.把数组转为一个对象
+		*/
+		var obj1={};
+		for(i=0;i<arr.length;i++){
+			obj1[arr[i]]=arr[i];
+		}
+		console.log(obj1);
+		var newArr=[];
+		for(key in obj1){
+			if(obj1.hasOwnProperty(key)){
+				newArr.push(parseInt(key));
+			}
+		}
+		console.log(newArr);
+
+
+	</script>
+</body>
+</html>

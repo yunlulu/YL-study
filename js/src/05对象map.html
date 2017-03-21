@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">	
+	function Map() {
+		var obj={};
+		this.put=function (key,value) {
+			obj[key]=value;
+		};
+		// 获取个数
+		this.size=function () {
+			var count=0;
+			for(key in obj){
+				count++;
+			}
+			return count;
+		};
+		this.get=function (keys) {
+			/*for(key in obj){
+				if(key==keys){
+					console.log(obj[key]);
+				}
+			}*/
+			// 可以等于0 或者false 
+			if(obj[keys] || obj[keys]==false || obj[keys]==0){
+			// if(obj[keys]!==""){
+				return obj[keys];
+			}
+			else{
+				return null;
+			}
+		};
+		this.remove=function (key) {
+			delete obj[key];	
+		};
+		this.eachMap=function (fn) {
+			for(var key in obj){
+				fn(key,obj[key]);
+			}
+		};
+
+	}
+	var m =new Map();
+	m.put("01","abc");
+	m.put("02",0);
+	m.put("03",false);
+	m.put("04",new Date());
+	m.put("10",new Date()+"haahha");
+	console.log(m.size());
+	console.log(m.get("03"));
+	m.remove("04");
+	console.log(m.get("04"));
+	m.eachMap(function (key,value) {
+		console.log(key+" : "+value);
+	});
+
+
+
+	// var obj1={name:"yunlulu"};
+	// 是函数
+	// console.log(obj1.constructor);
+var arr =[];
+        for(var i =0 ; i < 10; i++ ){
+            console.log( arr[arr.length] =' 这是数组的第'+ arr.length + '项');
+   }
+	</script>
+</body>
+</html>

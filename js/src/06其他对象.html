@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 单体对象 Global(不存在)
+		var url="http://www.baidu.com cn";
+		console.log(encodeURI(url));
+		// 最常用 任何不标准的文字都会进行编码
+		console.log(encodeURIComponent(url));
+
+		console.log(decodeURI(url));
+		console.log(decodeURIComponent(url));
+
+
+		// eval() 无形的js解析器,会把一段文本变为变量
+		var str1="var a=10;var b=20;";
+		eval(str1);
+		console.log(a+b);
+		// 数组
+		var arr2="[10,20,30]";
+		var d1=eval(arr2);
+		console.log(d1[1]);
+		// 对象
+		var obj2='obj22={name:"yunlu",age:23,run:function () {return this.name+" goforit"}}';
+		var objcc=eval('('+obj2+')');
+		console.log(obj22.run());
+
+
+
+
+		// 数值的一些操作
+		var num1=parseInt("20");
+		var num2=parseFloat("20.55");
+		console.log(num1);
+		console.log(num2);
+		var str1='尚学堂';
+		var str2=escape(str1);
+		console.log(str2);
+		console.log(unescape(str2));
+		var num1="ahahh";
+		var num2="222";
+		// 是数值 false ;非数值 返回true
+		// 注意 会做自动转换，自身不等于自身
+		console.log(isNaN(num1));
+		console.log(isNaN(num2));
+		if(NaN==NaN){
+			console.log("相等");
+		}
+		else{
+			console.log("不等");
+		}
+	</script>
+</body>
+</html>

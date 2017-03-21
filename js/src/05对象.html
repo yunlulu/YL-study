@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 对象是所有实例的基础
+		// var obj1=new Object();
+		// 实例化一个对象
+		var obj1={};
+		// 给对象设置或者修改属性
+		obj1.name="Yun Lulu";
+		obj1.age=20;
+		obj1.sex="girl";
+		// 也可以用中括号，但是属性一定要加引号
+		obj1["birth"]="19921119";
+		obj1.run=function () {
+			console.log(this.name+" is running");
+		}
+		// 访问对象的属性
+		console.log(obj1.name);
+		// 访问对象的方法
+		obj1.run();
+		// 删除对象的属性
+		// delete obj1.sex;
+		// console.log(obj1.sex);
+		// delete obj1.run;
+		// obj1.run();
+		// console.log(obj1);
+
+		// 遍历对象
+		for(var key in obj1){
+			console.log(key+":"+obj1[key]);
+		}
+		// object对象的实例方法
+		//constructor 保存对象的创建函数
+		console.log(obj1.constructor); //用的是Object模板 function Object() { [native code] }
+		var arr1=[];
+		console.log(arr1.constructor); //用的是array模板 function Array() { [native code] }
+		// hasOwnProperty:检测给定属性在对象自身中（而不是原型中）是否存在
+		console.log(obj1.hasOwnProperty("sex"));
+		// 检测原型
+		// console.log(isPrototypeOf(obj1));
+		// 检测是否能被枚举
+		console.log(obj1.propertyIsEnumerable("name"));
+		// 返回本身
+		console.log(obj1.valueOf());
+		// 返回当前对象对应的字符串形式
+		console.log(obj1.toString()); //[object Object]
+
+
+
+	</script>
+</body>
+</html>
