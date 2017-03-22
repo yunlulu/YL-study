@@ -63,6 +63,9 @@
 		var arr7=["haahha222","dddd22"];
 		var add=arr5.concat(arr6,arr7);
 		console.log(add);
+		// 这种比较优化：只能合并两个
+		var add2=Array.prototype.push.apply(arr5,arr6);
+		console.log(arr5);
 
 		var arr8=[10,1,20,2,100,99,10000];
 		// sort 操作数组本身
@@ -85,7 +88,9 @@
 		//反转数组 操作数组本身
 		arr8.reverse();
 		console.log(arr8);
+ 		
 
+ 		document.write("hi + \u000D+hihihi");
 
 
 

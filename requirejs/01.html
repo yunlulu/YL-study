@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+   <script type="text/javascript" src="js/require.js"></script>
+ <script type="text/javascript">
+ // require中的依赖是一个数组，即使只有一个依赖，你也必须使用数组来定义)，requir API的第二个参数是callback，一个function，是用来处理加载完毕后的逻辑，
+    require(["common/a01"],function () {
+        console.log("finished");
+    });
+       
+    </script>
+   
+</head>
+<body>
+<p>require会定义三个变量：define,require,requirejs，<br>
+其中require === requirejs，<br>一般使用require更简短<br>
+define 从名字就可以看出这个api是用来定义一个模块<br>
+require 加载依赖模块，并执行加载完后的回调函数</p>
+</body>
+</html>
