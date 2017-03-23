@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>requireJS</title>
+<style type="text/css">
+*{font-family:"微软雅黑","microsoft Yahei",verdana;}
+.text01{line-height:20px;font-size:13px;font-family:verdana;}
+pre{margin:0px;padding:2px 0px;font-size:13px;font-family:verdana;}
+.div01{border:1px solid red;text-align:left;padding:5px;
+}
+</style>
+</head>
+
+<body>
+<h4>requireJS 例子 example 01</h4>
+<hr size="1">
+<div class="text01">
+1,require会定义三个变量：<b>define</b>,<b>require</b>,<b>requirejs</b>，其中 <b>require</b> === <b>requirejs</b>，一般使用require更简短,页面加载同时不阻塞渲染;
+<br>2,<b>define</b>(function(){...}); 从名字就可以看出这个api是用来定义一个模块;
+<br>3,<b>require</b>(['aModule','bModule'],function(a,b){...}) 加载依赖模块，并执行加载完后的回调函数;
+<br>4,在使用requirejs时，加载模块时<b>不用写.js后缀</b>，当然也是不能写后缀;
+<br>5,<b>require.config</b>({...}) 是用来配置模块加载位置和设置基本路径等;
+<br>6,加载requirejs脚本的script标签加入了<b>data-main</b>属性，这属性指定在加载完reuqire.js后把require.config的配置加入到data-main后可使每一个页面都使用这个配置，然后页面中就可直接使用require来加载所有的短模块名;例如： < script data-main="js/main" src="js/require.js">< /script>
+<br>7,当script标签指定data-main属性时，require会<b>默认的将data-main指定的js为根路径</b>;
+<br>8,require加载的模块一般都需要符合AMD规范,即使用define来申明模块;
+<br>9,<b>加载非AMD规范的js</b>，这时候就需要用到另一个功能：<b>shim</b>; 例如：
+<pre>
+require.config({
+	paths:{
+    	"underscore":"http://www.xxx.com/xpath/xFile.js"
+    }
+    ,shim: {
+        "underscore" : {
+            exports : "_";
+        }
+    }
+});
+</pre>
+</div>
+<hr size="1">
+
+
+<div id="loadMsgCon" class="div01"></div>
+<script data-main="scripts/main" src="scripts/require_v2.1.11.js"></script>
+</body>
+</html>
