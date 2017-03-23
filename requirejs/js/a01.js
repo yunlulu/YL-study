@@ -1,6 +1,7 @@
 define(function () {
     function fun1() {
-        console.log("a01 works");
+        console.log("a011 works");
+        console.log($(window).height());
     }
     fun1();
 });

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// this是指在运行时期基于执行环境所绑定的
+		// this总是指向调用者,谁调用了这个函数，this指向谁；
+		var a1=10;
+		function test1() {
+			this.a1=200;
+
+		}
+		test1();  //window.test() 默认this是指向window
+		// test1函数默认在window ，所以 a1 指向window
+
+		console.log(window.a1);
+
+
+		// call apply：绑定一些函数，用于传递参数，调用
+		function sum(x,y) {
+			return x+y;
+		}
+		// 传的是字符
+		function call1(num1,num2) {
+			// 让自身在sum地盘上做事
+			return sum.call(this,num1,num2);	
+
+		}
+		// 传的是数组
+		function apply1(num1,num2) {
+			return sum.apply(this,[num1,num2]);	
+		}
+		console.log(call1(10,20));
+		console.log(apply1(10,20));
+
+
+
+		// 扩充作用域
+		window.color="red";
+		var obj={
+			color:"blue"
+		}
+
+		function showColor() {
+			console.log(this.color);
+		}
+		// 显示window的color
+		showColor.call(this);
+		// 显示obj的color
+		showColor.call(obj);
+
+		// call实现
+		// fun 方法
+		function test2(a,b) {
+			return a+b;
+		}
+		// 自定义对象
+		function Obj(x,y) {
+			this.x=x;
+			this.y=y;
+			return x*y;
+		}
+		var O=new Obj(10,20);
+		console.log(test2.call(O,10,20));
+
+
+
+
+
+	</script>
+</body>
+</html>

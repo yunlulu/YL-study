@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// window:执行环境
+		var color1="blue";
+		// 每一个函数都有一个执行环境（都有一个variable obj）
+		function changeColor() {
+			var color2="red";
+			// 又产生一个 执行环境
+			function swapColor() {
+				var color3=color2;
+				color2=color1;
+				color1=color3;
+			}
+			swapColor();
+		}
+		// 第一个作用环境，作用域是window
+		changeColor();
+
+		// 环境变量可以一层一层的向上查找，可以访问它的同级、上一级或者上几级环境（变量和函数）；父级不可以查找孩子的，孩子可以继承父亲的变量
+	</script>
+</body>
+</html>
