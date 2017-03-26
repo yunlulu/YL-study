@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		// 闭包是一个运行期、动态的概念
+		var name="xiaoA";
+		var obj={
+			name:"xiaoB",
+			getName:function () {
+				// 改变作用域
+				var that=this;
+				return function () {
+					return that.name;
+					// return this.name;
+				}
+			}
+		};
+		// xiaoA 
+		console.log(obj.getName()());
+		// 相当于
+		// k属于全局变量
+		var k=obj.getName();
+		console.log(k());  
+
+
+		// 闭包，一个函数，封闭性：相当于一个包装袋，起到一个保护变量的作用，
+		// 可以访问另外一个函数作用域中的变量
+		// 小A可以花小B兜里的钱
+		// 1级别
+		function f(x) {
+			//2级别作用域
+			var temp=x;
+				//3级作用域  可以引用 2级作用域的变量 
+			return function (x) {
+				temp+=x;
+				console.log(temp);
+			}
+		}
+		// f(50)(5);
+		var a=f(50);
+		console.log(a);
+		// 作用域链会一层一层的往上找，如果不执行temp被回收，但是在全局里a又被定义了两次，
+		// temp一直在内存中引用，所以temp不会被回收，直到全局作用域找不到temp了才会被回收。
+		a(5);
+		a(10);
+		a(20);
+
+	</script>
+</body>
+</html>

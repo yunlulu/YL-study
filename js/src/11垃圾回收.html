@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+	// 标记法 引用计数法（不太常用）
+		function test1() {
+			var a=10;
+			var b=10;
+
+		}
+		// 执行完毕后，a,b又被标记了一次，没有被使用
+		test1();
+		// 块级作用域 是一个执行环境
+		// （）表示执行
+		function test2() {
+			for(var i=1;i<=5;i++){
+				console.log(i);
+			}
+				console.log(i);
+
+		}
+
+		test2();
+
+		function test3() {
+			// 第一个小括号表示单独的作用域，第二个表示 执行
+			(function () {
+				for(var i=1;i<=5;i++){
+				console.log(i);
+			}
+
+				console.log(i);
+			})();
+
+			
+		}
+		test3();
+		// 自动执行
+		(function () {
+			console.log("work!");
+		})();
+
+	</script>
+</body>
+</html>
