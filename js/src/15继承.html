@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// js实现继承，采用原型链的方式继承
+		// 构造函数 原型对象 实例对象
+		// 原型对象.isPrototypeOf(实例对象)，判断谁的原型链中是否包含了xx实例的原型
+		// 构造函数 实例对象==类和实例
+		function Sup(name) {
+			this.name=name;
+		}
+		Sup.prototype={
+			constructor:Sup,
+			sayName:function () {
+				console.log(this.name);
+			}
+		};
+		function Sub(age) {
+			this.age=age;
+		}
+
+		// 如果我们让子类的原型对象（prototype）等于父类的实例
+		Sub.prototype=new Sup("girl1111");
+		// 获取了父级的模板
+		console.log(Sub.prototype.constructor);
+
+
+		// 
+		var sub1=new Sub();
+		sub1.sayName();
+		console.log(sub1);
+		console.log(Sub.prototype.isPrototypeOf(sub1));
+
+
+
+	</script>
+</body>
+</html>

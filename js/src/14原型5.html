@@ -58,12 +58,37 @@
 			this.job=job;
 			// 动态原型方法
 			if(typeof this.sayName!="function"){
-				Man.prototype.sayName=function(){
+				Boy.prototype.sayName=function(){
 					console.log(this.name);
 				}
 			}
 		};
-		// 稳妥构造函数式
+		var boy1=new Boy("boy111",23,['111',"222"],"web");
+		boy1.sayName();
+
+		// 稳妥构造函数式:durable object(稳妥对象)，非常安全的环境中
+		// 没有公共属性，不能使用this对象
+		function Girl(name,age,job) {
+				//创建一个要返回的对象
+				var obj={};
+				var name =name;
+				// 可以定义一下私有的变量和函数 private
+				var sex="男";
+				var saySex=function () {
+					
+				}
+				// 添加一个对外的方法,只能通过提供的接口(sayName)访问内部属性
+				obj.sayName=function () {
+					console.log(name);
+				}
+				return obj;
+
+		}
+		var girl1=new Girl("girl1");
+		girl1.sayName();
+
+
+
 
 
 
