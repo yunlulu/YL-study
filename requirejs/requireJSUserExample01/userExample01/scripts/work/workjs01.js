@@ -9,7 +9,7 @@ define(['jquery'],function($){
 	var loadTip = function(tipMsg, refConId){
 		var tipMsg = tipMsg || "module is loaded finish.";
 		if(undefined === refConId || null === refConId || "" === refConId+""){
-			alert(tipMsg);
+			console.log(tipMsg);
 		}else{
 			$('#' + (refConId+"")).html(tipMsg);
 		}

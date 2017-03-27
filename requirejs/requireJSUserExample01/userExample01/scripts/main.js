@@ -12,7 +12,7 @@ require.config({
 		"jquery":["http://libs.baidu.com/jquery/2.0.3/jquery", "lib/jquery/jquery-1.9.1.min"]
 		,"workjs01":"work/workjs01" 
 		,"workjs02":"work/workjs02"
-		,"underscore":""
+		,"underscore":"http://www.css88.com/doc/underscore/underscore-min"
 	}
 	
 	//include NOT AMD specification js frame code
@@ -27,8 +27,11 @@ require.config({
 
 //2，about load each js code basing on different dependency
 //按不同先后的依赖关系加载各个JS文件
-require(["jquery","workjs01"],function($,w1){
-	require(['workjs02']);
+require(["jquery","workjs01","underscore"],function($,w1,_){
+    console.log(w1.version);
+    require(['workjs02']);
+    w1.loadTip("hahahhaah","h2");
+    _.map({one: 1, two: 2, three: 3}, function(num, key){ console.log(num * 3); });
 });
 
 /*
