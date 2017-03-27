@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script type="text/javascript">
+		var obj={};
+		obj.name="zhangsan";
+		obj.age=23;
+		obj.sayName=function () {
+			console.log("我是"+this.name);
+		}
+		// 类的概念
+		// 工厂模型
+		function creatPerson(name,age) {
+			var obj={};
+			obj.name=name;
+			obj.age=age;
+			obj.sayName=function () {
+				return ("hello"+this.name);
+			}
+			return obj;
+		}
+		var p1=creatPerson("zhangsan",23);
+		var p2=creatPerson("lisi",22);
+		console.log(p1.name);
+		console.log(p1.sayName());
+
+
+		// 构造函数式,第一个字符大写
+		// 构造一个对象，new关键字，传递参数，执行模板代码，返回对象
+		function Person(name,sex,age) {
+			this.name=name;
+			this.sex=sex;
+			this.age=age;
+			this.sayName=function () {
+				return ("hi "+this.name);
+			}
+		}
+
+		var p3=new Person("haha1","男",23);
+		var p4=new Person("haha2","女",24);
+		console.log(p3.sayName());
+		console.log(p3==p4);
+		// 看对象的构造器属于谁
+		console.log(p3.constructor==Person);
+		console.log(p4.constructor==Person);
+
+		// 这种更好 ,判断对象属不属于某个类的实例
+		console.log(p3 instanceof Person);
+		console.log(p4 instanceof Person);
+		// 实例都属于Object
+		console.log(p3 instanceof Object);
+
+		// 实例化对象的方式
+		// 1.当做构造函数去使用
+		// 2.作为普通的函数去使用（不建议）
+		// 3.在另一个对象的作用域中调用。call apply
+			var o=new Object();
+			// 让o在Person的地盘上做事,传入person里面需要的值
+			Person.call(o,"lalalla","ddfd","ddfddf" );
+			console.log(o.name);
+
+
+
+	</script>
+</body>
+</html>

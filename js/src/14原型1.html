@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 原型 prototype
+
+		// 构造函数方式
+		function Person1(name,age) {
+			this.name=name;
+			this.age=age;
+			this.sayName=function () {
+				return ("hello "+this.name);
+			}
+		}
+			//缺点：每实例化一个对象，就会创建一次，效率很低
+		var p1=new Person1("yunlulu",23);
+		var p2=new Person1("yll",22);
+		console.log(p1.sayName==p2.sayName);
+		console.log(p1.sayName);
+
+
+		// prototype创建每一个函数都有一个prototype属性，这个属性其实是一个指针，而这个指针指向一个对象
+		// 这个对象的用途就是将特定的属性和方法包含在内，起到一个所有实例共享的作用
+		function Person2(name,age) {
+			this.sex="nan";
+		};
+		var obj1=Person2.prototype;
+		console.log(obj1.constructor);
+		obj1.name=this.name;
+		obj1.age=this.age;
+		obj1.sayName=function () {
+			return ("hi "+this.name);
+		}
+		var p3=new Person2("yl1",23);
+		var p4=new Person2("yl2",24);
+		console.log(p3.name);
+		console.log(p4.name);
+		console.log(p3.sayName==p4.sayName);
+		console.log(p3);
+		console.log(obj1);
+		console.log(obj1.constructor);
+
+		// 构造函数.prototype=原型对象
+		// 原型对象.constructor=构造函数
+		// 传入一个实例对象，判断是否为该对象的原型
+		console.log(obj1.isPrototypeOf(p3));
+		var obj2=new Object();
+		console.log(obj2.isPrototypeOf(p3)); //false
+
+		console.log(obj1.hasOwnProperty("name"));
+		// 判断一个实例的对象 是否是 自身属性
+		function ifObjownPropery(obj,name) {
+			return !obj1.hasOwnProperty(name) && (name in obj);
+		}
+		console.log(ifObjownPropery(p3, "name"));
+		console.log(ifObjownPropery(p3, "sex"));
+
+
+
+
+	</script>
+</body>
+</html>

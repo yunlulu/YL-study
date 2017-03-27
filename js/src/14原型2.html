@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Person1() {
+			
+		};
+		// prototype 相当于css里面的class
+		Person1.prototype.name="yl1";
+		Person1.prototype.age=23;
+		Person1.prototype.sayName=function () {
+			return ("hi "+this.name+"!");
+		}
+		var p1=new Person1();
+		console.log(p1.name);   
+		// obj.getPrototypeOf()==Person1.prototype 根据实例对象获得原型对象
+		console.log(Object.getPrototypeOf(p1));
+		// 当代码读取一个对象的属性的时候，会进行搜索，搜索实例对象里name的属性-原型对象里的name属性-undefined
+		// var p2=new Person1();
+		p1.name="hahahha";   //想当于 css 里面的style
+		console.log(p1.name);
+
+		// 新特性
+		var p2=new Person1();
+		p2.name="yunlulu";
+		p2.age=23;
+			// 枚举对象key,返回数组
+		var Objattr=Object.keys(p2);
+		console.log(Objattr);
+		console.log(Object.keys(Person1.prototype));
+			//  constructor属性不能被for in枚举
+		// 枚举所有 属性 包括 construtor
+		console.log(Object.getOwnPropertyNames(Person1.prototype));
+
+
+
+
+	</script>
+</body>
+</html>
