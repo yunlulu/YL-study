@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 简单原型
+		function Person() {
+			
+		}
+		// 简单原型的动态性顺序性：把原型写好后，最后创建实例对象，否则会报错
+		Person.prototype={
+			name:"yl",
+			age:23,
+			sayName:function () {
+				return ("hi "+yl);
+			}
+		};
+		var p1=new Person();
+		console.log(p1.name);
+		// 指向Object  因为 创建的是匿名对象，所以指向Object
+		console.log(Person.prototype.constructor);
+
+		// 如何指向Person? 1.重设构造器对象 2.设置什么属性 3.一些配置
+		Object.defineProperty(Person.prototype, 'constructor',{
+			enumerable:false, //是否可枚举
+			value:Person    //指定 指向
+		} );
+		console.log(p1);
+		console.log(Person.prototype.constructor);
+
+	</script>
+</body>
+</html>
