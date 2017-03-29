@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    /* window对象有个name属性，该属性有个特征：即在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的，并不会因新页面的载入而进行重置*/
+        window.name="我是1页面的val";
+        setTimeout(function () {
+            // window.location='http://www.baidu.com';
+            window.location='跨域1-name2.html';
+        },3000);
+    </script>
+</body>
+</html>

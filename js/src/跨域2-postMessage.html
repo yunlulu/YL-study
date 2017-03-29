@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function onLoad() {
+            var iframe=document.getElementById("iframe");
+            var win=iframe.contentWindow;
+            win.postMessage("lalllalaalla", '*');
+            
+        }
+     
+    </script>
+    <iframe id="iframe" onload="onLoad()" src="http://localhost:1000/预加载loading/loading1/index.html"></iframe>
+</body>
+</html>
