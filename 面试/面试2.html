@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css" media="screen">
+        
+    </style>
+</head>
+<body>
+    <div>
+        <h3>原生js发送ajax请求</h3>
+        <pre>
+        //创建http请求对象
+          var http=new XMLHttpRequest();  
+          if(http!=null){
+          // 发送请求
+            http.open("post","url",是否异步);
+            http.send("***");
+            // 响应
+            http.onreadystatechange=function(){
+                if(http.status==200 && http.readyState==4){
+                    console.log(http.responseText);
+                }
+            }
+          }
+        </pre>
+    </div>
+    <div>
+        <h3>用原生js实现异步</h3>
+        <p>iframe,script,XMLHttpRequest,comet(服务器端发起)</p>
+        <pre>
+            
+        </pre>
+    </div>
+
+    <div>
+        <h3>js数组去重</h3>
+        <p>
+            1.indexof
+            2.利用对象的属性不重复的特性也可以。
+        </p>
+    </div>
+    <div>
+        <h3>实现轮播的步骤</h3>
+    </div>
+    <div>
+        <h3>json的优点</h3>
+        <p>
+            1.纯文本轻量级。 <br>
+            2.js原生支持，后台很多语言都支持。 <br>
+            3.可读性比较强。 <br>
+            4.容易编写和解析。
+        </p>
+    </div>
+    <div>
+        <h3></h3>
+    </div>
+    
+</body>
+</html>

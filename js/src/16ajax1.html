@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<p>
+    1.ajax可以在用户不刷新页面的情况下 更新数据
+</p>
+<script type="text/javascript">
+    // 创建http请求对象
+    var http=new XMLHttpRequest();
+    if(http!=null){
+        // 发送请求
+        http.open("get","js/01.txt",true);
+        http.send(null);
+
+        // post
+        //xmlhttp.open("POST","/try/ajax/demo_post2.php",true);
+        // 设置http头
+        //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        //xmlhttp.send("fname=Henry&lname=Ford");
+        // 响应
+        http.onreadystatechange=function () {
+            // readyState 代表当前的http对象处于什么状态：未初始化 准备 已经 正在 完成
+            // status 代表http状态码:1.正在处理 2.完成 3.重定向 4.客户端错误 5.服务器错误
+            if(http.readyState===4 && http.status==200){
+                    console.log(http.responseText);
+            }
+        }
+    }
+
+</script>
+
+</body>
+</html>

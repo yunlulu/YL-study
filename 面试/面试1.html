@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		pre{background-color: #eee;padding: 10px;border: 1px solid #ccc;white-space: pre-wrap;}
+	</style>
+</head>
+<body>
+	<div>
+	<h3>1.nodejs是什么规范的？</h3>
+	<p>答案：cmd. </p>
+
+	</div>
+	<div>
+		
+	<h3>2.改变this指向有几种方式？  </h3>
+	<pre>
+第一种方式：使用apply()方法： 
+function sum(x, y) {
+ alert(this); return x + y;//这里的this指的是callS对象方法
+}
+function callS() {
+callS.callSum1(1, 2);
+}
+callS.callSum1 = function (x, y) {
+ alert(this);//这里的this是callS方法
+var s = sum.apply(this, arguments);
+return s;
+}
+ callS();
+
+第二种放方法：使用call()方法： 
+window.color="red";
+var o ={color:"blue"};
+function sayColor(a,b){alert(this.color);}
+sayColor();//red
+sayColor.call(this,1,2);//red
+sayColor.call(window,1,2);//red
+sayColor.call(o,1,2);//blue  
+
+l在使用call()方法时，必须明确地传入每一个参数。结果和apply一样。
+其实apply和call真正的强大用途在于，能够扩充函数赖以运作的作用域：
+
+这样扩充的最大好处，就是对象不需要与方法有任何耦合关系。
+
+
+
+第三种方法：使用new关键字：
+function Person(name,age){
+  this.name=name;
+  this.age=age;  this.sayName=function(){alert(this.name);};
+}
+var p1 = new Person("james",27);
+var p2 = new Person("coook",24);
+p1.sayName(); p2.sayName();
+lnew关键字：
+	</pre>
+	</div>
+	<div>
+		
+	
+<div>
+	<h3>3.简述用原型实现继承？ </h3>
+	<pre>
+	
+		// 父亲
+		function Foo() {
+			this.age=23;
+		}
+		// 孩子
+		function Bar() {
+			
+		}
+		Bar.prototype=new Foo();
+
+		var child1=new Bar();
+	</pre>
+</div>
+<h3>4.实现继承有几种方式？(call，apply方式)  </h3>
+	<pre>
+function Parent(age){
+this.name=['mike','jack','smith'];
+this.age=age;
+}
+function Child(age){
+Parent.call(this,age);//把this指向Parent,同时还可以传递参数
+}
+var test=new Child(21);
+console.log(test.age);//21
+console.log(test.name);
+test.name.push('bill');
+console.log(test.name);//mike,jack,smith,bill
+	</pre>
+
+	</div>
+
+
+
+
+	<div>
+	<h3>5.什么情况是跨域？如何实现跨域？有几种方式？ </h3>
+	<p>
+除了协议，域名，和机构类型名一样和 由这些部分组成加子文件夹的 除外的 都是 跨域。 
+<br>
+解决跨域1(php)： <br>
+<pre>
+在被请求的Response header中加入
+// 指定允许其他域名访问  
+header('Access-Control-Allow-Origin:*');  
+// 响应类型  
+header('Access-Control-Allow-Methods:POST');  
+// 响应头设置  
+header('Access-Control-Allow-Headers:x-requested-with,content-type');  
+</pre>
+<br>
+<pre>
+	跨域方案
+
+　　共有几种解决方案：
+
+　　（1）JSONP
+　　（2）动态创建script
+　　（3）window.name + iframe
+　　（4）window.postMessage
+　　（5）CORS
+　　（6）nginx代理
+
+　　最常用：JSONP
+function handleResponse(response){
+    console.log(&#x27;The responsed data is: &#x27;+response.data);
+}
+var script = document.createElement(&#x27;script&#x27;);
+script.src = &#x27;http://www.baidu.com/json/?callback=handleResponse&#x27;;
+document.body.insertBefore(script, document.body.firstChild);
+　
+</pre>
+</p>
+	</div>
+
+	<div>
+	<h3>6.对元素绑定事件有几种方式？ 有什么区别？</h3>
+    <p>
+    <pre>
+       bind()-------------------------版本号小于3.0（在Jquery3.0中已经移除，相应unbind()也移除）
+       live()--------------------------版本号小于1.7（在Jquery1.7中已经移除，相应die()也移除）
+       delegate()-------------------版本号小于1.7（在Jquery1.7中已经移除）
+       on()---------------------------版本号大于1.7（在Jquery1.7中添加，相应off()也添加）
+      除了上述方法如果你想绑定一次的话还可以用one()方法；
+      trigger()也有绑定事件的效果。
+		
+    </pre>
+    
+    </p>
+	</div>
+
+	<div>
+	<h3>7.简述调整ie7+以上的兼容，遇到的问题。</h3>
+	 <P>
+		响应式：respond.js;
+	 </P>
+	</div>
+	<div>
+		<h3>8.ng有哪些特性？</h3>
+		<p>mvc,双方绑定，依赖注入，模块化设计，指令，模板等。。。</p>
+	</div>
+	<div>
+		<h3>9.你接触过哪些前端框架？</h3>
+		<p>
+		jquery,boostrap,handlebars,requirejs,vue,ng	
+		</p>
+	</div>
+
+	<div>
+		<h3>10.你接触过哪些游戏框架？</h3>
+		<p>
+			lufylegend,creatjs,threejs.
+		</p>
+	</div>
+
+	<div>
+		<h3>11.你日常代码是如何实现模块化的？</h3>
+		<pre>
+			简述requirejs的流程。
+		</pre>
+	</div>
+
+	<div>
+		<h3>12.http请求的方式？</h3>
+		<pre>
+			get，post/head,
+			区别：
+
+			GET把参数包含在URL中，POST通过request body传递参数
+			get请求在ajax默认环境下会被缓存。
+			post安全性比较高。
+			他们都是tcp链接，但是由于htpp的规定和不同浏览器的限制，导致在应用中体现了不同。
+			get产生1个tcp数据包，post产生2个数据包，firefox只发送一次。
+		</pre>
+	</div>
+
+	<div>
+		<h3>13.前端优化如何做的？</h3>
+		<p>1.减少http请求。 <br>2.对于类似jq这些使用cdn.<br>
+		3.减少dom操作。 <br>4.使用json交换数据。 <br>
+		5.将css放到顶部。 <br>6.对资源进行压缩。 <br>
+		7.对图片进行懒加载。 <br> 8.合理设置http缓存。 <br>
+		9.合理重绘，减少重排。
+		</p>
+	</div>
+	<div>
+		<h3>14.完成一个用户名和密码，登录的一个功能，前端需要做哪些，简述其流程。</h3>
+		<p>判断和加密</p>
+	</div>
+
+	<div>
+     <h3>15.src和href的区别</h3>   
+     <pre>href(a,link)是超文本引用，用来建立当前元素和文档之间的链接,当遇到css文档会并行下载该css,不会停止对当前文档的渲染;src是资源（img,iframe,script），当浏览器解析该元素，会暂停浏览器的渲染，直到该资源加载完毕。</pre>
+    </div>
+
+    <div></div>
+
+
+	<script type="text/javascript">
+		
+	</script>
+</body>
+</html>

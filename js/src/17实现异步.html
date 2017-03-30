@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function f1(callback) {
+            setTimeout(function () {
+                callback();
+            },1000);
+        }
+        function f2() {
+            console.log("我是异步执行的！"+this);
+        }
+        var obj={
+        };
+        f2.call(obj);
+    </script>
+</body>
+</html>
