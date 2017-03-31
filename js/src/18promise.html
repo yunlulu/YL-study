@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function f1() {
+            console.log("111");   
+        }
+        function f2(name) {
+            console.log("222"+name);
+            return "我是任务2";
+        }
+       new Promise((f1)).then(f2("哈哈哈哈")).then(function (val) {
+           console.log(val);
+       },function (val) {
+           console.log(val);
+       });
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var data=function (datas) {
+            console.log(datas);
+        };
+        var outerScript=document.createElement("script");
+        outerScript.setAttribute("src", "http://localhost:1000/js/prolist2.js");
+        document.getElementsByTagName("head")[0].appendChild(outerScript);
+
+
+    </script>
+</body>
+</html>

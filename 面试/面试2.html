@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <style type="text/css" media="screen">
-        
+        <style type="text/css" media="screen">
+        pre{background-color: #eee;padding: 10px;border: 1px solid #ccc;white-space: pre-wrap;}
     </style>
 </head>
 <body>
@@ -54,8 +54,81 @@
         </p>
     </div>
     <div>
-        <h3></h3>
+        <h3>eval 是做什么的？</h3>
+        <p>
+            它的功能是把对应的字符串解析成JS代码并运行；
+应该避免使用eval，因为不安全，非常耗性能（2次，一次解析成js语句，一次执行）。
+        </p>
+    </div>
+
+
+    <div>
+        <h3>什么是闭包(closure)，为什么要用它？</h3>
+        <p>
+闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量，利用闭包可以突破作用链域，将函数内部的变量和方法传递到外部。 <br>
+闭包特性： <br>
+(1)函数内再嵌套函数 <br>
+ (2)内部函数可以引用外层的参数和变量 <br>
+(3)参数和变量不会被垃圾回收机制回收</p>
+    </div>
+
+    <div>
+        <h3>new 操作符具体干了什么呢？</h3>
+        <p>
+        (1)创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。 <br>
+        (2)属性和方法被加入到 this 引用的对象中。 <br>
+        (3)新创建的对象由 this 所引用，并且最后隐式的返回 this 。</p>
+    </div>
+    <div>
+        <h3>8.ajax请求时，如何解析json数据</h3>
+        <p>使用eval parse 鉴于安全性考虑 使用parse更靠谱</p>
+    </div>
+    <div>
+        <h3>事件委托是什么。</h3>
+        <p>利用事件冒泡的原理，让自己的所触发的事件，让他的父元素代替执行，提高效率。</p>
+    </div>
+    <div>
+        <h3>$(document).ready和window.onload区别</h3>
+        <p>
+            1.前者等页面的dom结构加载完就可以执行，后者需要页面结构和资源完全加载完才可以执行 <br>
+            2.前者可以写多个，后者只能写一次。
+        </p>
+    </div>
+    <div>
+        <h3>18.在javascript中如何检测客户端的浏览器和操作系统类型</h3>
+       <pre>
+           var resolution = "分辨率:" + window.screen.width + "*" + window.screen.height;,
+           var ua = window.navigator.userAgent;
+       </pre>
     </div>
     
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+console.log(window.navigator.userAgent);
+var reg1=/Chrome/g;
+if(window.navigator.userAgent.match(reg1)){
+    console.log(true);
+}
+
+ // eval用来把字符串解析成js代码运行，应该避免使用，不安全，耗性能。
+     var p1=eval('var b=10 ');
+     console.log(b);
+     var p2=eval('var arr=[10,20,30]');
+     console.log(arr);
+     var p3=eval('function haha() {console.log("hahahah");}');
+     haha();
+     // 闭包经典应用
+     var divs=document.getElementsByTagName("div");
+     console.log(divs.length);
+     for (var i = 0; i < divs.length; i++) {
+         divs[i].onclick=function () {
+            var index=i;
+             return function () {
+                 console.log("这是第"+index);
+             }
+         }();
+     }
+ </script>   
 </body>
 </html>
