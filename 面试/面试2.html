@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+      <meta name="format-detection" content="telephone=no" />
     <title>Document</title>
         <style type="text/css" media="screen">
         pre{background-color: #eee;padding: 10px;border: 1px solid #ccc;white-space: pre-wrap;}
@@ -28,10 +30,8 @@
     </div>
     <div>
         <h3>用原生js实现异步</h3>
-        <p>iframe,script,XMLHttpRequest,comet(服务器端发起)</p>
-        <pre>
-            
-        </pre>
+        <p>settimeout,promise,ajax,comet(服务器端发起)</p>
+        
     </div>
 
     <div>
@@ -95,16 +95,77 @@
         </p>
     </div>
     <div>
-        <h3>18.在javascript中如何检测客户端的浏览器和操作系统类型</h3>
+        <h3>在javascript中如何检测客户端的浏览器和操作系统类型</h3>
        <pre>
            var resolution = "分辨率:" + window.screen.width + "*" + window.screen.height;,
            var ua = window.navigator.userAgent;
        </pre>
     </div>
+
+    <div>
+      <h3>js typeof返回哪些数据类型？</h3>
+      <p>
+        string,boolean,number,undifined,function,object
+      </p>
+    </div>
+
+    <div>
+      <h3>如何判断某变量是否为数组数据类型？</h3>
+      <p>instanceOf,constructor,isArray</p>
+      <pre>
+        var arr2=[1,2,3,4];
+console.log(typeof arr2);  //object,不能判断
+console.log(arr2.constructor===Array); //true
+console.log(arr2.constructor===Object); //false
+console.log(Array.isArray(arr2)); //es5的方法：true
+//终极方案
+function isArrayFn(obj){  //封装一个函数
+if (typeof Array.isArray === "function") { 
+return Array.isArray(obj); //浏览器支持则使用isArray()方法
+}else{                     //否则使用toString方法
+return Object.prototype.toString.call(obj) === "[object Array]"; 
+} 
+} 
+console.log(isArrayFn(arr2));// true
+      </pre>
+    </div>
+
+    <div>
+      <h3>例举3种强制类型转换和2种隐式类型转换？</h3>
+      <pre>
+        强制转换函数：String,Number,Boolean,parseInt(),parseFloat();
+        隐式类型：
+        1.if判断的时候会把条件转为布尔值
+        2.任何其他数据类型的值跟字符串进行拼接，都会变成字符串
+        3.- * / %
+      </pre>
+    </div>
+
+    <div>
+      <h3>jsonp为什么不是真正的ajax</h3>
+      <p>jsonp动态创建script标签，在回调函数中包裹数据，没有通过XMLHttpRequest对象;
+Ajax是页面无刷新请求数据操作</p>
+    </div>
+
+    <div>
+      <h3>JavaScript是一门什么样的语言，它有哪些特点？</h3>
+      <p>解释型，面向对象，事件驱动</p>
+    </div>
     
 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
+
+
+    var b=12;
+    console.log(typeof String(b));
+    console.log(typeof Number(b));
+    console.log( Boolean(b));
+var str= '012.345 ';
+var x = str-0;
+x = x*1;
+console.log(x);
+
 console.log(window.navigator.userAgent);
 var reg1=/Chrome/g;
 if(window.navigator.userAgent.match(reg1)){
@@ -129,6 +190,7 @@ if(window.navigator.userAgent.match(reg1)){
              }
          }();
      }
+
  </script>   
 </body>
 </html>

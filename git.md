@@ -42,3 +42,9 @@ gitignore配置:
 !/fw/sf/
 
 说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；
+
+和别人的代码保持同步：
+1.git remote add upstream 上游地址
+2.git fetch upstream
+3.git checkout master
+4.git merge upstream/master

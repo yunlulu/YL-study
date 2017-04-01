@@ -10,7 +10,7 @@
 <body>
 	<div>
 	<h3>1.nodejs是什么规范的？</h3>
-	<p>答案：cmd. </p>
+	<p>答案：commonjs规范. </p>
 
 	</div>
 	<div>
@@ -97,8 +97,6 @@ console.log(test.name);//mike,jack,smith,bill
 	</div>
 
 
-
-
 	<div>
 	<h3>5.什么情况是跨域？如何实现跨域？有几种方式？ </h3>
 	<p>
@@ -158,7 +156,8 @@ document.body.insertBefore(script, document.body.firstChild);
 	<div>
 	<h3>7.简述调整ie7+以上的兼容，遇到的问题。</h3>
 	 <P>
-		响应式：respond.js;
+		css:响应式：respond.js; <br>
+		js:冒泡;   event对象：ie是 srcElement,主流是target
 	 </P>
 	</div>
 	<div>
@@ -223,7 +222,9 @@ document.body.insertBefore(script, document.body.firstChild);
 
 
 	<script type="text/javascript">
-		
+		console.log(document.documentElement.clientWidth);
+		console.log(document.body.clientWidth);
+
 	</script>
 </body>
 </html>

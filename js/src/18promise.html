@@ -5,8 +5,9 @@
     <title>Document</title>
 </head>
 <body>
+<script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
-        function f1() {
+  /*      function f1() {
             console.log("111");   
         }
         function f2(name) {
@@ -17,7 +18,27 @@
            console.log(val);
        },function (val) {
            console.log(val);
+       });*/
+       var p1=new Promise(function (resolve,reject) {
+           setTimeout(function () {
+               $("body").css({"backgroundColor":"#00f"});
+               if (1) {
+               resolve("成功了！");
+               }
+               else{
+               reject("失败了");
+               }
+           },2000)
        });
+       p1.then(function (val) {
+        console.log(val+"lallalla");
+       },function (error) {
+           console.log(error);
+       });
+
+
+
+
     </script>
 </body>
 </html>
