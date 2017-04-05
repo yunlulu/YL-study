@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // constructor的值是一个函数，在js中，除了null和undefined外的类型的值，数组函数以及对象都有此属性，
+    // constructor属性的值是这个值、数组、函数或者对象的构造函数
+        var a = 12, // 数字
+    b = 'str', // 字符串
+    c = false, // 布尔值
+    d = [1, 'd', function() { return 5; }], // 数组
+    e = { name: 'e' }, // 对象
+    f = function() { return 'function'; }; // 函数
+
+console.log('a: ', a.constructor); // Number()
+console.log('b: ', b.constructor); // String()
+console.log('c: ', c.constructor); // Boolean()
+console.log('d: ', d.constructor); // Array()
+console.log('e: ', e.constructor); // Object()
+console.log('f: ', f.constructor); // Function()
+console.log('a: ', Object.prototype.toString.call(a)); // Function()
+console.log('b: ', Object.prototype.toString.call(b)); // Function()
+console.log('f: ', Object.prototype.toString.call(f)); // Function(
+// 以上的构造函数是js内置的，我们也可以自定义构造函数
+function A(name) {
+    this.name=name;
+};
+var a=new A("yunlu");
+console.log(a.constructor);
+console.log(typeof a);
+console.log(Object.prototype.toString.call(a));
+
+// 调用构造函数时需要用new关键字，构造函数返回的是一个对象
+var b3=4;
+var b4=new Number(4);
+console.log(typeof b3);   //number
+console.log(typeof b4);   //object
+console.log(b4.constructor==Number);   //[object Number]
+console.log(b3.constructor);   //[object Number]
+
+
+// 对象.hasOwnProperty(属性)  判断对象是否有除了原型链上属性之外的自身的属性
+function Site(){
+    this.name = "CodePlayer";
+    this.url = "http://www.365mini.com/";
+
+    this.sayHello = function(){
+        document.writeln("欢迎来到" + this.name);
+    };
+}
+
+var obj = {
+    engine: "PHP"
+    ,sayHi: function(){
+        document.writeln("欢迎访问" + this.url);
+    }
+};
+// 使用对象obj覆盖Site本身的prototype属性
+Site.prototype = obj;
+
+var s =  new Site();
+document.writeln( s.hasOwnProperty("name") ); // true
+document.writeln( s.hasOwnProperty("sayHello") ); // true
+// 以下属性继承自原型链，因此为false
+document.writeln( s.hasOwnProperty("engine") ); // false
+document.writeln( s.hasOwnProperty("sayHi") ); // false
+document.writeln( s.hasOwnProperty("toString") ); // false
+
+// 想要查看对象(包括原型链)是否具备指定的属性，可以使用in操作符
+document.writeln( "engine" in s ); // true
+document.writeln( "sayHi" in s ); // true
+document.writeln( "toString" in s ); // true
+
+
+    </script>
+</body>
+</html>
