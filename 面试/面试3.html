@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+      <meta name="format-detection" content="telephone=no" />
+    <title>Document</title>
+        <style type="text/css" media="screen">
+        pre{background-color: #eee;padding: 10px;border: 1px solid #ccc;white-space: pre-wrap;}
+    </style>
+</head>
+<body>
+    <div>
+      <h3>js有哪几种创建对象的方式？</h3>
+      <p>内置对象，自定义对象，使用json.</p>
+    </div>
+    <div>
+      <h3>window和document的区别？</h3>
+      <p>1.window指窗体，document指的是页面;document是window的一个子对象 <br>
+2.用户不能改变document.location，但可以改变window.location, <br>
+3.window.location是一个对象，document.location不是。
+
+      </p>
+    </div>
+    <div>
+      <h3>["1","2","3"].map(parseInt) 的答案是多少？</h3>
+      <pre>
+  [1,NaN,NaN]
+因为 parseInt 需要两个参数(val,radix)，其中 radix 表示解析时用的基数。
+map 传了3个(element,index,array)，对应的 radix 不合法导致解析失败。
+
+//答案
+ var parseInt = function(string) {
+    return Number(string);
+    };
+    console.log(["1","2","3"].map(parseInt));
+   
+      </pre>
+    </div>
+   <div>
+     <h3>页面编码和被请求的资源编码如果不一致如何处理？</h3>
+     <p>给script标签加charset属性</p>
+   </div>
+   <div>
+     <h3>document.write 和 innerHTML 有何区别？</h3>
+     <p>前者会导致页面重绘，后者只是部分标签内容重写。</p>
+   </div>
+
+   <div>
+     <h3>如何编写高性能 JavaScript ？</h3>
+     <p>
+       1.
+     </p>
+   </div>
+
+   <div>
+     <h3>jQuery 中如何将数组转化为 json 字符串，然后再转化回来?</h3>
+     <pre>
+       $.fn.stringifyArray = function(array) {
+　　return JSON.stringify(array)
+}
+ 
+$.fn.parseArray = function(array) {
+　　return JSON.parse(array)
+}
+ 
+     </pre>
+   </div>
+  <div>
+    <h3>jQuery 的属性拷贝（extend）的实现原理是什么？如何实现深拷贝？</h3>
+    <p>
+      
+    </p>
+
+  </div>
+  <div>
+    <h3>jQuery.extend 与 jQuery.fn.extend 有何区别？</h3>
+    <p>前者是类级别开发，后者是 对象级别开发。</p>
+  </div>
+
+  <div>
+    <h3>是否了解针对 jQuery 性能的优化方法？</h3>
+    <p>
+      1.使用最新版本的jq.<br>
+      2.使用id选择器，标签选择器  <br>
+      3.使用链式操作。 <br>
+      4.做好缓存。  <br>
+      5.使用委托。  <br>
+      6.正确使用循环。  
+    </p>
+  </div>
+
+  <div>
+    <h3>jQuery 中一个对象可以同时绑定多个事件，这是如何实现的？</h3>
+    <p></p>
+    <pre>
+       $("div").on({
+      "click":function () {
+        console.log("click");
+      },
+      "mouseover":function () {
+        console.log("over");
+      }
+    })
+    </pre>
+  </div>
+
+  <div>
+    <h3>jQuery 与 jQuery UI 有何区别?</h3>
+    <p>`jQuery`是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。  <br>
+    `jQuery UI`则是在jQuery的基础上，利用jQuery的扩展性，设计的插件。提供了一些常用的界面元素，
+    诸如对话框、拖动、自动补全，折叠面板，排序等等</p>
+  </div>
+
+  <div>
+    <h3>jQuery UI 如何自定义组件？</h3>
+    <pre>
+      $.widget({
+      code...
+      })
+    </pre>
+  </div>
+
+  <div>
+    <h3>如何判断当前脚本运行在浏览器还是 node 环境中？</h3>
+    <p>通过判断window对象是否存在，不存在则当前脚本没有运行在浏览器中。</p>
+  </div>
+  <div>
+    <h3>什么是“前端路由”？什么时候适合使用“前端路由”？“前端路由”有哪些优点和缺点？</h3>
+    <p></p>
+  </div>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+     console.log(window.innerWidth);
+   
+   
+
+    </script>   
+</body>
+</html>
