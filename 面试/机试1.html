@@ -3,8 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style type="text/css" media="screen">
+        pre{background-color: #eee;padding: 10px;border: 1px solid #ccc;white-space: pre-wrap;}
+    </style>
 </head>
 <body>
+  <div>
+      <h3>26.以下哪条语句会产生运行错误： </h3>
+      <pre>
+A.var obj = ();           B.var obj = [];        C.var obj = {};        D.var obj = //; 
+        
+      </pre>
+    </div>
+
+<div>
+      <h3>填写内容1,2 ,让a.name 等于“name1” 让 b.name 等于“name2”     </h3>
+      <pre>
+function obj(name){
+    1
+}
+obj.  2 = "name2";
+var a = obj("name1");
+var b = new obj;
+
+//答案
+function obj(name){
+  if(name){
+  this.name=name;   
+  }
+  return this;
+}
+obj.prototype.name= "name2";
+var a = obj("name1");
+var b = new obj;
+console.log(a.name);
+console.log(b.name);
+      </pre>
+    </div>
+
+
+    <div>
+      <h3>请问p.name是多少？</h3>
+      <pre>
+var fun = function(){
+this.name = 'peter';
+
+return {
+name: 'jack'
+};
+}
+var p = new fun();
+p.name;         //jack
+      </pre>
+    </div>
+
+    <div>
+
+      <h3>请问a.info.name和b.info.name分别是多少？</h3>
+      <pre>
+var fun = function(){
+
+}
+fun.prototype = {
+info : {
+name : 'peter',
+age : 25
+}
+}
+var a = new fun();
+var b = new fun();
+a.info.name = 'jack';
+b.info.name = 'tom';
+
+
+//tom
+      </pre>
+    </div>
+
+    <div>
+      <h3>给String对象定义一个repeatify方法。该方法接收一个整数参数，作为字符串重复的次数，最后返回重复指定次数的字符串。例如：</h3>
+      <pre>
+console.log('hello'.repeatify(3));
+输出应该是:hellohellohello.
+//答案
+String.prototype.repeatify=function (num) {
+  var str="";
+  for(var i=0;i&lt;num;i++){
+    str+=this;
+  }return str;
+};
+var aa="100";
+console.log(aa.repeatify(3));
+      </pre>
+
+    </div>
+    <div>
+      <h3>21.为了保证页面输出安全，我们经常需要对一些特殊的字符进行转义，
+      请写一个函数escapeHtml，将<, >,  &amp; , “进行转义 &lt;  &gt;  &amp; &quot;</h3>
+      <pre>
+        String.prototype.escapeHtml=function () {
+  return this.replace(/[&lt;  &gt;  &amp; "]/g, function (txt) {
+    switch(txt){
+      case "<":return "&lt;"; break;
+      case ">":return "&gt;"; break;
+      case "&amp;":return "&amp;"; break;
+      case "\"":return "&quot;"
+    }
+  })
+};
+var dd='&lt;p&gt;哈"哈哈哈gf&lt;/p&gt;&amp;';
+console.log(dd.escapeHtml());
+      </pre>
+    </div>
+     <div>
+      <h3>看下列代码,输出什么？解释原因。</h3>
+      <pre>
+        var foo = "11"+2-"1";
+console.log(foo);   //111
+console.log(typeof foo);   //number
+
+
+      </pre>
+    </div>
+    
+
+    
+
+    <div>
+      <h3>写一个function，清除字符串前后的空格。（兼容所有浏览器）</h3>
+      <pre>
+        String.prototype.trim = function(){
+    return this.replace(/^\s+/,"").replace(/\s+$/,"");
+  }
+      </pre>
+
+    </div>
+
+    <div>
+      <h3>如何判断某变量是否为数组数据类型？</h3>
+      <p>instanceOf,constructor,isArray</p>
+      <pre>
+        var arr2=[1,2,3,4];
+console.log(typeof arr2);  //object,不能判断
+console.log(arr2.constructor===Array); //true
+console.log(arr2.constructor===Object); //false
+console.log(Array.isArray(arr2)); //es5的方法：true
+//终极方案
+function isArrayFn(obj){  //封装一个函数
+if (typeof Array.isArray === "function") { 
+return Array.isArray(obj); //浏览器支持则使用isArray()方法
+}else{                     //否则使用toString方法
+return Object.prototype.toString.call(obj) === "[object Array]"; 
+} 
+} 
+console.log(isArrayFn(arr2));// true
+      </pre>
+    </div>
+
+  <div>
+    <h3>获取样式，兼容ie浏览器。</h3>
+    <pre>
+      function getStyle(obj,style) {
+  // 标准下用getComputedStyle
+  if(typeof window.getComputedStyle=="function"){
+   return window.getComputedStyle(obj,false)[style];
+  }
+  else{
+    // ie下用currentStyle
+    return obj.currentStyle[style];
+  }
+}
+console.log(getStyle(document.getElementsByTagName('pre')[0],"height"));
+    </pre>
+  </div>
+
     <script type="text/javascript">
         
     </script>

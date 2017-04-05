@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+  // this始终指向调用函数的那个对象
+// 1.纯碎的函数调用
+    // demoA demoB等价
+    function demoA() {
+      console.log(this);  //window
+      this.x=1;
+      console.log(x);
+    }
+    demoA();
+    var b=2;
+    function demoB() {
+      console.log(b);
+    }
+    demoB();
+//2.作为对象的方法调用 ,这时this指向这个上级对象
+var obj1={
+  name:"yunlu",
+  say:function () {
+    console.log(this.name);
+  }
+};
+
+obj1.say();
+
+
+// 3.作为构造函数调用,此时this指向这个新对象
+    function demoC() {
+      this.c=111;
+    }
+
+    var democ=new demoC();
+    // console.log(democ);  {c:111}
+    console.log(democ.c);
+
+
+// 4.apply 改变函数的调用对象
+
+var d=10;
+var objD={d:100};
+function sayD(name) {
+  console.log(this.d);
+}
+sayD();
+
+sayD.call(objD,"hahahah");
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>

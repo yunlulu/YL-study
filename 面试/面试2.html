@@ -151,20 +151,29 @@ Ajax是页面无刷新请求数据操作</p>
       <h3>JavaScript是一门什么样的语言，它有哪些特点？</h3>
       <p>解释型，面向对象，事件驱动</p>
     </div>
+
+    <div>
+      <h3>==和===的不同。</h3>
+      <p>"=="只要求值相等，"==="要求值和类型必须相等。</p>
+    </div>
+
+  
     
 
+    
+
+
+
+
+    
+
+   
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
 
 
-    var b=12;
-    console.log(typeof String(b));
-    console.log(typeof Number(b));
-    console.log( Boolean(b));
-var str= '012.345 ';
-var x = str-0;
-x = x*1;
-console.log(x);
+
+
 
 console.log(window.navigator.userAgent);
 var reg1=/Chrome/g;
@@ -190,7 +199,11 @@ if(window.navigator.userAgent.match(reg1)){
              }
          }();
      }
-
+for(var n=1;n<=3;n++){
+  setTimeout(function(){
+      console.log(n);    
+  },0);  
+}; 
  </script>   
 </body>
 </html>
