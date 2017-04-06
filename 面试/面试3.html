@@ -11,8 +11,69 @@
 </head>
 <body>
     <div>
+      <h3>js基本数据类型有哪些？</h3>
+      <p>undefined,null,number,string,boolean</p>
+    </div>
+    <div>
+      <h3>有哪些内置对象？</h3>
+      <p>Object 是 JavaScript 中所有对象的父对象 <br>数据封装类对象：String,Number,Boolean,Object,Array <br>
+
+           其他对象：Date,Math,Event,Arguments,Regexp,Function
+      </p>
+    </div>
+
+    <div>
       <h3>js有哪几种创建对象的方式？</h3>
-      <p>内置对象，自定义对象，使用json.</p>
+      <p>对象字面量，内置对象（工厂方式），构造函数，原型方式，混合方式，自定义对象，使用json.</p>
+      <pre>
+        //字面量
+        person={firstname:"Mark",lastname:"Yun",age:25,eyecolor:"black"};
+        // 工厂方式
+        function cPerson(name,sex,age){
+ var o = new Object();
+ o.name = name;
+ o.sex = sex;
+ o.age = age;
+ o.show = function(){
+ console.log(this.name,this.age,this.sex);
+ }
+ return o;
+}
+ var p1 = cPerson('谦龙','男','100');
+ p1.show();
+ var p2 = cPerson('雏田','女','14');
+ p2.show();
+      // 构造函数
+      function Person(name,age,hobby) {
+  this.name = name; //this作用域：当前对象
+  this.age = age;
+  this.work = work;
+  this.info = function() {
+      alert("我叫" + this.name + "，今年" + this.age + "岁，是个" + this.work);
+  }
+}
+var Xiaosong = new Person("WooKong",23,"程序猿"); //实例化、
+      //原型
+      function Standard(){}
+Standard.prototype.name = "ECMAScript";
+Standard.prototype.event = function() {
+  alert(this.name+"是脚本语言标准规范");
+}
+var jiaoben = new Standard();
+jiaoben.event();
+
+      //混合方式
+      function iPhone(name,event) {
+  this.name = name;
+  this.event = event;
+}
+iPhone.prototype.sell = function() {
+  alert("我是"+this.name+"，我是iPhone5s的"+this.event+"~ haha!");
+}
+var SE = new iPhone("iPhone SE","官方翻新机");
+SE.sell();
+      </pre>
+
     </div>
     <div>
       <h3>window和document的区别？</h3>
@@ -22,21 +83,7 @@
 
       </p>
     </div>
-    <div>
-      <h3>["1","2","3"].map(parseInt) 的答案是多少？</h3>
-      <pre>
-  [1,NaN,NaN]
-因为 parseInt 需要两个参数(val,radix)，其中 radix 表示解析时用的基数。
-map 传了3个(element,index,array)，对应的 radix 不合法导致解析失败。
-
-//答案
- var parseInt = function(string) {
-    return Number(string);
-    };
-    console.log(["1","2","3"].map(parseInt));
    
-      </pre>
-    </div>
    <div>
      <h3>页面编码和被请求的资源编码如果不一致如何处理？</h3>
      <p>给script标签加charset属性</p>
@@ -49,23 +96,13 @@ map 传了3个(element,index,array)，对应的 radix 不合法导致解析失�
    <div>
      <h3>如何编写高性能 JavaScript ？</h3>
      <p>
-       1.
+       1.使用 DocumentFragment 优化多次 append <br>
+       2.循环拼接多个数组字符串，用join，不要用+  <br>
+       3.
      </p>
    </div>
 
-   <div>
-     <h3>jQuery 中如何将数组转化为 json 字符串，然后再转化回来?</h3>
-     <pre>
-       $.fn.stringifyArray = function(array) {
-　　return JSON.stringify(array)
-}
- 
-$.fn.parseArray = function(array) {
-　　return JSON.parse(array)
-}
- 
-     </pre>
-   </div>
+   
   <div>
     <h3>jQuery 的属性拷贝（extend）的实现原理是什么？如何实现深拷贝？</h3>
     <p>
@@ -127,13 +164,71 @@ $.fn.parseArray = function(array) {
   </div>
   <div>
     <h3>什么是“前端路由”？什么时候适合使用“前端路由”？“前端路由”有哪些优点和缺点？</h3>
-    <p></p>
+   <pre>
+     什么是前端路由？
+路由是根据不同的 url 地址展示不同的内容或页面,前端路由就是把不同路由对应不同的内容或页面的任务交给前端来做。
+
+2，什么时候使用前端路由？
+
+在单页面应用，大部分页面结构不变，只改变部分内容的使用
+3，前端路由有什么优点和缺点？
+
+优点
+用户体验好，不需要每次都从服务器全部获取，快速展现给用户
+缺点
+使用浏览器的前进，后退键的时候会重新发送请求，没有合理地利用缓存
+单页面无法记住之前滚动的位置，无法在前进，后退的时候记住滚动的位置
+   </pre>
+  </div>
+
+  <div>
+    <h3>
+      JavaScript 代码中的 "use strict"; 是什么意思？使用它的区别是什么？
+    </h3>
+    <pre>use strict是一种ECMAscript 5 添加的（严格）运行模式,这种模式使得 Javascript 在更严格的条件下运行,使JS编码更加规范化的模式,消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为。
+默认支持的糟糕特性都会被禁用，比如不能用with，也不能在意外的情况下给全局变量赋值;
+全局变量的显示声明,函数必须声明在顶层，不允许在非函数代码块内声明函数,arguments.callee也不允许使用；
+消除代码运行的一些不安全之处，保证代码运行的安全,限制函数中的arguments修改，严格模式下的eval函数的行为和非严格模式的也不相同;
+提高编译器效率，增加运行速度；
+为未来新版本的Javascript标准化做铺垫。</pre>
+  </div>
+
+  <div>
+    <h3>js 中，有一个函数，执行对象查找时，永远不会去查找原型，这个函数是哪个？</h3>
+    <p><b>hasOwnProperty</b>,此方法是返回一个布尔值，指出一个对象是否具有指定名称的属性。此方法无法检查该对象的原型链中是否具有该属性；该属性必须是对象本身的一个成员。
+使用方法：
+object.hasOwnProperty(proName)
+其中参数object是必选项，一个对象的实例。
+proName是必选项，一个属性名称的字符串值。</p>
+  </div>
+
+  <div>
+    <h3>js延迟加载的方式有哪些？</h3>
+    <p>defer,async,动态创建dom方式，按需异步就载入js</p>
+  </div>
+
+  <div>
+    <h3>DOM 操作——怎样添加、移除、移动、复制、创建和查找节点？</h3>
+    <pre>
+      (1)创建新节点
+createDocumentFragment()    //创建一个DOM片段
+createElement()   //创建一个具体的元素
+createTextNode()   //创建一个文本节点
+(2)添加、移除、替换、插入
+appendChild()
+removeChild()
+replaceChild()
+insertBefore() //在已有的子节点前插入一个新的子节点
+(3)查找
+getElementsByTagName()    //通过标签名称
+getElementsByName()    //通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)
+getElementById()    //通过元素Id，唯一性
+    </pre>
   </div>
 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
      console.log(window.innerWidth);
-   
    
 
     </script>   

@@ -30,7 +30,8 @@
     </div>
     <div>
         <h3>用原生js实现异步</h3>
-        <p>settimeout,promise,ajax</p>
+        <p>settimeout,promise,ajax,  <br>
+        创建 script，插入到 DOM 中，加载完毕后 callBack</p>
         
     </div>
 
@@ -50,7 +51,7 @@
             1.纯文本轻量级。 <br>
             2.js原生支持，后台很多语言都支持。 <br>
             3.可读性比较强。 <br>
-            4.容易编写和解析。
+            4.容易编写和解析,减少带宽。
         </p>
     </div>
     <div>
@@ -188,17 +189,7 @@ if(window.navigator.userAgent.match(reg1)){
      console.log(arr);
      var p3=eval('function haha() {console.log("hahahah");}');
      haha();
-     // 闭包经典应用
-     var divs=document.getElementsByTagName("div");
-     console.log(divs.length);
-     for (var i = 0; i < divs.length; i++) {
-         divs[i].onclick=function () {
-            var index=i;
-             return function () {
-                 console.log("这是第"+index);
-             }
-         }();
-     }
+   
 for(var n=1;n<=3;n++){
   setTimeout(function(){
       console.log(n);    

@@ -15,7 +15,21 @@ A.var obj = ();           B.var obj = [];        C.var�
         
       </pre>
     </div>
+ <div>
+      <h3>["1","2","3"].map(parseInt) 的答案是多少？</h3>
+      <pre>
+  [1,NaN,NaN]
+因为 parseInt 需要两个参数(val,radix)，其中 radix 表示解析时用的基数。
+map 传了3个(element,index,array)，对应的 radix 不合法导致解析失败。
 
+//答案
+ var parseInt = function(string) {
+    return Number(string);
+    };
+    console.log(["1","2","3"].map(parseInt));
+   
+      </pre>
+    </div>
 <div>
       <h3>填写内容1,2 ,让a.name 等于“name1” 让 b.name 等于“name2”     </h3>
       <pre>
@@ -176,7 +190,42 @@ console.log(isArrayFn(arr2));// true
 console.log(getStyle(document.getElementsByTagName('pre')[0],"height"));
     </pre>
   </div>
+<div>
+  <h3>闭包经典问题处理：点击li获取其索引</h3>
+  <pre>
+      // 方法1
+     var divs=document.getElementsByTagName("div");
+     for (var i = 0; i < divs.length; i++) {
+         divs[i].onclick=function () {
+            var index=i;
+             return function () {
+                 console.log("这是第"+index);
+             }
+         }();
+     }
+      // 方法2
+     var nodes = document.getElementsByTagName('li');
+  for(i = 0;i&lt;nodes.length;i+=1) {
+      nodes[i].onclick = function() {
+          console.log(i+1); //不使用闭包的话，值每次都是4
+      }(4);
+  }
+  </pre>
+</div>
 
+<div>
+     <h3>jQuery 中如何将数组转化为 json 字符串，然后再转化回来?</h3>
+     <pre>
+       $.fn.stringifyArray = function(array) {
+　　return JSON.stringify(array)
+}
+ 
+$.fn.parseArray = function(array) {
+　　return JSON.parse(array)
+}
+ 
+     </pre>
+   </div>
     <script type="text/javascript">
         
     </script>
