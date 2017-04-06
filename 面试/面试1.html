@@ -100,7 +100,7 @@ console.log(test.name);//mike,jack,smith,bill
 	<div>
 	<h3>5.什么情况是跨域？如何实现跨域？有几种方式？ </h3>
 	<p>
-除了协议，域名，和机构类型名一样和 由这些部分组成加子文件夹的 除外的 都是 跨域。 
+协议,域名，端口号一致的称为同源，不一致则为跨域。 
 <br>
 解决跨域1(php)： <br>
 <pre>
@@ -194,8 +194,10 @@ document.body.insertBefore(script, document.body.firstChild);
 			GET把参数包含在URL中，POST通过request body传递参数
 			get请求在ajax默认环境下会被缓存。
 			post安全性比较高。
+			字符集问题。
 			他们都是tcp链接，但是由于htpp的规定和不同浏览器的限制，导致在应用中体现了不同。
 			get产生1个tcp数据包，post产生2个数据包，firefox只发送一次。
+			一个是请求，一个是提交。
 		</pre>
 	</div>
 
