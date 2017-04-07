@@ -226,8 +226,27 @@ $.fn.parseArray = function(array) {
  
      </pre>
    </div>
+
+   <div>
+     <h3>怎样用js实现千位分隔符?</h3>
+     <pre>
+       Number.prototype.comma=function(){
+            var re = /(?=(?!\b)(\d{3})+$)/g; 
+            return this.toString().replace(re, ','); 
+
+       };
+       var num1=12341111;
+       console.log(num1.comma());
+     </pre>
+     
+   </div>
     <script type="text/javascript">
-        
+
+      
+
+
+
+      
     </script>
 </body>
-</html>
+</html>  
