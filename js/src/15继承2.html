@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//原型继承
+	// 原型继承的特点：既继承了父类的模板，又继承了父类的原型对象
+		function Person1(name,age) {
+			this.name=name;
+			this.age=age;
+		};
+		Person1.prototype.id=10;
+		function Boy1(sex) {
+			this.sex=sex;
+		};
+		Boy1.prototype=new Person1("yl");
+		var b1=new Boy1("nv");
+		console.log(b1.name);
+		console.log(b1.sex);
+		console.log(b1.id);
+	// 类继承（只继承模板,不继承原型对象。（借用构造函数的方式继承）
+		function Person2(name,age) {
+			this.name=name;
+			this.age=age;
+		};
+		Person2.prototype.id=10;
+		function Boy2(name,age,sex) {
+			this.sex=sex;
+			Person2.call(this,name,age);
+		};
+		var b2=new Boy2("yll",23,"nv");
+		console.log(b2.name);
+
+	// 原型继承+借用构造函数继承=混合继承
+		function Person3(name,age) {
+			this.name=name;
+			this.age=age;
+		};
+		Person3.prototype.id=100;
+		Person3.prototype.say=function () {
+			return ("hello"+this.name);
+		}
+		function Boy3(sex,name,age) {
+			this.sex=sex;
+			Person3.call(this,name,age);  //继承父类的模板
+		};
+		// 只剩下父类的实例和父级的原型对象关系了
+		// 继承父类的原型对象
+		Boy3.prototype=new Person3();
+		var b3=new Boy3("nn","ylll",24);
+		console.log(b3.name);
+		console.log(b3.id);
+		console.log(b3.say());
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

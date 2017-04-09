@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Person1(name,age) {
+			this.name=name;
+			this.age=age;
+		}
+
+		Person1.prototype.id=100;
+		Person1.prototype.say=function () {
+			return ("hello ! "+this.name);
+		}
+		function Boy1(sex,name,age) {
+			this.sex=sex;
+			// 这个继承了父级的模板
+			// Person1.call(this,name,age);
+			Boy1.superClass.constructor.call(this,name,age);
+		};
+		//缺点： 把父级的模板复制了两次，效率低下
+		// 怎么把这个 只复制父级的原型对象？
+		// Boy1.prototype=new Person1();
+
+		// 只继承一次父类的原型对象
+		// extend(sub,sup);
+		function extend(sub,sup) {
+			// 1.创建一个空函数，空函数进行中转
+			// sup.prototype	
+			var F=new Function();
+			// 实现空函数的原型对象和超类的原型对象转换
+			F.prototype=sup.prototype;
+			// 原型继承
+			sub.prototype=new F();
+			// 还原子类的构造器
+			sub.prototype.constructor=sub;
+			// 保存父级的原型对象，一方面方便解耦，另一方面方便获得父级的原型对象
+
+			sub.superClass=sup.prototype;  //自定义一个一个子类的静态属性，接收父类的原型对象
+			if(sup.prototype.constructor==Object.prototype.constructor){
+				sup.prototype.constructor=sup;
+			}
+			console.log(sub.superClass);
+
+
+		};
+
+		extend(Boy1,Person1);
+		Boy1.prototype.say=function () {
+			return ("hi!!!");
+		};
+
+		var b1=new Boy1("nv","yunlu1",24);
+		console.log(b1.name);
+		console.log(b1.id);
+		console.log(b1.say());
+		// 对于父级子级里面都有相同的原型对象，子级会覆盖父级的，
+		// 应该用改变作用域的方式来处理
+		console.log(Boy1.superClass.say.call(b1));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>	
+</body>
+</html>
