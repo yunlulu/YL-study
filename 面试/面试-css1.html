@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <style type="text/css" media="screen">
+        pre{background-color: #eee;padding: 10px;border: 1px solid #ccc;white-space: pre-wrap;}
+    </style>
+</head>
+<body>
+ 
+
+
+    <div>
+       <h3>两栏，左边栏宽度固定100px，右边栏宽度自适应</h3>
+        <pre>
+           思路：左边栏宽度固定，设置左浮动，右边栏设置margin-left属性，值为左边栏的宽度。 
+        </pre>
+    </div>
+
+    <div>
+        <h3>几种方法生成三个并排的大小相等的元素</h3>
+        <p>一个方法为tabel-cell，这种方法就是将每一个子元素设置的尽可能的大，但由于自适应的特性，这三个元素还是会乖乖地等分的排在一行里;flex;box;</p>
+    </div>
+    <div>
+        <h3>CSS3的一些新特性</h3>
+       <pre>
+           1.border-radius让圆角成为方便的存在 
+怎样将方的通过圆角变成圆的？ 
+border-radius:50%;
+2.box-shadow(渐变)也是咱常用的属性之一。设置水平、垂直的位移，阴影的模糊、尺寸还有颜色，就可以为元素添加阴影。 
+box-shadow: 2px 2px 3px #777;
+3.通过设置图片路径，图片的切割方式、还有边框的宽度、溢出，以及平铺或拉伸等呈现方式，可以做出一个漂亮精致的边框。 
+border-image: url(border-image.png) 30/10px/10px round;
+动画：transition、transform和animation的区别? 
+transform是指转换，可以将元素移动、旋转、倾斜、拉伸。
+transition是指过渡，可以动画般显示出一个从样式到样式之间的过渡。transform的属性包括一个你设定过渡的CSS属性，持续时间，时间曲线还有过渡开始的时间。
+animation专门做动画的animation就复杂多了：@keyframes可以有from to，也可以是百分比表示时间帧。
+       </pre>
+    </div>
+
+    <div>
+        <h3>介绍一下CSS的盒子模型。</h3>
+        <p>
+(1)有两种， IE 盒子模型、标准 W3C 盒子模型；IE的content部分包含了 border 和 pading；
+(2)盒模型： 内容(content)、填充(padding)、边界(margin)、 边框(border)。</p>
+    </div>
+
+    <div>
+        <h3>CSS选择符有哪些？哪些属性可以继承？</h3>
+        <p>(1)id选择器（#classId）
+(2)类选择器（.className）
+(3)标签选择器（div，h1，p，span，table）
+(4)相邻选择器（h1 + p）
+(5)子选择器（ul > li）
+(6)后代选择器（li a）
+(7)通配符选择器（*）
+(8)属性选择器（a[rel = "external"]）
+(9)伪类选择器（a:hover，li:nth-child）
+//
+可继承的样式：font-size，font-family，color，UL，LI，DL，DD，DT
+//
+不可继承的样式：border，padding，margin，width，height</p>
+    </div>
+
+    <div>
+        <h3>CSS 如何计算优先级？</h3>
+        <p>就近原则，同权重情况下以样式定义最近者为准；
+载入样式以最后载入的定位为准；
+优先级：
+  !important > id > class > tag
+  important 比 内联优先级高</p>
+    </div>
+    <div>
+        <h3>display 有哪些值？各有何作用？</h3>
+        <p>block 象块类型元素一样显示。
+none 缺省值。象行内元素类型一样显示。
+inline-block 象行内元素一样显示，但其内容象块类型元素一样显示。
+list-item 象块类型元素一样显示，并添加样式列表标记。</p>
+    </div>
+    <div>
+        <h3>用纯 CSS 创建一个下拉三角形的原理是什么？</h3>
+        <p>把上、左、右三条边隐藏掉（颜色设为 transparent）</p>
+    </div>
+</body>
+</html>

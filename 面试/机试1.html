@@ -240,6 +240,215 @@ $.fn.parseArray = function(array) {
      </pre>
      
    </div>
+
+   <div>
+     <h3>能否写一个通用的事件侦听器函数？</h3>
+     <pre>
+       //Event工具集，from:github.com/markyun
+markyun.Event = {
+  //页面加载完成后
+  readyEvent: function(fn) {
+      if (fn == null) {
+          fn = document;
+      }
+      var oldonload = window.onload;
+      if (typeof window.onload != 'function') {
+          window.onload = fn;
+      }else{
+          window.onload = function() {
+              oldonload();
+              fn();
+          };
+      }
+  },
+  //视能力分别使用 demo0 || demo1 || IE 方式来绑定事件
+  //参数：操作的元素，事件名称，事件处理程序
+  addEvent: function(element,type,handler) {
+      if (element.addEventListener) {
+          //事件类型、需要执行的函数、是否捕捉
+          element.addEventListener(type,handler,false);
+      }else if (element.attachEvent) {
+          element.attachEvent('on' + type, function() {
+              handler.call(element);
+          });
+      }else {
+          element['on' + type] = handler;
+      }
+  },
+  //移除事件
+  removeEvent: function(element,type,handler) {
+      if (element.removeEventListener) {
+          element.removeEventListener(type,handler,false);
+      }else if (element.datachEvent) {
+          element.datachEvent('on' + type,handler);
+      }else{
+          element['on' + type] = null;
+      }
+  },
+  //阻止事件（主要是事件冒泡，因为IE不支持事件捕获）
+  stopPropagation: function(ev) {
+      if (ev.stopPropagation) {
+          ev.stopPropagation();
+      }else {
+          ev.cancelBubble = true;
+      }
+  },
+  //取消事件的默认行为
+  preventDefault: function(event) {
+      if (event.preventDefault) {
+          event.preventDefault();
+      }else{
+          event.returnValue = false;
+      }
+  },
+  //获取事件目标
+  getTarget: function(event) {
+      return event.target || event.srcElemnt;
+  },
+  //获取event对象的引用，取到事件的所有信息，确保随时能使用event；
+  getEvent: function(e) {
+      var ev = e || window.event;
+      if (!ev) {
+          var c = this.getEvent.caller;
+          while(c) {
+              ev = c.argument[0];
+              if (ev && Event == ev.constructor) {
+                  break;
+              }
+              c = c.caller;
+          }
+      }
+      retrun ev;
+  }
+};
+     </pre>
+   </div>
+  <div>
+    <h3>获取的元素，然后循环为每一个添加mouseover和mouseout事件。</h3>
+    <pre>
+      var elementList=document.querySelectorAll("a");
+var listLen=elementList.length;
+function handler (element,color){
+    return function(){
+        element.style.color=color;
+    };
+}
+//添加事件方法
+function addEvent(element,type,handler){
+    if(element.addEventListener){
+        element.addEventListener(type,handler,false);
+    }
+    else if(element.attachEvent){
+        element.attachEvent("on"+type,handler);
+    }
+}
+//循环为元素添加事件
+for(i=0;i&lt;listLen;i++){
+    addEvent(elementList[i],"mouseover",handler(elementList[i],"red"));
+    addEvent(elementList[i],"mouseout",handler(elementList[i],"black"));
+}
+    </pre>
+  </div>
+
+  <div>
+    <h3>添加一个类似email中checklist的双向联动</h3>
+    <p>做一个类似email里选择发件人的东西，勾选的时候添加到发件人，取消勾选的时候从发件人里面删除。由于是双向联动，因此要在发件人里点击的时候可以删除，并且取消勾选。好像说的有点乱，看下面代码。其实主要还是事件绑定，然后添加节点，改变属性。</p>
+    <pre>
+      &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;showbox&quot;&gt;&lt;/div&gt;
+    &lt;input type=&quot;checkbox&quot; name=&quot;email&quot; value=&quot;i@myj.name&quot;&gt;Kathy&lt;/input&gt;
+    &lt;input type=&quot;checkbox&quot; name=&quot;email&quot; value=&quot;i@zjy.name&quot;&gt;Visper&lt;/input&gt;
+&lt;/div&gt;
+var emails=document.querySelectorAll(&quot;[name=email]&quot;);
+var showBox=document.querySelector(&quot;.showbox&quot;);
+var length=emails.length;
+//添加事件
+function addEvent(element,type,handler){
+    if(element.addEventListener){
+        element.addEventListener(type,handler,false);
+    }
+    else if(element.attachEvent){
+        element.attachEvent(&quot;on&quot;+type,handler);
+    }
+}
+//循环，为每个checkbox添加事件
+for(var i=0;i&lt;length;i++){
+    addEvent(emails[i],&quot;click&quot;,function(){
+        //判断是否被选中
+        if(this.checked){
+            var Emailvalue = this.value;
+            var newBtn=document.createElement(&quot;input&quot;);
+            newBtn.setAttribute(&quot;type&quot;,&quot;button&quot;);
+
+            newBtn.value=Emailvalue;
+            showBox.appendChild(newBtn);
+        }
+        //若取消勾选，则删除相应的button
+        else{
+            var Emailvalue = this.value;
+            var emailBtn=document.querySelector(&quot;[type=button][value=&#x27;&quot;+Emailvalue+&quot;&#x27;]&quot;);
+            showBox.removeChild(emailBtn);
+        }
+        //每次重新调用以更新button
+        startBtn();
+    })
+}
+//获取button列表，为button添加事件
+function startBtn(){
+    var emailBtn=document.querySelectorAll(&quot;[type=button]&quot;);
+    if(emailBtn.length){
+        for(var i=0;i&lt;emailBtn.length;i++){
+            addEvent(emailBtn[i],&quot;click&quot;,function(){
+                var btnvalue=this.value;
+                var cancelChoose=document.querySelectorAll(&quot;[value=&#x27;&quot;+btnvalue+&quot;&#x27;]&quot;);
+                //删除button并取消勾选相应checkbox
+                for(var j=0;j&lt;cancelChoose.length;j++){
+                    if(cancelChoose[j].getAttribute(&quot;type&quot;)==&quot;button&quot;){
+                        showBox.removeChild(cancelChoose[j]);
+                    }
+                    else if(cancelChoose[j].getAttribute(&quot;type&quot;)==&quot;checkbox&quot;){
+                        cancelChoose[j].checked=false;
+                    }
+                }
+            })
+        }
+    }
+}
+    </pre>
+  </div>
+
+  <div>
+    <h3>给定字符串“abcba”，处理得到第一个不重复字母。</h3>
+    <pre>
+      function firstOnlyChar(str) {
+    var str = str || &quot;&quot;,
+        i=0,
+        k=&#x27;&#x27;,
+        _char = &quot;&quot;,
+        charMap = {},
+        result = {name:&quot;&quot;,index:str.length};
+    for(i=0;i&lt;str.length;i++){
+        _char = str.charAt(i);
+        if(charMap[_char]!=undefined){
+            charMap[_char]=-1;
+        }else{
+            charMap[_char]=i;
+        }
+    }
+    for(k in charMap){
+        if(charMap[k]&lt;0){
+            continue;
+        }
+        if(result.index&gt;charMap[k]){
+            result.index=charMap[k];
+            result.name=k;
+        }
+    }
+    return result.name;
+}
+    </pre>
+  </div>
+   
     <script type="text/javascript">
 
       

@@ -142,30 +142,7 @@ document.body.insertBefore(script, document.body.firstChild);
 </p>
 	</div>
 
-	<div>
-	<h3>6.对元素绑定事件有几种方式？ 有什么区别？</h3>
-    <p>
-    <pre>
-       bind()--（在Jquery3.0中已经移除，相应unbind()也移除）
-	   优点：点击完以后释放空间，可以绑定任何js事件
-	   缺点：只能针对已经存在的元素进行事件的设置
-       live()--（在Jquery1.7中已经移除）
-	   优点：支持事件委托
-       缺点:运行完以后不释放空间，太多的使用会占用更多的内存，只能支持部分事件。
-       delegate()--版本号小于1.7（在Jquery1.7中已经移除）
-       功能和live类似。
-       on()--（在Jquery1.7中添加，相应off()也添加）
-		低版本jq推荐delegate,高版本推荐on.
 
-      除了上述方法如果你想绑定一次的话还可以用one()方法；
-      trigger()也有绑定事件的效果。
-
-
-		
-    </pre>
-    
-    </p>
-	</div>
 
 	<div>
 	<h3>7.简述调整ie7+以上的兼容，遇到的问题。</h3>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+     <style type="text/css" media="screen">
+        pre{background-color: #eee;padding: 10px;border: 1px solid #ccc;white-space: pre-wrap;}
+    </style>
+</head>
+<body>
+<div>
+    <h3>是否看过 jQuery 的源码？能否简单概括一下它的实现原理？</h3>
+    <p></p>
+</div>
+    <div>
+    <h3>6.对元素绑定事件有几种方式？ 有什么区别？</h3>
+    <p>
+    <pre>
+       bind()--（在Jquery3.0中已经移除，相应unbind()也移除）
+       优点：点击完以后释放空间，可以绑定任何js事件
+       缺点：只能针对已经存在的元素进行事件的设置
+       live()--（在Jquery1.7中已经移除）
+       优点：支持事件委托
+       缺点:运行完以后不释放空间，太多的使用会占用更多的内存，只能支持部分事件。
+       delegate()--版本号小于1.7（在Jquery1.7中已经移除）
+       功能和live类似。
+       on()--（在Jquery1.7中添加，相应off()也添加）
+        低版本jq推荐delegate,高版本推荐on.
+
+      除了上述方法如果你想绑定一次的话还可以用one()方法；
+      trigger()也有绑定事件的效果。
+
+
+        
+    </pre>
+    
+    </p>
+    </div>
+    <div>
+    <h3>jQuery 的属性拷贝（extend）的实现原理是什么？如何实现深拷贝？</h3>
+    <p>
+      
+    </p>
+
+  </div>
+  <div>
+    <h3>jQuery.extend 与 jQuery.fn.extend 有何区别？</h3>
+    <p>前者是类级别开发，后者是 对象级别开发。</p>
+  </div>
+
+  <div>
+    <h3>是否了解针对 jQuery 性能的优化方法？</h3>
+    <p>
+      1.使用最新版本的jq.<br>
+      2.使用id选择器，标签选择器  <br>
+      3.使用链式操作。 <br>
+      4.做好缓存。  <br>
+      5.使用委托。  <br>
+      6.正确使用循环。  
+    </p>
+  </div>
+
+  <div>
+    <h3>jQuery 中一个对象可以同时绑定多个事件，这是如何实现的？</h3>
+    <p></p>
+    <pre>
+       $("div").on({
+      "click":function () {
+        console.log("click");
+      },
+      "mouseover":function () {
+        console.log("over");
+      }
+    })
+    </pre>
+  </div>
+
+  <div>
+    <h3>jQuery 与 jQuery UI 有何区别?</h3>
+    <p>`jQuery`是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。  <br>
+    `jQuery UI`则是在jQuery的基础上，利用jQuery的扩展性，设计的插件。提供了一些常用的界面元素，
+    诸如对话框、拖动、自动补全，折叠面板，排序等等</p>
+  </div>
+    <div>
+    <h3>jQuery UI 如何自定义组件？</h3>
+    <pre>
+      $.widget({
+      code...
+      })
+    </pre>
+  </div>
+
+   <div>
+        <h3>jQuery.fn 的 init 方法返回的 this 指的是什么对象？为什么要返回 this ？</h3>
+        <p>this指的是选择对象的集合，返回this是为了继续进行链式操作。</p>
+    </div>
+    <div>
+      <h3>jQuery 的队列是如何实现的？队列可以用在哪些地方？</h3>
+      <p></p>
+    </div>
+    
+    <script type="text/javascript">
+        
+    </script>
+</body>
+</html>
