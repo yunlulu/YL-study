@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<style type="text/css" media="screen">
+    pre{background-color: #eee;padding: 10px;border: 1px solid #ccc;white-space: pre-wrap;}
+  </style>
+</head>
+<body>
+  <div>
+    <h3>&lt;img&gt; 的 title 和 alt 有什么区别</h3>
+    <pre>
+      
+1.title 是 global attributes 之一，用于为元素提供附加的advisory information。通常当鼠标滑动到元素上的时候显示。
+alt 是 &lt;img&gt; 的特有属性，是图片内容的等价描述，用于图片无法加载时显示、读屏器阅读图片。可提图片高可访问性，除了纯装饰图片外都必须设置有意义的值，搜索引擎会重点分析。
+    </pre>
+  </div>
+  <div>
+    <h3>doctype是什么,举例常见doctype及特点</h3>
+    <p>
+1.&lt;!doctype&gt; 声明必须处于HTML文档的头部，在 &lt;html&gt; 标签之前，HTML5中不区分大小写
+2.&lt;!doctype&gt; 声明不是一个HTML标签，是一个用于告诉浏览器当前HTMl版本的指令
+3.现代浏览器的html布局引擎通过检查doctype决定使用兼容模式还是标准模式对文档进行渲染，一些浏览器有一个接近标准模型。
+4.在HTML4.01中 &lt;!doctype&gt; 声明指向一个DTD，由于HTML4.01基于SGML，所以DTD指定了标记规则以保证浏览器正确渲染内容
+5.HTML5不基于SGML，所以不用指定DTD
+常见dotype：
+1.HTML4.01 strict ：不允许使用表现性、废弃元素（如font）以及frameset。声明：&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+2.HTML4.01 Transitional :允许使用表现性、废弃元素（如font），不允许使用frameset。声明： &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+3.HTML4.01 Frameset :允许表现性元素，废气元素以及frameset。声明：&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Frameset//EN&quot; &quot;http://www.w3.org/TR/html4/frameset.dtd&quot;&gt;
+4.XHTML1.0 Strict :不使用允许表现性、废弃元素以及frameset。文档必须是结构良好的XML文档。声明： &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;
+5.XHTML1.0 Transitional :允许使用表现性、废弃元素，不允许frameset，文档必须是结构良好的XMl文档。声明： &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+6.XHTML 1.0 Frameset :允许使用表现性、废弃元素以及frameset，文档必须是结构良好的XML文档。声明： &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Frameset//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;&gt;
+7.HTML 5 : &lt;!doctype html&gt;</p>
+  </div>
+
+  <div>
+    <h3> HTML全局属性(global attribute)有哪些</h3>
+    <pre>
+     
+参考资料： MDN: html global attribute 或者 W3C HTML global-attributes
+accesskey :设置快捷键，提供快速访问元素如 aaa 在windows下的firefox中按alt + shift + a 可激活元素
+class :为元素设置类标识，多个类名用空格分开，CSS和javascript可通过class属性获取元素
+contenteditable : 指定元素内容是否可编辑
+contextmenu : 自定义鼠标右键弹出菜单内容
+data-* : 为元素增加自定义属性
+dir : 设置元素文本方向
+draggable : 设置元素是否可拖拽
+dropzone : 设置元素拖放类型： copy, move, link
+hidden : 表示一个元素是否与文档。样式上会导致元素不显示，但是不能用这个属性实现样式效果
+id : 元素id，文档内唯一
+lang : 元素内容的的语言
+spellcheck : 是否启动拼写和语法检查
+style : 行内css样式
+tabindex : 设置元素可以获得焦点，通过tab可以导航
+title : 元素相关的建议信息
+translate : 元素和子孙节点内容是否需要本地化
+    </pre>
+  </div>
+
+  <div>
+    <h3>  什么是web语义化,有什么好处</h3>
+    <pre>
+web语义化是指通过HTML标记表示页面包含的信息，包含了HTML标签的语义化和css命名的语义化。
+HTML标签的语义化是指：通过使用包含语义的标签（如h1-h6）恰当地表示文档结构
+css命名的语义化是指：为html标签添加有意义的class，id补充未表达的语义，如Microformat 通过添加符合规则的class描述信息
+为什么需要语义化：
+去掉样式后页面呈现清晰的结构
+盲人使用读屏器更好地阅读
+搜索引擎更好地理解页面，有利于收录
+便团队项目的可持续运作及维护
+    </pre>
+  </div>
+
+  <div>
+    <h3>  web开发中会话跟踪的方法有哪些</h3>
+    <pre>
+    
+1.cookie
+2.session
+3.url重写
+4.隐藏input
+5.ip地址
+    </pre>
+  </div>
+
+  <script type="text/javascript">
+    
+  </script>
+</body>
+</html>
