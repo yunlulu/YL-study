@@ -4,7 +4,8 @@ require.config({
 		"baseUrl":"lib",
 		"jquery":"jquery",
 		"math":"my/math",
-		"outer":"my/outer"
+		"outer":"my/outer",
+		"slide":"my/jquery.SuperSlide"
 	}
 });
 console.log("main加载成功！");
@@ -16,9 +17,10 @@ console.log("main加载成功！");
 })*/
 
 
-require(['jquery','math','outer'],function ($,math,outer) {
+require(['jquery','math','outer','slide'],function ($,math,outer) {
 	console.log($(window).height());
 	console.log(math.add(10,20));
 	console.log(math.reduce(10,20));
 	outer.tip1("哈哈哈哈哈");
+	$(".slideBox").slide({mainCell:".bd ul",autoPlay:true});
 });
