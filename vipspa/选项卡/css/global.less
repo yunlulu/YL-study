@@ -1,0 +1,83 @@
+*{margin: 0; padding: 0;  color:#272636;
+    font-size:12px; line-height:20px; 
+    -webkit-tap-highlight-color:transparent; -webkit-appearance:none; }
+body{background-color: #feffff;}
+a, img {-webkit-touch-callout: none; }
+body{-webkit-overflow-scrolling:touch;}
+body::-webkit-scrollbar{width: 0px;}
+textarea::-webkit-scrollbar{width: 0px;}
+div::-webkit-scrollbar{width:0px;}
+img{display: block; border: none 0; width: 100%;}
+input{border-radius: 0;}
+input,textarea{border: 0 none; display: block;}
+
+.d-block{display: block;}
+.d-none{display: none;}
+.v-none{visibility: hidden;}
+/*文字和li重置*/
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+a{text-decoration: none;}
+li{list-style: none;}
+/*浮动和定位*/
+.fl{float: left;}
+.fr{float: right;}
+.clear:after {clear:both;visibility:hidden;content:"";display:block;}
+.rel{position: relative;}
+.abs{position: absolute;}
+
+.txt-over1{display: block;overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
+.txt-over2{display:-webkit-box;overflow:hidden;text-overflow:ellipsis;word-wrap:break-word;white-space:normal!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+
+
+@font-face {font-family: 'iconfont';
+    src:url('../font/iconfont.ttf') format('truetype'), 
+    url('../font/iconfont.svg#iconfont') format('svg'); 
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;-webkit-text-stroke-width: 0.2px;}
+
+.icon-shouji:before { content: "\e737"; }
+
+.icon-wangyinzhifu:before { content: "\e6ef"; }
+
+.icon-tubiao210:before { content: "\e61b"; }
+
+.icon-shangcheng:before { content: "\e671"; }
+
+.icon-duihua:before { content: "\e601"; }
+
+
+.fix-bottom{position: fixed;bottom: 0px; left: 0px; 
+    border-top:1px solid #ddd;
+    padding:8px 0px; background-color: #EAEAEA;width:100%;
+    a{
+        float: left; width:20%; text-align: center;
+        &.active{
+            *{
+                color: #3247DE;
+            }
+        }
+    }
+}
+
+.t-red{color:#f00; font-weight:bold;}
+.t-bold{font-weight: bold;}
+.nav-content-title{line-height: 40px; font-size: 14px; font-weight: bold;
+border-bottom: 1px solid #ccc; margin-bottom: 10px;
+}
+.nav-content-box {padding:10px; margin-bottom: 68px;
+    p{text-align: justify; color: #333;text-indent: 24px;}
+}
+.nav-content-subtitle{line-height: 30px;font-size: 12px; font-weight: bold;}
+.t-blue{color: #00f;font-weight: bold;text-decoration: underline;}
+// .nav-content-box article{display: none;}
+.nav-content-box p.t-red{color:#f00; font-weight:bold;}
+
+
+
+
+
+
+
