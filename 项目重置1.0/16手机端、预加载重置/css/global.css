@@ -1,8 +1,7 @@
 *{margin: 0; padding: 0;  color:#272636;
 	font-size:12px; line-height:20px; 
-	-webkit-tap-highlight-color:transparent; -webkit-appearance:none; }
+	-webkit-tap-highlight-color:transparent; -webkit-appearance:none;-webkit-user-select:none;-webkit-touch-callout:none; }
 body{background-color: #feffff;}
-a, img {-webkit-touch-callout: none; }
 body{-webkit-overflow-scrolling:touch;}
 body::-webkit-scrollbar{width: 0px;}
 textarea::-webkit-scrollbar{width: 0px;}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/* js中定义接口三种方式
+		1.注释描述
+		2.属性检测
+		3.鸭式辨型
+		*/
+
+/*
+1.注释描述
+优点：程序猿可以有一个参考
+缺点：还是属于文档的范畴，这种方式太松散了，没有对接口定义方法的检查是否完全被实现
+*/
+
+
+		/**
+		 * interface Composite{
+		 *		function add(obj)
+		 *		function remove(obj)
+		 *		function update(obj)
+		 *
+		 *}
+		*/
+		// CompositeImp1 implements Composite
+		var CompositeImp1=function (){
+			/*this.add=function (obj) {
+							
+			};	
+			this.remove=function (obj) {
+				
+			}*/
+
+		};
+		CompositeImp1.prototype.add = function(obj){
+			
+		};
+		CompositeImp1.prototype.remove = function(obj){
+			
+		};
+
+		var c1=new CompositeImp1();
+		var c2=new CompositeImp1();
+		console.log(c1.add);
+		console.log(c2.add);
+
+/*
+2.属性检测方式
+优点：不再是文档叙述，多了对接口的检测，耦合性降低，
+缺点：只能检测名字，不能检测 内部实例是否完成
+*/
+	/**
+		 * interface box{
+		 *		function add(obj)
+		 *		function remove(obj)
+		 *		function update(obj)
+		 *
+		 *}
+		 * interface FormItem{
+		 *		function select(obj)
+		 *
+		 *}
+	*/
+	//composites implements Compsite,Forms
+	var composites=function () {
+		// 显式的在类的内部，接收所实现的接口
+		// 一般来说是一个规范，我们项目经理会在类的内部定义一个数组（名字要固定）
+		// this.implementsInterfaces=["Composite","Forms"];
+		this.implementsInterfaces=["Composite"];
+	}
+
+		composites.prototype.add = function(obj){
+			console.log("add===");
+		};
+		composites.prototype.remove = function(obj){
+			
+		};
+		
+
+		function CheckComposites(instance) {
+			// 判断当前对象是否实现了接口
+			if (!IsImolements(instance,'Composite','Forms')) {
+				throw new Error("Object is not imposite require!");
+			}
+		}
+		// 共用的具体的检测方法
+		function IsImolements(obj) {
+			// arguments 对象，获取函数的实参
+			for (var i = 1; i < arguments.length; i++) {
+				// 接收所实现的每一个接口的名字
+				var interfaceName=arguments[i];
+				// 判断此方法到底成功了还是失败了
+				var interfaceFound=false;
+
+				for(var j=0;j<obj.implementsInterfaces.length;j++){
+					if(obj.implementsInterfaces[j]==interfaceName){
+						interfaceFound=true;
+						break;
+					}
+				}
+				if(!interfaceFound){
+					return false;
+				}
+			}
+			return true;
+		}
+
+		var d1=new composites();
+		CheckComposites(d1);
+		d1.add();
+
+
+
+
+	</script>
+</body>
+</html>

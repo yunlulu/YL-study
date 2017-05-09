@@ -1,17 +1,15 @@
 *{margin: 0; padding: 0;  color:#272636;
-	font-size:12px; line-height:20px; 
-	-webkit-tap-highlight-color:transparent; -webkit-appearance:none;
-    -webkit-user-select:none;-webkit-touch-callout:none; }
+    font-size:12px; line-height:20px; 
+    -webkit-tap-highlight-color:transparent; -webkit-appearance:none; }
 body{background-color: #feffff;}
+a, img {-webkit-touch-callout: none; }
 body{-webkit-overflow-scrolling:touch;}
 body::-webkit-scrollbar{width: 0px;}
 textarea::-webkit-scrollbar{width: 0px;}
 div::-webkit-scrollbar{width:0px;}
 img{display: block; border: none 0; width: 100%;}
-input{border-radius: 0;width:100%;}
+input{border-radius: 0;}
 input,textarea{border: 0 none; display: block;}
-textarea{width:100%;resize:none;}
- textarea:focus,input:focus{outline: none;}
 
 .d-block{display: block;}
 .d-none{display: none;}
@@ -39,14 +37,46 @@ li{list-style: none;}
     font-family:"iconfont" !important;
     font-size:16px;font-style:normal;
     -webkit-font-smoothing: antialiased;-webkit-text-stroke-width: 0.2px;}
-.icon-refresh:before{content: "\e600";}
-.icon-cart:before{content: "\e601";}
-.icon-shopcenter:before{content:"\e602";}
-.icon-mancenter:before{content:"\e603";}
-.icon-prolist:before{content:"\e604";}
-.icon-search:before{content:"\e605";}
-.icon-news:before{content:"\e606";}
-.icon-home:before{content:"\e607";}
+
+.icon-shouji:before { content: "\e737"; }
+
+.icon-wangyinzhifu:before { content: "\e6ef"; }
+
+.icon-tubiao210:before { content: "\e61b"; }
+
+.icon-shangcheng:before { content: "\e671"; }
+
+.icon-duihua:before { content: "\e601"; }
+
+
+.fix-bottom{position: fixed;bottom: 0px; left: 0px; 
+    border-top:1px solid #ddd;
+    padding:8px 0px; background-color: #EAEAEA;width:100%;
+    a{
+        float: left; width:20%; text-align: center;
+        &.active{
+            *{
+                color: #3247DE;
+            }
+        }
+    }
+}
+
+.t-red{color:#f00; font-weight:bold;}
+.t-bold{font-weight: bold;}
+.nav-content-title{line-height: 40px; font-size: 14px; font-weight: bold;
+border-bottom: 1px solid #ccc; margin-bottom: 10px;
+}
+.nav-content-box {padding:10px; margin-bottom: 68px;
+    p{text-align: justify; color: #333;text-indent: 24px;}
+}
+.nav-content-subtitle{line-height: 30px;font-size: 12px; font-weight: bold;}
+.t-blue{color: #00f;font-weight: bold;text-decoration: underline;}
+// .nav-content-box article{display: none;}
+.nav-content-box p.t-red{color:#f00; font-weight:bold;}
+
+
+
 
 
 

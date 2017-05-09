@@ -1,5 +1,5 @@
 *{margin: 0; padding: 0;  color:#000;
-    font-size:12px; line-height:24px; }
+    font-size:12px; line-height:24px; -webkit-user-select:none;-webkit-touch-callout:none;}
 body{background-color: #feffff;}
 body{-webkit-overflow-scrolling:touch;}
 

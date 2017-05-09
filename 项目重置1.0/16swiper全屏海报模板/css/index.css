@@ -1,4 +1,4 @@
-*{margin:0;padding:0;}
+*{margin:0;padding:0;-webkit-user-select:none;-webkit-touch-callout:none;}
 img{display:block;}
 html,body{height:100%;}
 .swiper-container {width: 100%;height: 100%;background:#fff; background-size: cover;}  
