@@ -40,6 +40,11 @@
 	</div>
 	<div>
 		<h3>ie8+的兼容</h3>
+		<pre>
+			css3属性少用，
+			阻止默认事件，evnet,绑定事件,获取标签属性
+
+		</pre>
 	</div>
 	<div>
 		<h3>canvas在ie8的兼容</h3>
@@ -57,7 +62,67 @@
 		<h3>响应式的原理是什么。</h3>
 		
 	</div>
+	<div>
+		<h3>你最近遇到了哪些很难解决的问题？</h3>
+	</div>
+	<div>
+		<h3></h3>
+	</div>
 
-	
+	<div>
+		<h3>与后端交互？如何调接口？</h3>
+	</div>
+	<div>
+		<h3>目前遇到的问题：调用微信端/普通接口，交互不会;手机前端框架，用工具打包代码，有质量的特效太少，node接触太少。vue,vue路由，h5地图调用，</h3>
+	</div>
+
+	<script type="text/javascript">
+// 调用接口案例
+function poorNum(lvl, cityName) {  
+ var params = {  
+ "lvl" : lvl,  
+ "provName" : provName,  
+ "cityName" : cityName,  
+ "regnName" : cityName,  
+ "statisMonth" : date()  
+ }  
+ getJson('../../front/sh/analysis!execute?uid=distribution', params, function(data, status) {  
+ var data = data.beans;  
+     if (lvl == '2') option.series[0].mapType = cityName;  
+ option.series[0].data = data;  
+ myChart.setOption(option, true);  
+   var ecConfig = require('echarts/config');  
+ var zrEvent = require('zrender/tool/event');  
+   myChart.on(ecConfig.EVENT.MAP_SELECTED, function (param){  
+ var selected = param.selected;  
+ var flag=false;  
+ for (var i in selected) {  
+ if (selected[i]) {  
+ if(lvl=='1'){//省  
+ lvl = '2';  
+ checkedRegnName = i;  
+ sendParams.cityName = i;  
+ sessionStorage.setItem("cityName",i);  
+ poorNum(lvl, i);  
+ }else if(lvl == '2' ){//市  
+ lvl = "3";  
+ checkedRegnName = i;  
+ sendParams.cellName = i;  
+ showTown(i);  
+ }else {//县  
+ checkedRegnName = i;  
+ sendParams.cellName = i;  
+ showTown(i);  
+ }  
+ sendParams.lvl = lvl;  
+ handlePieData(i, _url, sendParams);  
+ }  
+ }  
+ });  
+ });  
+ }  
+
+
+	</script>
 </body>
 </html>
