@@ -32,13 +32,13 @@
            {{#compare age 20}}
             <tr style="background-color: #0f0;">
               <td>{{name}}</td>
-              <td>{{sex sex}}</td>
+              <td>{{tihuan sex}}</td>
               <td>{{age}}</td>
             </tr>
           {{else}}
            <tr style="background-color: #f00;">
              <td>{{name}}</td>
-             <td>{{sex sex}}</td>
+             <td>{{tihuan sex}}</td>
              <td>{{age}}</td>
            </tr>
           {{/compare}}
@@ -53,17 +53,17 @@
                     "student": [
                     {
                             "name": "妞妞",
-                            "sex": 1,
+                            "sex": "/1",
                             "age": 11
                         },
                         {
                             "name": "张三",
-                            "sex": 0,
+                            "sex": "/0",
                             "age": 23
                         },
                         {
                             "name":"李四",
-                            "sex": 0,
+                            "sex": "/0",
                             "age": 22
                         }
                         
@@ -93,7 +93,11 @@
             return "女";
           }
           
-        })
+        });
+        Handlebars.registerHelper("tihuan", function(txt) {  
+           return txt.replace(/\//g, '-')
+        });
+
         
         //将json对象用刚刚注册的Handlebars模版封装，得到最终的html，插入到基础table中。
         $('#tableList').html(myTemplate(data));

@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>点赞</title>
+    <style type="text/css" media="screen">
+        *{margin:0px;padding: 0px;}
+        input{-webkit-border-radius: 0px;border-radius: 0px; background-color: #f00;}
+        .page-star{ width: 20px; position: absolute; bottom: 50px; right: 50px; }
+    .btn{ width: 100px; height: 30px; border:0; background: red; color: #fff; position: absolute; bottom: 100px; right: 50px; margin-left: -50px; }
+        .newstar{position: absolute; width:15px; height: 15px;
+        background-size: 100% 100%; bottom: 50px; right:50px;}
+
+    </style>
+</head>
+<body>
+    
+<input id="btn1" type="button" class="btn" value="点赞" />
+
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+(function ($) {
+    $.fn.likeStar=function (options) {
+        var defaults={
+            trigger:"click",   //触发方式
+            starClass:".page-star",  //星星的类名
+            starnum:5,         //星星个数
+            aniArea:"body"    //动画区域
+        };  
+    var options=$.extend({},true,defaults,options);         
+        var x=$(window).width();
+        var y=$(window).height();
+        $(this).each(function () {
+        var _this=$(this);
+        _this.on(options.trigger,function (ev) {
+            var starLen=$(options.starClass).length;
+            var randEndPos = parseInt(Math.random() * x); 
+            var randStartPos = parseInt(Math.random() * x); 
+            var randColor = parseInt(Math.random()*options.starnum); 
+            var randWidth = parseInt(Math.random()*21 + 20); 
+            var randTime = parseInt(Math.random()*1000 + 2500); 
+            $(options.aniArea).append("<img src='' "+ "class='"+options.starClass.split(".")[1]+"'>");
+            $(options.starClass+":eq("+starLen+")").attr("src",("images/heart"+randColor+".png")).css({"width":randWidth+"px","right":randStartPos+"px"}).animate({
+            bottom:$(window).height(), 
+            opacity:0,
+            right:randEndPos},randTime);
+
+        });
+        });
+        return this;
+
+    }   
+
+})($);
+
+$(document).likeStar();
+$("#btn1").on("click",function (event) {
+        event.stopPropagation();   
+});
+
+/*
+var store=[];
+
+function FloatStar(starNum) {
+    var winWidth=window.innerWidth;
+    var winHeight=window.innerHeight;
+    this.startX=parseInt(Math.random()*winWidth);
+    this.endX=parseInt(Math.random()*winWidth);
+    this.randColor=parseInt(Math.random()*starNum);
+
+};
+for(var i=0;i<10;i++){
+    store[i]=new FloatStar(5);
+    $("body").append("<div class='newstar'></div>");
+    // $(".newstar").eq(i).css({"right":store[i].startX,"background-image":"images/heart"+store[i].randColor+".png"});
+    $(".newstar").eq(i).css({"background":"url(images/heart"+store[i].randColor+".png) no-repeat","background-size":"100% 100%","right":store[i].startX});
+}
+console.log(store);
+// var star1=new FloatStar(5);
+
+// console.log(star1);
+*/
+
+
+
+
+
+
+
+/*
+$(function () {
+ 
+   $("#btn1").click(function(){
+        var x =$(window).width();       
+        var y = 900;  
+        var num = Math.floor(Math.random() * 5);
+        var index=$(".page-star").length;
+        var randEndPos = parseInt(Math.random() * x ); 
+        var randWidth = parseInt(Math.random()*21 + 20); 
+        $("body").append("<img src='' class='page-star'>");
+        $('img:eq(' + index + ')').css({"width":randWidth+"px"}).attr('src','images/heart'+num+'.png')
+        $("img").animate({bottom:$(window).height()-50,opacity:"0",right: randEndPos},3000);
+        
+   });
+}) ;
+*/
+
+
+
+
+</script>
+
+
+</body>
+</html>

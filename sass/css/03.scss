@@ -1,0 +1,17 @@
+@for $i from 0 through 75{
+	.faceList li.face#{$i}{
+		background-image: url(../img/arclist/#{$i}.gif);
+	}
+}
+
+
+@for $i from 0 through 3{
+    .item-#{$i}{
+        width:1.445rem*$i;
+    }
+}
+@each $animal in puma,sea,ocean,sala{
+    .#{$animal}-icon{
+        background-image: url('images/#{$animal}.png');
+    }
+}
