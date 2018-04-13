@@ -14,7 +14,16 @@ $(function(){
     */
     var param = vipspa.getMessage('home');
     console.log(param);
-    $("#telbox").html("我的电话是："+param.content.tel);
+        if (param.content) {
+            if(param.content.tel){
+                $("#telbox").html("我的电话是：" + param.content.tel);
+            }
+        } else{
+            $("#telbox").html("我的电话是：" + '保密啦');
+
+        }
+
+
 
     /*delMessage(messageId)    作用：删除指定消息
       clearMessage()           作用：清除消息队列*/

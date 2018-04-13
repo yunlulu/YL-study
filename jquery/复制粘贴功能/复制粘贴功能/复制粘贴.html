@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复制粘贴</title>
+</head>
+<body>
+     <input type="text" id="copy-val">
+      <button>复制</button>
+      <input type="text">
+</body>
+<script src="js/jquery.min.js"></script>
+<script>
+       $('button').click(function(){
+           copytxt()
+       })
+       function copytxt() {
+           var d = document.getElementById("copy-val");
+           d.select();
+           document.execCommand("Copy");
+           alert("已复制到剪贴板");
+       }
+</script>
+</html>

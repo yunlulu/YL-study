@@ -1,0 +1,9 @@
+a {
+  color: #0C72A7;
+}
+a b {
+  color: #999;
+}
+a:hover {
+  background-color: #0ff;
+}

@@ -15,8 +15,9 @@ $(function(){
 
 	$('#submit1').click(function(){
 		var tel = $('#telno').val();
-		if(tel===''){
+		if(!tel){
 			alert('请输入手机号码');
+			return;
 		}
 		console.log(tel);
 		// id必须得指定 用于标识这个传参

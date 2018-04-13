@@ -1,4 +1,4 @@
-http://www.ctolib.com/cheatsheets-Git-ch.html
+﻿http://www.ctolib.com/cheatsheets-Git-ch.html
 
 删除缓存区内容：
 使用 Git rm 命令即可，有两种选择,
