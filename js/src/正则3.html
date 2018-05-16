@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>title</title>
+
+</head>
+<body>
+<input type="text" name="" id="txt1"/>
+<button id="btn1">校验邮箱</button>
+
+
+<script>
+    // 量词
+    // {m,n} 最少m次， 最多n次
+    // {m,} 最少m次， 最多不限
+    // {,n} 最少不限， 最多n次
+    // {n} 等于n次
+
+    //qq号：  最少5位，最多 11位， 第1位不是0
+    var  str1='我的qq905752311 你的qq 11.1134dfgf';
+    var str1reg=/[1-9][0-9]{4,10}/g;
+    console.log(str1.match(str1reg));
+
+    // * {0,} 0次或者无数次  不要使用，贪婪？
+    // ？{0,1} 0次或者1次
+    // + {1,} 1次或者无限次
+
+
+    //校验邮箱
+    // 规则： 用户名(字母数字下划线)
+    // @（只能是是一串英文，数字）
+    // .只能是英文 长度2-4位
+    var str2='yunlulu@qQdd.com';
+    var str2Reg=/^\w+@[a-z0-9]+(\.[a-z]{2,4})$/gi;
+    btn1.onclick= function () {
+        var val=txt1.value;
+        console.log(str2Reg.test(val));
+
+    }
+
+    // 去除行首行尾空格
+    var str3='              dsgdf sdg dg fg            ';
+    var str3Reg=/^\s+|\s+$/g;
+    console.log(str3.replace(str3Reg,'*'));
+//    console.log(str3.replace(str3Reg1,'*'));
+
+    // 单词边界 /b
+    var str4='stre stret stddddg sttrrssggg         str  str';
+    // 匹配具体单词
+    var str4Reg=/\bstr\b/gi;
+    console.log(str4.match(str4Reg));
+
+
+
+</script>
+</body>
+</html>
