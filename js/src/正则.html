@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则</title>
+</head>
+<body>
+
+<script>
+ //回顾 字符串操作
+var str1="abcdef";
+//返回查找字符串第一次出现的位置
+console.log(str1.search('bc'));
+// substring 1<=n<4  1,2,3
+console.log(str1.substring(1,4));
+//如果不指定end,则到字符结束
+console.log(str1.substring(1));
+// charat 指定索引 返回该字符串索引位置的文字
+console.log(str1.charAt(2));
+// split 返回分隔后的数组
+var str2='abc-w-9-10';
+var str2Arr=str2.split("-");
+console.log(str2Arr);
+
+
+// 把字符串中的数字挑出来
+var str3='12,67 54 -fd8 e dd 56ff  12';
+var str3Arr=[];
+var str3Temp='';
+ // 不用正则
+for(var str3i=0;str3i<str3.length;str3i++){
+    if(str3.charAt(str3i)>='0' && str3.charAt(str3i)<='9'){
+          str3Temp+=str3.charAt(str3i);
+    }else{
+        if(str3Temp){
+            str3Arr.push(str3Temp);
+            str3Temp='';
+        }
+    }
+}
+ if(str3Temp){
+     str3Arr.push(str3Temp);
+     str3Temp='';
+ }
+console.log(str3Arr);
+// 用正则
+var reg3=/\d+/g;
+// match 返回一个匹配正则的数组
+console.log(str3.match(reg3));
+
+
+
+
+// 邮箱    一串数字、字母、下划线 @ 一串英文,数字     .一串英文
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

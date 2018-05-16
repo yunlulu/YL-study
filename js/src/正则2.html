@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则</title>
+</head>
+<body>
+<div>
+
+<textarea id="txt1" name="" id="" cols="30" rows="10">
+
+</textarea>
+<button id="btn1">敏感词过滤</button>
+<textarea id="txt2" name="" id="" cols="30" rows="10" readonly>
+
+</textarea>
+</div>
+<div>
+
+<h1>html标签过滤</h1>
+<textarea id="txt3" name="" id="" cols="30" rows="10">
+
+</textarea>
+<button id="btn2">标签过滤</button>
+<textarea id="txt4" name="" id="" cols="30" rows="10" readonly>
+
+</textarea>
+</div>
+
+<script>
+var str1='Abcdefgh';
+// perl风格 是否包含a,区分大小写
+var str1reg=/a/;
+// i 修饰符 不区分大小写
+var str1reg2=/a/i;
+// js风格
+var str1reg3=new RegExp('a','i');
+
+console.log(str1reg.test(str1));
+console.log(str1reg2.test(str1));
+console.log(str1reg3.test(str1));
+
+// search 和正则配合
+var str2='ab1 3 56 dd';
+// search 返回查找具体字符串的索引
+console.log(str2.search("1"));
+// 如果查找的对象不具体，比如以a开头,以d结尾，这时候就要用正则了
+// 查找第一个2位数字出现的位置
+var str2Re=/\d\d/;
+console.log(str2.search(str2Re));
+
+
+
+// 判断浏览器版本
+var userAgent=window.navigator.userAgent;
+if(userAgent.search(/chrome/i)>-1){
+    console.log('这是谷歌浏览器');
+}else if(userAgent.search(/ie/i)>-1){
+    console.log('这是ie');
+
+}
+
+
+// match
+var str3='sdf 44 55 4e3 54tt6 77r7 777544dd';
+// g 全局搜索 +是量词，代表至少重复前面一次{1,}
+var str3Reg=/\d+/g;
+console.log(str3.match(str3Reg));
+
+
+// replace
+var str4='abcdefdddddd';
+console.log(str4.replace('d','啦'));
+console.log(str4.replace(/d/gi,'啦'));
+
+
+// 敏感词过滤
+var btn1=document.getElementById("btn1");
+var txt1=document.getElementById("txt1");
+var txt2=document.getElementById("txt2");
+var txtReg=/a|b|c/g;
+txt1.onkeyup= function () {
+    txt2.value=txt1.value.replace(txtReg,'*');
+};
+
+
+//[] 匹配单个字符
+var str5='1a2 142 1b2 1bc 1|2';
+var str5Reg1=/1[ab|c]2/g;
+console.log(str5.match(str5Reg1));
+var str5Reg4=/script|master|truncate|char|declare|iframe|onreadystatechange|alert|atestu|xss|;|'|<|>|\(|\)|confirm|prompt|onload|onmouseover|onfocus|onerror|and|union|where|limit|group|hex|substr|svg|\\/;
+// [0-9a-zA-Z] 一个字母或者一个数字
+// [0-9a-zA-Z] 一个字母或者一个数字
+var str51='0123244..//111!!!!ddddfDDDd啊哈哈^';
+console.log(str51.match(/[0-9a-z]/gi));
+console.log(str51.match(/[0-9a-zA-Z]/g));
+// [^0-9a-zA-Z] 不包括其后面的匹配
+console.log(str51.match(/[^0-9a-zA-Z]/g));
+console.log(str51.match(/[^(0-9)a-zA-Z]/g));
+// 如果^写在中间表示可匹配字符
+console.log(str51.match(/[0-9^a-zA-Z]/g));
+
+
+// html标签过滤
+var btn2=document.getElementById("btn1");
+var txt3=document.getElementById("txt3");
+var txt4=document.getElementById("txt4");
+var txtReg2=/<[^<>]+>/g;
+txt3.onkeyup= function (e) {
+    if(e.keyCode==13){
+        txt4.value=txt3.value.replace(txtReg2,'');
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
