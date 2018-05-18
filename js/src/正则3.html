@@ -54,6 +54,20 @@
     var str4Reg=/\bstr\b/gi;
     console.log(str4.match(str4Reg));
 
+    // 方括号中的哪些需要转义？
+    var str5="0.5";
+    var c=str5.replace(/(\d)\./g, function (x) {
+        return "lll";
+    });
+    console.log(c);
+    var str6='2018年01 06';
+    var str61=str6.replace(/(\d{4})[-年\s](\d{2})[-月\s](\d{2})/g,'$1/$2/$3');
+    console.log(str61);
+    var str7='111[em_10]哈哈哈哈哈哈[em_1]你好啊';
+    var str71=str7.replace(/\[em_(\d{1,2})\]/g,'<img src="$1.png"/>');
+    console.log(str71);
+
+
 
 
 </script>

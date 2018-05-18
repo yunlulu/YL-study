@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>title</title>
+
+</head>
+<body>
+
+
+<script>
+/*var urlParam="a=1==&b=234=&c=10&d===8907777777==";
+var hash=window.location.hash.split('?')[1];
+var arr=urlParam.split("&");
+var obj={};
+for(var i=0;i<arr.length;i++){
+  var key=/(\w+)={1}((\w|=){1,})/;
+  var regarr = arr[i].match(key);
+  obj[regarr[1]]=regarr[2];
+}
+console.log(obj);*/
+
+
+function getUrlParam(){
+    if(window.location.search){
+        var urlParam=window.location.search.split('?')[1];
+        var arr=[];
+        var hrefObj={};
+        var arr=urlParam.split("&");
+        for(var i=0;i<arr.length;i++){
+            // var key=/(\w+)=(\w{1,}={0,})/;
+            //如果key后面也有=，这个就更强大一些
+            var key=/(\w+)={1}((\w|=){1,})/;
+//            var key=/(\w+)={1}(.+)/;
+            var regarr = arr[i].match(key);
+            hrefObj[regarr[1]]=regarr[2];
+        }
+        return hrefObj;
+    }
+    return null;
+
+}
+var obj1getUrlParam();
+console.log(obj1);
+
+
+
+
+
+
+</script>
+</body>
+</html>
